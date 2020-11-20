@@ -1,8 +1,10 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {Text, View} from 'react-native';
+
+import {MainNavigation} from './src/navigation/MainNavigation';
 
 export const App = () => (
-  <View>
-    <Text>123</Text>
-  </View>
+  <NavigationContainer>
+    <MainNavigation />
+  </NavigationContainer>
 );
