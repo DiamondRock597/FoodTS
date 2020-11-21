@@ -1,18 +1,15 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+
 import SplashScreen from 'react-native-splash-screen';
+import {OnBoarding} from './android/src/screens/OnBoarding';
 
-import {MainNavigation} from './src/navigation/MainNavigation';
-
-export class App extends React.Component {
-  public componentDidMount() {
+class App extends React.Component {
+  componentDidMount() {
     SplashScreen.hide();
   }
-  public render() {
-    return (
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>
-    );
+  render() {
+    return <OnBoarding />;
   }
 }
+
+export default App;

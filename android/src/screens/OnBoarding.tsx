@@ -4,20 +4,20 @@ import {styles} from '../styles/onboarding';
 
 const {height, width}: ScaledSize = Dimensions.get('screen');
 
-export const Onboarding = () => (
+export const OnBoarding = () => (
   <View style={styles.bckg}>
     <View style={styles.container}>
       <View style={styles.icon}>
-        <Image source={require('../../public/img/logo.png')} />
+        {/* <Image source={require('../assets')} /> */}
       </View>
       <View style={styles.header}>
         <Text style={styles.title}>Food for Everyone</Text>
       </View>
       <View>
-        <Image
+        {/* <Image
           source={require('../../public/img/firstScreen.png')}
           style={styles.image}
-        />
+        /> */}
       </View>
     </View>
   </View>
