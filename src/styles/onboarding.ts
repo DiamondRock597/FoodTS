@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   icon: {
     height: 73,
     width: 73,
-    borderRadius: 73,
+    borderRadius: 50,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
