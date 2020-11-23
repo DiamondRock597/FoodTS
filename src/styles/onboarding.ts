@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 48,
-    paddingTop: 50,
+    paddingTop: 30,
   },
   icon: {
     height: 73,
@@ -19,18 +19,17 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    paddingTop: 31,
+    paddingTop: 15,
   },
   title: {
     fontStyle: 'normal',
     fontWeight: '800',
-    fontSize: 54,
-    letterSpacing: -0.03,
+    fontSize: 45,
+    letterSpacing: -0.01,
     color: '#fff',
   },
-  image: {
-    position: 'absolute',
-
-    left: -48,
+  imageBlock: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
