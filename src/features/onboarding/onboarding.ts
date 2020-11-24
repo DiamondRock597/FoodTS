@@ -23,13 +23,13 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontStyle: 'normal',
-    fontWeight: '800',
+    fontFamily: 'FontsFree-Net-SFProText-Heavy',
     fontSize: 45,
     letterSpacing: -0.01,
     color: '#fff',
   },
   imageBlock: {
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
 });
