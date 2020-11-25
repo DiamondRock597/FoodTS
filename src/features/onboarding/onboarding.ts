@@ -1,14 +1,22 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
+
+const LOGO_IMAGE_WIDTH = 414;
+const LOGO_IMAGE_HEIGHT = 534;
+
+const {width}: ScaledSize = Dimensions.get('window');
+
+const ratio = width / LOGO_IMAGE_WIDTH;
+const height = LOGO_IMAGE_HEIGHT * ratio;
 
 export const styles = StyleSheet.create({
   bckg: {
     backgroundColor: '#ff4b3a',
     flex: 1,
-    position: 'relative',
   },
   container: {
     paddingHorizontal: 48,
     paddingTop: 30,
+    position: 'relative',
   },
   icon: {
     height: 73,
@@ -19,7 +27,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    paddingTop: 15,
+    paddingTop: 10,
   },
   title: {
     fontStyle: 'normal',
@@ -31,5 +39,15 @@ export const styles = StyleSheet.create({
   imageBlock: {
     justifyContent: 'flex-start',
     alignItems: 'center',
+  },
+  buttonBlock: {
+    position: 'absolute',
+    left: width * 0.1,
+    width: width * 0.8,
+    bottom: height * 0.12,
+  },
+  image: {
+    height,
+    width,
   },
 });

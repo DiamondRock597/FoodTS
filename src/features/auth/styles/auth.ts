@@ -1,12 +1,12 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
+
+const {height, width}: ScaledSize = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F2F2F2',
-  },
+  container: {backgroundColor: '#F2F2F2', flex: 1},
 
   logoBlock: {
+    height: height / 2.5,
     borderBottomEndRadius: 35,
     borderBottomStartRadius: 35,
     backgroundColor: 'white',
@@ -16,16 +16,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  activeLogin: {
-    borderBottomWidth: 3,
-    borderBottomColor: 'red',
-    paddingBottom: 15,
-    fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 18,
-    lineHeight: 21,
-    width: 134,
-    textAlign: 'center',
-  },
+
   login: {
     borderBottomWidth: 0,
     paddingBottom: 15,
@@ -45,11 +36,10 @@ export const styles = StyleSheet.create({
     height: 162,
     resizeMode: 'stretch',
   },
-  form: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginHorizontal: 50,
-    paddingVertical: 40,
+  scroll: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginTop: 20,
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Light',
@@ -57,8 +47,13 @@ export const styles = StyleSheet.create({
     lineHeight: 18,
     opacity: 0.4,
   },
+  form: {
+    width,
+    alignItems: 'center',
+  },
   inputBlock: {
-    paddingVertical: 20,
+    paddingVertical: 10,
+    width: width - 100,
   },
   input: {
     height: 41,
