@@ -71,4 +71,11 @@ export const styles = StyleSheet.create({
     lineHeight: 20,
     color: '#FA4A0C',
   },
+  hover: {
+    height: 3,
+    backgroundColor: 'red',
+    width: 134,
+    position: 'absolute',
+    bottom: 0,
+  },
 });

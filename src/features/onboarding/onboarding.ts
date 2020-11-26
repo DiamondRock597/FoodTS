@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: width * 0.1,
     width: width * 0.8,
-    bottom: height * 0.12,
+    bottom: 0,
   },
   image: {
     height,

@@ -1,3 +1,4 @@
+import {StackActions} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {Image, Text, View} from 'react-native';
@@ -24,7 +25,12 @@ export const OnBoarding: React.FC<Props> = ({navigation}: Props) => (
         <Image source={require('../../assets/image/logo.png')} style={styles.image} />
       </View>
       <View style={styles.buttonBlock}>
-        <CustomButton onPress={() => navigation.navigate(RootScreens.Register)} title="Get started" color="#FF460A" backgroundColor="white" />
+        <CustomButton
+          onPress={() => navigation.dispatch(StackActions.replace(RootScreens.Register))}
+          title="Get started"
+          color="#FF460A"
+          backgroundColor="white"
+        />
       </View>
     </View>
   </View>

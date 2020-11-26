@@ -4,6 +4,12 @@ export enum RootScreens {
   Home = 'Home',
 }
 
+export enum TabScreens {
+  Home = 'Home',
+  Profile = 'Profile',
+  Orders = 'Orders',
+}
+
 export type RootStackParamList = {
   [RootScreens.OnBoarding]: undefined;
   [RootScreens.Register]: undefined;
