@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {View, Text, ScaledSize, Dimensions, Image, KeyboardAvoidingView} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {View, Text, ScaledSize, Dimensions, Image, KeyboardAvoidingView, Platform} from 'react-native';
+import {ScrollView, TextInput} from 'react-native-gesture-handler';
 import {useScrollHandler} from 'react-native-redash';
 import Animated, {interpolate} from 'react-native-reanimated';
 
@@ -40,16 +40,17 @@ export const Auth = ({navigation}: Props) => {
           <Animated.View style={[styles.hover, {left}]} />
         </View>
       </View>
-      <KeyboardAvoidingView enabled behavior="height">
+      <KeyboardAvoidingView enabled behavior={Platform.select({ios: 'padding', android: 'height'})}>
         <Animated.ScrollView
           ref={scroll}
           horizontal
+          scrollEnabled={false}
           contentContainerStyle={styles.scroll}
           showsHorizontalScrollIndicator={false}
           style={{width, height}}
           keyboardShouldPersistTaps="handled"
           {...scrollHandler}>
-          <View style={styles.form}>
+          <ScrollView style={styles.form} contentContainerStyle={{alignItems: 'center'}}>
             <View style={styles.inputBlock}>
               <Text style={styles.title}>Email address</Text>
               <TextInput style={styles.input} autoCompleteType="email" />
@@ -62,13 +63,13 @@ export const Auth = ({navigation}: Props) => {
               <Text style={styles.forgotPassword}>Forgot passcode?</Text>
               <CustomButton onPress={() => navigation.replace(RootScreens.Home)} title="Login" color="white" backgroundColor="#FF460A" />
             </View>
-          </View>
-          <View style={styles.form}>
+          </ScrollView>
+          <ScrollView style={styles.form} contentContainerStyle={{alignItems: 'center'}}>
             <View style={styles.inputBlock}>
               <Text style={styles.title}>Email address</Text>
               <TextInput style={styles.input} />
             </View>
-          </View>
+          </ScrollView>
         </Animated.ScrollView>
       </KeyboardAvoidingView>
     </View>

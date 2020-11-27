@@ -2,18 +2,17 @@ import React from 'react';
 import {Image} from 'react-native';
 
 import {TabScreens} from '../../navigation/screens';
+import HomeIcon from '../../assets/image/home_icon.png';
 
 const imageMap = {
-  [TabScreens.Home]: '../../assets/image/home_icon.png',
+  [TabScreens.Home]: HomeIcon,
 };
 
 interface Props {
-  typeIcon: TabScreens;
+  tab: TabScreens;
   tintColor: string;
 }
 
-export const TabBarIcon: React.FC<Props> = ({typeIcon, tintColor}: Props) => {
-  console.log({typeIcon, src: imageMap[typeIcon]});
-
-  return <Image source={require('../../assets/image/home_icon.png')} style={{tintColor}} />;
+export const TabBarIcon: React.FC<Props> = ({tab, tintColor}: Props) => {
+  return <Image source={imageMap[tab]} style={{tintColor}} />;
 };

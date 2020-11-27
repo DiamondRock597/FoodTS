@@ -3,10 +3,10 @@ import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 const LOGO_IMAGE_WIDTH = 414;
 const LOGO_IMAGE_HEIGHT = 534;
 
-const {width}: ScaledSize = Dimensions.get('window');
+const {width, height}: ScaledSize = Dimensions.get('window');
 
 const ratio = width / LOGO_IMAGE_WIDTH;
-const height = LOGO_IMAGE_HEIGHT * ratio;
+const heightImage = LOGO_IMAGE_HEIGHT * ratio;
 
 export const styles = StyleSheet.create({
   bckg: {
@@ -16,7 +16,6 @@ export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 48,
     paddingTop: 30,
-    position: 'relative',
   },
   icon: {
     height: 73,
@@ -44,10 +43,10 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     left: width * 0.1,
     width: width * 0.8,
-    bottom: 0,
+    bottom: height * 0.02,
   },
   image: {
-    height,
+    height: heightImage,
     width,
   },
 });

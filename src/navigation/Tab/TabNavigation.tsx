@@ -9,30 +9,33 @@ const Tab = createBottomTabNavigator();
 
 export const TabNavigation = () => (
   <Tab.Navigator
+    sceneContainerStyle={{borderWidth: 0}}
     tabBarOptions={{
+      style: {backgroundColor: '#F2F2F2', borderWidth: 0},
       showLabel: false,
       activeTintColor: '#FA4A0C',
       inactiveTintColor: '#B1B1B3',
+      tabStyle: {borderWidth: 0},
     }}>
     <Tab.Screen
       name={TabScreens.Home}
       component={Home}
       options={{
-        tabBarIcon: ({color}: {color: string}) => <TabBarIcon typeIcon={TabScreens.Home} tintColor={color} />,
+        tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Home} tintColor={color} />,
       }}
     />
     <Tab.Screen
       name={TabScreens.Profile}
       component={Home}
       options={{
-        tabBarIcon: ({color}: {color: string}) => <TabBarIcon typeIcon={TabScreens.Home} tintColor={color} />,
+        tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Home} tintColor={color} />,
       }}
     />
     <Tab.Screen
       name={TabScreens.Orders}
       component={Home}
       options={{
-        tabBarIcon: ({color}: {color: string}) => <TabBarIcon typeIcon={TabScreens.Home} tintColor={color} />,
+        tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Home} tintColor={color} />,
       }}
     />
   </Tab.Navigator>

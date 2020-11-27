@@ -49,10 +49,9 @@ export const styles = StyleSheet.create({
   },
   form: {
     width,
-    alignItems: 'center',
   },
   inputBlock: {
-    paddingVertical: 10,
+    paddingVertical: 20,
     width: width - 100,
   },
   input: {
@@ -65,7 +64,7 @@ export const styles = StyleSheet.create({
     color: 'black',
   },
   forgotPassword: {
-    paddingVertical: 10,
+    paddingBottom: 20,
     fontFamily: 'FontsFree-Net-SFProText-Light',
     fontSize: 17,
     lineHeight: 20,
