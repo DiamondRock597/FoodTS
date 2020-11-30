@@ -8,7 +8,7 @@ import Animated, {interpolate} from 'react-native-reanimated';
 import {CustomButton} from '../../components/custom_button';
 import {RootScreens, RootStackParamList} from '../../navigation/screens';
 
-import {styles} from './styles/auth';
+import {styles, cardRadius, endToScroll} from './styles/auth';
 
 const {width, height}: ScaledSize = Dimensions.get('window');
 
@@ -21,7 +21,7 @@ export const Auth = ({navigation}: Props) => {
   const {scrollHandler, x} = useScrollHandler();
   const left = interpolate(x, {
     inputRange: [0, width],
-    outputRange: [34, 134 + 90],
+    outputRange: [cardRadius, endToScroll],
   });
 
   return (
@@ -37,8 +37,8 @@ export const Auth = ({navigation}: Props) => {
           <Text onPress={() => scroll.current?.getNode().scrollTo({x: width})} style={styles.login}>
             Sign-up
           </Text>
-          <Animated.View style={[styles.hover, {left}]} />
         </View>
+        <Animated.View style={[styles.hover, {left}]} />
       </View>
       <KeyboardAvoidingView enabled behavior={Platform.select({ios: 'padding', android: 'height'})}>
         <Animated.ScrollView

@@ -2,7 +2,8 @@ import React from 'react';
 import {View, Image, Text, TouchableOpacity, TextInput, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {styles} from './styles/styles';
+import ImageFood from '../../assets/image/food.png';
+import {styles} from './styles/home';
 
 export const Home = () => (
   <ScrollView style={styles.container}>
@@ -40,6 +41,35 @@ export const Home = () => (
       </TouchableOpacity>
       <TouchableOpacity style={styles.foodsItem}>
         <Text style={styles.titleFoods}>Pizza</Text>
+      </TouchableOpacity>
+    </ScrollView>
+    <ScrollView horizontal contentContainerStyle={styles.dishesContainer} showsHorizontalScrollIndicator={false}>
+      <TouchableOpacity style={styles.dishesBlock}>
+        <View style={styles.dishesItem}>
+          <Text numberOfLines={2} style={styles.dishesTitle}>
+            Veggie tomato mix
+          </Text>
+          <Text style={styles.dishesCost}>N1,900</Text>
+          <View style={styles.dishesCircle} />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.dishesBlock}>
+        <View style={styles.dishesItem}>
+          <Text numberOfLines={2} style={styles.dishesTitle}>
+            Veggie tomato mix
+          </Text>
+          <Text style={styles.dishesCost}>N1,900</Text>
+          <View style={styles.dishesCircle} />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.dishesBlock}>
+        <View style={styles.dishesItem}>
+          <Text numberOfLines={2} style={styles.dishesTitle}>
+            Veggie tomato mix
+          </Text>
+          <Text style={styles.dishesCost}>N1,900</Text>
+          <View style={styles.dishesCircle} />
+        </View>
       </TouchableOpacity>
     </ScrollView>
   </ScrollView>

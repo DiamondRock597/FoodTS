@@ -1,11 +1,11 @@
 import React from 'react';
-import {Image} from 'react-native';
-
 import {TabScreens} from '../../navigation/screens';
-import HomeIcon from '../../assets/image/home_icon.png';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const imageMap = {
-  [TabScreens.Home]: HomeIcon,
+  [TabScreens.Home]: 'home',
+  [TabScreens.Profile]: 'user',
+  [TabScreens.History]: 'history',
 };
 
 interface Props {
@@ -13,6 +13,4 @@ interface Props {
   tintColor: string;
 }
 
-export const TabBarIcon: React.FC<Props> = ({tab, tintColor}: Props) => {
-  return <Image source={imageMap[tab]} style={{tintColor}} />;
-};
+export const TabBarIcon: React.FC<Props> = ({tab, tintColor}: Props) => <Icon name={imageMap[tab]} size={30} color={tintColor} />;

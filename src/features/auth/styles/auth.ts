@@ -2,13 +2,18 @@ import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 
 const {height, width}: ScaledSize = Dimensions.get('window');
 
+const stickWidth = 134;
+
+export const cardRadius = 35;
+export const endToScroll = width - cardRadius - stickWidth;
+
 export const styles = StyleSheet.create({
   container: {backgroundColor: '#F2F2F2', flex: 1},
 
   logoBlock: {
     height: height / 2.5,
-    borderBottomEndRadius: 35,
-    borderBottomStartRadius: 35,
+    borderBottomEndRadius: cardRadius,
+    borderBottomStartRadius: cardRadius,
     backgroundColor: 'white',
     justifyContent: 'flex-end',
   },
@@ -71,10 +76,10 @@ export const styles = StyleSheet.create({
     color: '#FA4A0C',
   },
   hover: {
-    height: 3,
-    backgroundColor: 'red',
-    width: 134,
     position: 'absolute',
     bottom: 0,
+    height: 3,
+    backgroundColor: 'red',
+    width: stickWidth,
   },
 });
