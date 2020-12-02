@@ -5,6 +5,7 @@ import {OnBoarding} from '../features/onboarding/OnBoarding';
 import {RootScreens, RootStackParamList} from './screens';
 import {Auth} from '../features/auth/Auth';
 import {TabNavigation} from './Tab/TabNavigation';
+import {Dish} from '../features/dish_details/Dish';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -13,5 +14,6 @@ export const MainNavigation = () => (
     <Stack.Screen name={RootScreens.OnBoarding} component={OnBoarding} />
     <Stack.Screen name={RootScreens.Register} component={Auth} />
     <Stack.Screen name={RootScreens.Home} component={TabNavigation} />
+    <Stack.Screen name={RootScreens.Dish} component={Dish} />
   </Stack.Navigator>
 );
