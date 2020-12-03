@@ -1,4 +1,4 @@
-import {Dish} from '../features/home/Home';
+import {Dish} from '../models/dish';
 
 export enum RootScreens {
   OnBoarding = 'OnBoarding',

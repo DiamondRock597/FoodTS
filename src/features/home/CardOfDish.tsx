@@ -17,7 +17,7 @@ export const CardOfDish: React.FC<Props> = ({dish, onPress}: Props) => (
       </Text>
       <Text style={styles.dishesCost}>N{dish.cost}</Text>
       <View style={styles.dishesCircle}>
-        <Image source={dish.image} style={styles.image} />
+        <Image source={{uri: dish.image}} style={styles.image} />
       </View>
     </View>
   </TouchableOpacity>
