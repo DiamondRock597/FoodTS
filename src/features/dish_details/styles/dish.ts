@@ -1,7 +1,7 @@
 import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 
-const {width}: ScaledSize = Dimensions.get('window');
-const paddingForImage = 182;
+const {height, width}: ScaledSize = Dimensions.get('window');
+const paddingForImage = 530;
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 40,
-    paddingVertical: 25,
+    paddingVertical: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   image: {
-    height: width - paddingForImage,
-    width: width - paddingForImage,
+    height: height - paddingForImage,
+    width: height - paddingForImage,
   },
   imageItem: {
     width,
@@ -39,9 +39,9 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: 33,
-    paddingVertical: 15,
+    paddingVertical: 10,
     textAlign: 'center',
   },
   cost: {
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     color: '#000000',
   },
   infoBlock: {
-    paddingVertical: 15,
+    paddingVertical: 10,
   },
   info: {
     fontFamily: 'FontsFree-Net-SFProText-Light',
@@ -71,5 +71,8 @@ export const styles = StyleSheet.create({
     letterSpacing: 0.02,
     color: '#000000',
     opacity: 0.7,
+  },
+  button: {
+    paddingVertical: 20,
   },
 });
