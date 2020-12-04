@@ -8,9 +8,10 @@ import {useScrollHandler} from 'react-native-redash';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {RootStackParamList, RootScreens} from '../../navigation/screens';
+import {CustomButton} from '../../components/custom_button';
+import {Dot} from './Dot';
 
 import {styles} from './styles/dish';
-import {Dot} from './Dot';
 
 const {width}: ScaledSize = Dimensions.get('window');
 
@@ -75,6 +76,9 @@ export const Dish = ({route, navigation}: Props) => {
         <View>
           <Text style={styles.nameInfo}>Return policy</Text>
           <Text style={styles.info}>{route.params.dish.policy}</Text>
+        </View>
+        <View style={styles.button}>
+          <CustomButton color="#F6F6F9" onPress={() => console.log(123)} backgroundColor="#FA4A0C" title="Add to Cart" />
         </View>
       </View>
     </ScrollView>

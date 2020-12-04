@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, ImageProps, ListRenderItemInfo} from 'react-native';
+import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
@@ -8,10 +8,10 @@ import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
 import {RootScreens, RootStackParamList} from '../../navigation/screens';
 
-import typesDish from './types.json';
+import dishes from './dishes.json';
 
 import {styles} from './styles/home';
-import {Dish} from '../../models/dish';
+import {Dish, TypesDish} from '../../models/dish';
 import {FlatList} from 'react-native-gesture-handler';
 
 interface Props {
@@ -20,12 +20,18 @@ interface Props {
 }
 
 interface State {
-  currentIndex: number;
+  currentType: TypesDish;
 }
+
+const types = [
+  {id: 1, type: TypesDish.Foods},
+  {id: 2, type: TypesDish.Drinks},
+  {id: 3, type: TypesDish.Snacks},
+];
 
 export class Home extends React.Component<Props, State> {
   public state: State = {
-    currentIndex: 0,
+    currentType: TypesDish.Foods,
   };
 
   public render() {
@@ -46,13 +52,13 @@ export class Home extends React.Component<Props, State> {
             </Text>
             <View style={styles.inputBlock}>
               <Icon name="search" size={20} color="#000000" style={styles.search} />
-              <TextInput placeholder="Search" style={styles.searchInput} />
+              <TextInput placeholder="Search" style={styles.searchInput} onFocus={this.navigateSearch} />
             </View>
           </View>
         </View>
 
         <FlatList
-          data={typesDish}
+          data={types}
           keyExtractor={this.keyExtractorType}
           renderItem={this.renderType}
           contentContainerStyle={styles.foods}
@@ -61,7 +67,7 @@ export class Home extends React.Component<Props, State> {
         />
 
         <FlatList
-          data={typesDish[this.state.currentIndex].dishes}
+          data={dishes}
           keyExtractor={this.keyExtractorDish}
           renderItem={this.renderDish}
           contentContainerStyle={styles.dishesContainer}
@@ -75,17 +81,23 @@ export class Home extends React.Component<Props, State> {
   private keyExtractorType: (item) => string = (item) => `Type - ${item.id}`;
   private keyExtractorDish: (item) => string = (item) => `Dish - ${item.id}`;
 
-  private changeIndex: (currentIndex: number) => void = (currentIndex) => {
-    this.setState({currentIndex});
+  private changeType: (currentType: TypesDish) => void = (currentType) => {
+    this.setState({currentType});
   };
 
   private navigateDish: (dish: Dish) => void = (dish) => {
     this.props.navigation.navigate(RootScreens.Dish, {dish});
   };
 
+  private navigateSearch: () => void = () => {
+    Keyboard.dismiss();
+    this.props.navigation.navigate(RootScreens.Search, {dishes});
+  };
+
   private renderType = ({item}) => (
-    <TypeFood name={item.type} key={item.id} id={item.id} onPress={this.changeIndex} active={item.id === this.state.currentIndex} />
+    <TypeFood name={item.type} key={item.id} onPress={this.changeType} active={item.type === this.state.currentType} />
   );
 
-  private renderDish = ({item}: {item: Dish}) => <CardOfDish onPress={this.navigateDish} dish={item} />;
+  private renderDish = ({item}: {item: Dish}) =>
+    this.state.currentType === item.type ? <CardOfDish onPress={this.navigateDish} dish={item} /> : null;
 }
