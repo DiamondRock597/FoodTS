@@ -15,7 +15,7 @@
     "@react-navigation/drawer": "^5.11.4",
     "@react-navigation/native": "^5.8.9",
     "@react-navigation/stack": "^5.12.6",
-    "eslint-config-react-native-computools": "^1.0.4",
+    
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-auto-height-image": "^3.2.3",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
+    
     "@react-native-community/eslint-config": "^1.1.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",

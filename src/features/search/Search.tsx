@@ -1,7 +1,7 @@
 import React from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, ListRenderItem, ListRenderItemInfo} from 'react-native';
 import {FlatList, TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -56,13 +56,13 @@ export class Search extends React.Component<Props, State> {
 
   private navigateDish: (dish: Dish) => void = (dish) => this.props.navigation.navigate(RootScreens.Dish, {dish});
 
-  private renderItem = ({item}: {item: Dish}) =>
+  private renderItem = ({item, index}: ListRenderItemInfo<Dish>) =>
     item.name.toLowerCase().includes(this.state.valueInput.toLowerCase()) ? (
-      <View style={styles.dishesItem}>
+      <View style={[styles.dishesItem, (index + 1) % 2 === 0 && {marginTop: 120}]}>
         <Text numberOfLines={2} style={styles.dishesTitle}>
           {item.name}
         </Text>
-        {console.log({item})}
+
         <Text style={styles.dishesCost}>N{item.cost}</Text>
         <View style={styles.dishesCircle}>
           <Image source={{uri: item.image}} style={styles.image} />

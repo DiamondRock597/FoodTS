@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     width: width * 0.4,
 
     marginHorizontal: 10,
-    marginVertical: (width * ratioForCircle) / half,
+    marginTop: 30,
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     justifyContent: 'flex-end',

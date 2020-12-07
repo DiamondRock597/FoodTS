@@ -719,6 +719,15 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@computools/eslint-config-react-native@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@computools/eslint-config-react-native/-/eslint-config-react-native-1.0.6.tgz#771f1a8c68fe97250704197590a2d8fb561eb554"
+  integrity sha512-oI8HkKaHh9qidYX9Du02GjFzjq5xZMklkFXs6KLwgvMFkqK27HGr3ZJMoabEDpt0/IS7rgMw+IuRPd6O9QjI4g==
+  dependencies:
+    "@react-native-community/eslint-config" "2.0.0"
+    eslint-plugin-eslint-comments "3.2.0"
+    eslint-plugin-import "2.22.1"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
