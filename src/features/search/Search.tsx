@@ -24,27 +24,41 @@ export class Search extends React.Component<Props, State> {
     valueInput: '',
   };
 
+  public get ListHeaderComponent() {
+    return (
+      <View style={styles.header}>
+        <TouchableOpacity onPress={this.props.navigation.goBack}>
+          <Icon name="arrow-back-ios" size={24} color="#000000" />
+        </TouchableOpacity>
+
+        <TextInput onChangeText={this.onChangeInput} value={this.state.valueInput} style={styles.input} placeholder="Search" autoFocus />
+      </View>
+    );
+  }
+
+  public get dishes() {
+    return this.props.route.params.dishes.filter((dish) => dish.name.toLowerCase().includes(this.state.valueInput.toLowerCase()));
+  }
+
   public componentDidMount() {}
   public render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={this.props.navigation.goBack}>
-            <Icon name="arrow-back-ios" size={24} color="#000000" />
-          </TouchableOpacity>
-
-          <TextInput onChangeText={this.onChangeInput} value={this.state.valueInput} style={styles.input} placeholder="Search" autoFocus />
-        </View>
-        <View style={styles.contentBlock}>
-          <FlatList
-            contentContainerStyle={styles.contentContainer}
-            keyExtractor={this.keyExtractor}
-            showsVerticalScrollIndicator={false}
-            data={this.props.route.params.dishes}
-            renderItem={this.renderItem}
-            numColumns={2}
-          />
-        </View>
+      <View>
+        <FlatList
+          columnWrapperStyle={{
+            paddingTop: 30,
+            backgroundColor: 'blue',
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
+            paddingHorizontal: 24,
+          }}
+          ListHeaderComponent={this.ListHeaderComponent}
+          keyExtractor={this.keyExtractor}
+          showsVerticalScrollIndicator={false}
+          data={this.dishes}
+          renderItem={this.renderItem}
+          numColumns={2}
+        />
       </View>
     );
   }
@@ -56,17 +70,16 @@ export class Search extends React.Component<Props, State> {
 
   private navigateDish: (dish: Dish) => void = (dish) => this.props.navigation.navigate(RootScreens.Dish, {dish});
 
-  private renderItem = ({item}: {item: Dish}) =>
-    item.name.toLowerCase().includes(this.state.valueInput.toLowerCase()) ? (
-      <View style={styles.dishesItem}>
-        <Text numberOfLines={2} style={styles.dishesTitle}>
-          {item.name}
-        </Text>
-        {console.log({item})}
-        <Text style={styles.dishesCost}>N{item.cost}</Text>
-        <View style={styles.dishesCircle}>
-          <Image source={{uri: item.image}} style={styles.image} />
-        </View>
+  private renderItem = ({item}: {item: Dish}) => (
+    <View style={styles.dishesItem}>
+      <Text numberOfLines={2} style={styles.dishesTitle}>
+        {item.name}
+      </Text>
+      {console.log({item})}
+      <Text style={styles.dishesCost}>N{item.cost}</Text>
+      <View style={styles.dishesCircle}>
+        <Image source={{uri: item.image}} style={styles.image} />
       </View>
-    ) : null;
+    </View>
+  );
 }

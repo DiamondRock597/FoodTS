@@ -7,42 +7,27 @@ const ratioWidthDishesItem = 0.4;
 const backButtonPadding = 34;
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#EEEEEE',
-  },
-
   header: {
+    paddingTop: 60,
+    paddingHorizontal: 34,
+    backgroundColor: '#EEEEEE',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingTop: 40,
-    paddingHorizontal: 40,
     paddingBottom: 20,
   },
-  backButton: {
-    paddingRight: backButtonPadding,
-  },
+
   input: {
+    paddingLeft: 30,
     width: width - backButtonPadding,
     fontSize: 17,
     lineHeight: 20,
     color: '#000000',
   },
-  contentBlock: {
-    backgroundColor: '#F9F9F9',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    flex: 2,
-  },
-  contentContainer: {
-    paddingTop: 45,
-    alignItems: 'center',
-  },
+
   dishesItem: {
+    marginHorizontal: 10,
     height: height * 0.25,
     width: width * 0.4,
-
-    marginHorizontal: 10,
     marginVertical: (width * ratioForCircle) / half,
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
@@ -69,7 +54,6 @@ export const styles = StyleSheet.create({
   },
   dishesCircle: {
     position: 'absolute',
-
     zIndex: 1,
     width: width * ratioForCircle,
     height: height * ratioForCircle,

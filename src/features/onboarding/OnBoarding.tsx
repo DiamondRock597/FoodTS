@@ -4,7 +4,7 @@ import React from 'react';
 import {Image, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-import {CustomButton} from '../../components/custom_button';
+import {CustomButton} from '@components/custom_button';
 import {RootScreens, RootStackParamList} from '../../navigation/screens';
 
 import {styles} from './onboarding';

@@ -2,9 +2,12 @@ import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 
 const {width, height}: ScaledSize = Dimensions.get('window');
 
-const half = 2;
+const half = 0.5;
 const ratioForCircle = 0.34;
 const ratioWidthDishesItem = 0.53;
+const sizeCircle = width * ratioForCircle;
+const borderRadiusCircle = sizeCircle * half;
+const widthDishCard = width * ratioWidthDishesItem;
 
 export const styles = StyleSheet.create({
   dishesBlock: {
@@ -13,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   dishesItem: {
     height: height * 0.3,
-    width: width * ratioWidthDishesItem,
+    width: widthDishCard,
     backgroundColor: 'white',
     borderRadius: 30,
     justifyContent: 'flex-end',
@@ -41,14 +44,14 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'gray',
     zIndex: 1,
-    width: width * ratioForCircle,
-    height: width * ratioForCircle,
-    borderRadius: (width * ratioForCircle) / half,
-    left: (width * ratioWidthDishesItem) / half - (width * ratioForCircle) / half,
-    top: -(width * ratioForCircle) / half,
+    width: sizeCircle,
+    height: sizeCircle,
+    borderRadius: borderRadiusCircle,
+    left: widthDishCard * half - borderRadiusCircle,
+    top: -borderRadiusCircle,
   },
   image: {
-    width: width * ratioForCircle,
-    height: width * ratioForCircle,
+    width: sizeCircle,
+    height: sizeCircle,
   },
 });
