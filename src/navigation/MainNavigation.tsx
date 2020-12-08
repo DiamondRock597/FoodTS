@@ -7,6 +7,7 @@ import {Auth} from '../features/auth/Auth';
 import {TabNavigation} from './Tab/TabNavigation';
 import {Dish} from '../features/dish_details/Dish';
 import {Search} from '../features/search/Search';
+import {Profile} from '../features/profile/Profile';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -17,5 +18,6 @@ export const MainNavigation = () => (
     <Stack.Screen name={RootScreens.Home} component={TabNavigation} />
     <Stack.Screen name={RootScreens.Dish} component={Dish} />
     <Stack.Screen name={RootScreens.Search} component={Search} />
+    <Stack.Screen name={RootScreens.Profile} component={Profile} />
   </Stack.Navigator>
 );

@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TabScreens} from '../screens';
 import {Home} from '../../features/home/Home';
 import {TabBarIcon} from '../../components/tab_bar_icon';
+import { Profile } from '../../features/profile/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ export const TabNavigation = () => (
     />
     <Tab.Screen
       name={TabScreens.Profile}
-      component={Home}
+      component={Profile}
       options={{
         tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Profile} tintColor={color} />,
       }}
