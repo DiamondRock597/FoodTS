@@ -7,6 +7,10 @@ const ratioWidthDishesItem = 0.4;
 const backButtonPadding = 34;
 
 export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#EEEEEE',
+    flex: 1,
+  },
   header: {
     paddingTop: 60,
     paddingHorizontal: 34,
@@ -23,17 +27,25 @@ export const styles = StyleSheet.create({
     lineHeight: 20,
     color: '#000000',
   },
-
+  columnFlatList: {
+    justifyContent: 'space-between',
+    paddingVertical: (width * ratioForCircle) / half,
+  },
   dishesItem: {
-    marginHorizontal: 10,
     height: height * 0.25,
     width: width * 0.4,
-    marginVertical: (width * ratioForCircle) / half,
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     justifyContent: 'flex-end',
     alignItems: 'center',
     position: 'relative',
+  },
+  contentContainer: {
+    paddingTop: 10,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    paddingHorizontal: 25,
+    backgroundColor: '#F9F9F9',
   },
   dishesTitle: {
     paddingVertical: 15,

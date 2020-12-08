@@ -43,16 +43,12 @@ export class Search extends React.Component<Props, State> {
   public componentDidMount() {}
   public render() {
     return (
-      <View>
+      <View style={styles.container}>
+        {this.ListHeaderComponent}
         <FlatList
-          columnWrapperStyle={{
-            paddingTop: 30,
-            backgroundColor: 'blue',
-            borderTopLeftRadius: 50,
-            borderTopRightRadius: 50,
-            paddingHorizontal: 24,
-          }}
-          ListHeaderComponent={this.ListHeaderComponent}
+          columnWrapperStyle={styles.columnFlatList}
+          contentContainerStyle={styles.contentContainer}
+          style={{flex: 2}}
           keyExtractor={this.keyExtractor}
           showsVerticalScrollIndicator={false}
           data={this.dishes}
