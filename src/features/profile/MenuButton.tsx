@@ -1,10 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+import BackIcon from 'react-native-vector-icons/MaterialIcons';
 
-export const MenuButton = () => {
+import {styles} from './styles/menu_button';
+
+interface Props {
+  title: string;
+}
+
+export const MenuButton: React.FC<Props> = ({title}: Props) => {
   return (
-    <View>
-      <Text></Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>{title}</Text>
+      <TouchableOpacity>
+        <BackIcon name="arrow-forward-ios" size={24} color="#000000" />
+      </TouchableOpacity>
     </View>
   );
 };

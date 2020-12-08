@@ -5,8 +5,11 @@ import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {RootScreens, RootStackParamList} from '../../navigation/screens';
+import {MenuButton} from './MenuButton';
+import {CustomButton} from '../../components/custom_button';
 
 import {styles} from './styles/profile';
+import {Menu} from './Menu';
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Search>;
@@ -17,15 +20,11 @@ export const Profile = () => {
   return (
     <View style={styles.container}>
       <View>
-        <TouchableOpacity>
-          <Icon name="arrow-back-ios" size={24} color="#000000" />
-        </TouchableOpacity>
         <Text style={styles.headerTitle}>My profile</Text>
       </View>
       <View style={styles.content}>
         <View style={styles.contentTitle}>
           <Text style={styles.title}>Personal details</Text>
-          <Text style={styles.change}>change</Text>
         </View>
         <View style={styles.personalDetails}>
           <View style={styles.image}></View>
@@ -36,7 +35,7 @@ export const Profile = () => {
             <Text style={[styles.textData, styles.lastText]}>No 15 uti street off ovie palace road effurun delta state</Text>
           </View>
         </View>
-        <View style={styles.menu}></View>
+        <Menu />
       </View>
     </View>
   );

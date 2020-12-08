@@ -5,15 +5,19 @@ const {width}: ScaledSize = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 40,
-    paddingTop: 30,
+    paddingTop: 20,
+    flex: 1,
   },
   headerTitle: {
-    paddingVertical: 30,
+    paddingTop: 30,
+    paddingBottom: 15,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
     fontSize: 34,
     lineHeight: 35,
   },
-  content: {},
+  content: {
+    flex: 2,
+  },
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -23,12 +27,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     fontSize: 18,
     lineHeight: 21,
-  },
-  change: {
-    fontFamily: 'FontsFree-Net-SFProText-Medium-1',
-    fontSize: 15,
-    lineHeight: 18,
-    color: '#FA4A0C',
   },
   personalDetails: {
     backgroundColor: '#FFFFFF',
@@ -68,5 +66,9 @@ export const styles = StyleSheet.create({
     borderColor: '#000000',
     borderBottomWidth: 0,
   },
-  menu: {},
+  menu: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    paddingTop: 20,
+  },
 });
