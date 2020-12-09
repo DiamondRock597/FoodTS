@@ -6,7 +6,7 @@ import {useScrollHandler} from 'react-native-redash';
 import Animated, {interpolate} from 'react-native-reanimated';
 
 import {CustomButton} from '@components/custom_button';
-import {RootScreens, RootStackParamList} from '../../navigation/screens';
+import {RootScreens, RootStackParamList} from '@navigation/screens';
 
 import {styles, cardRadius, endToScroll} from './styles/auth';
 

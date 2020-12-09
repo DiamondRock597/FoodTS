@@ -1,6 +1,7 @@
 import React from 'react';
-import {TabScreens} from '../../navigation/screens';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
+import {TabScreens} from '@navigation/screens';
 
 const imageMap = {
   [TabScreens.Home]: 'home',

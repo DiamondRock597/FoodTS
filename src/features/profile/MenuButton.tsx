@@ -8,13 +8,11 @@ interface Props {
   title: string;
 }
 
-export const MenuButton: React.FC<Props> = ({title}: Props) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{title}</Text>
-      <TouchableOpacity>
-        <BackIcon name="arrow-forward-ios" size={24} color="#000000" />
-      </TouchableOpacity>
-    </View>
-  );
-};
+export const MenuButton: React.FC<Props> = ({title}: Props) => (
+  <View style={styles.container}>
+    <Text style={styles.text}>{title}</Text>
+    <TouchableOpacity>
+      <BackIcon name="arrow-forward-ios" size={24} color="#000000" />
+    </TouchableOpacity>
+  </View>
+);

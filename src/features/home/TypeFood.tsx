@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
-import {TypesDish} from '../../models/dish';
+import {TypesDish} from '@models/dish';
 
 import {styles} from './styles/type_food';
 

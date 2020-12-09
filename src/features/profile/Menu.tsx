@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import {CustomButton} from '../../components/custom_button';
+import {CustomButton} from '@components/custom_button';
 import {MenuButton} from './MenuButton';
 
 import {styles} from './styles/profile';

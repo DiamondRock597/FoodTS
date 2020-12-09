@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
     lineHeight: 18,
     opacity: 0.5,
     borderColor: '#000000',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0.7,
     paddingVertical: 7,
   },
   image: {

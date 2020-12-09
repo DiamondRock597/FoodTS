@@ -1,8 +1,16 @@
 module.exports = {
   root: true,
-  extends: 'react-native-computools',
+  extends: '@computools/eslint-config-react-native',
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'import'],
   rules: {'@typescript-eslint/ban-tslint-comment': 0},
-  printWidth: 150,
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
+  parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: './',
+  },
 };

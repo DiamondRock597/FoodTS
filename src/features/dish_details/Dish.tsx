@@ -7,8 +7,8 @@ import FavouriteIcon from 'react-native-vector-icons/FontAwesome5';
 import {useScrollHandler} from 'react-native-redash';
 import {StackNavigationProp} from '@react-navigation/stack';
 
-import {RootStackParamList, RootScreens} from '../../navigation/screens';
-import {CustomButton} from '../../components/custom_button';
+import {RootStackParamList, RootScreens} from '@navigation/screens';
+import {CustomButton} from '@components/custom_button';
 import {Dot} from './Dot';
 
 import {styles} from './styles/dish';

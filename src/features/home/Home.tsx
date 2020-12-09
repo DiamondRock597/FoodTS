@@ -3,16 +3,16 @@ import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard} fr
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
+import {FlatList} from 'react-native-gesture-handler';
 
 import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
-import {RootScreens, RootStackParamList} from '../../navigation/screens';
+import {RootScreens, RootStackParamList} from '@navigation/screens';
+import {Dish, TypesDish} from '@models/dish';
 
 import dishes from './dishes.json';
 
 import {styles} from './styles/home';
-import {Dish, TypesDish} from '../../models/dish';
-import {FlatList} from 'react-native-gesture-handler';
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Home>;

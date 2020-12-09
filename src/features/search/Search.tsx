@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {FlatList, TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {RootScreens, RootStackParamList} from '../../navigation/screens';
-import {Dish} from '../../models/dish';
+import {RootScreens, RootStackParamList} from '@navigation/screens';
+import {Dish} from '@models/dish';
 
 import {styles} from './styles/search';
 
@@ -19,7 +19,7 @@ interface State {
   valueInput: string;
 }
 
-export class Search extends React.Component<Props, State> {
+export class Search extends Component<Props, State> {
   public state: State = {
     valueInput: '',
   };
