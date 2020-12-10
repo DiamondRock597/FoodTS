@@ -8,11 +8,10 @@ export const styles = StyleSheet.create({
   },
   headerTitle: {
     paddingTop: 30,
-    paddingBottom: 25,
+    paddingBottom: 15,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
-    fontSize: 18,
-    lineHeight: 21,
-    textAlign: 'center',
+    fontSize: 34,
+    lineHeight: 30,
   },
   content: {
     flex: 2,
@@ -25,12 +24,13 @@ export const styles = StyleSheet.create({
   methodsTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: 35,
+    paddingTop: 25,
     paddingBottom: 15,
   },
   methods: {
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
+    paddingBottom: 10,
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',

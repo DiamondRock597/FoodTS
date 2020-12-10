@@ -8,9 +8,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F6F6F9',
   },
+  backButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
   header: {
-    paddingHorizontal: 40,
-    paddingVertical: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

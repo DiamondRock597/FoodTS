@@ -27,10 +27,10 @@ export const Dish = ({route, navigation}: Props) => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={navigation.goBack}>
+        <TouchableOpacity style={styles.backButton} onPress={navigation.goBack}>
           <BackIcon name="arrow-back-ios" size={24} color="#000000" />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.backButton}>
           <FavouriteIcon name="heart" size={20} color="#000000" />
         </TouchableOpacity>
       </View>

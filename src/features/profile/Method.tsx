@@ -9,10 +9,11 @@ interface Props {
   name: string;
   backgroundColor: string;
   image: ImageProps;
+  onPress: (name: string) => void;
 }
 
-export const Method: React.FC<Props> = ({active, name, image, backgroundColor}: Props) => (
-  <RectButton style={styles.methodBlock}>
+export const Method: React.FC<Props> = ({active, name, onPress, image, backgroundColor}: Props) => (
+  <RectButton style={styles.methodBlock} onPress={() => onPress(name)}>
     <View style={styles.radioButton}>{active ? <View style={styles.activeButton} /> : null}</View>
 
     <View style={styles.titleBlock}>
