@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
-import {FlatList, TextInput} from 'react-native-gesture-handler';
+import {TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {RootScreens, RootStackParamList} from '@navigation/screens';

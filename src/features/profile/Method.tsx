@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text, Image, ImageProps} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 
+import {Methods} from './ChangeProfile';
+
 import {styles} from './styles/method';
 
 interface Props {
@@ -9,7 +11,7 @@ interface Props {
   name: string;
   backgroundColor: string;
   image: ImageProps;
-  onPress: (name: string) => void;
+  onPress: (name: Methods) => void;
 }
 
 export const Method: React.FC<Props> = ({active, name, onPress, image, backgroundColor}: Props) => (

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 0.6,
+    borderBottomWidth: 0.5,
     borderBottomColor: 'gray',
   },
   radioButton: {

@@ -1,4 +1,9 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
+
+const {height}: ScaledSize = Dimensions.get('window');
+
+const ratioPaddingContainer = 0.02;
+
 export const styles = StyleSheet.create({
   container: {
     borderRadius: 20,
@@ -7,7 +12,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 20,
-    paddingVertical: 15,
+    paddingVertical: height * ratioPaddingContainer,
   },
   text: {
     fontSize: 18,

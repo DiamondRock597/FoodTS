@@ -1,23 +1,24 @@
 import {StyleSheet, ScaledSize, Dimensions} from 'react-native';
 
-const {width}: ScaledSize = Dimensions.get('window');
+const {height}: ScaledSize = Dimensions.get('window');
+
+const ratioPaddingTopHeader = 0.02;
+const ratioPaddingBottomHeader = 0.01;
+const ratioHeightPersonalDetail = 0.25;
 
 export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 40,
     paddingTop: 20,
-    flex: 1,
   },
   headerTitle: {
-    paddingTop: 30,
-    paddingBottom: 15,
+    paddingTop: height * ratioPaddingTopHeader,
+    paddingBottom: height * ratioPaddingBottomHeader,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
     fontSize: 34,
     lineHeight: 35,
   },
-  content: {
-    flex: 2,
-  },
+  content: {},
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -32,8 +33,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     flexDirection: 'row',
-    height: 180,
-    paddingVertical: 18,
+    height: height * ratioHeightPersonalDetail,
+    paddingVertical: 10,
     paddingHorizontal: 16,
   },
   personalData: {

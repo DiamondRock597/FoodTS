@@ -4,12 +4,14 @@ import {View} from 'react-native';
 import {CustomButton} from '@components/custom_button';
 import {MenuButton} from './MenuButton';
 
+import {styles} from './styles/menu';
+
 interface Props {
   onPress: () => void;
 }
 
 export const Menu: React.FC<Props> = ({onPress}: Props) => (
-  <View style={{justifyContent: 'space-between', flex: 1, flexDirection: 'column'}}>
+  <View style={styles.container}>
     <MenuButton title="Orders" />
     <MenuButton title="Pending reviews" />
     <MenuButton title="Faq" />

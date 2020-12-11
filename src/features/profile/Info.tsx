@@ -3,7 +3,7 @@ import {View, Text, ScrollView, Image} from 'react-native';
 
 import {Menu} from './Menu';
 
-import {styles} from './styles/profile';
+import {styles} from './styles/info';
 
 interface Props {
   onPress: () => void;
