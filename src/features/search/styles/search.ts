@@ -12,12 +12,15 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    paddingTop: 60,
-    paddingHorizontal: 34,
     backgroundColor: '#EEEEEE',
     alignItems: 'center',
     flexDirection: 'row',
-    paddingBottom: 20,
+    position: 'absolute',
+    paddingHorizontal: 34,
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
 
   input: {
@@ -45,6 +48,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     paddingHorizontal: 25,
+    paddingBottom: 130,
     backgroundColor: '#F9F9F9',
   },
   dishesTitle: {
