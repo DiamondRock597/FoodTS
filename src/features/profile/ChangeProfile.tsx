@@ -1,10 +1,20 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TextInput} from 'react-native';
 
-import {Method, Methods} from './Method';
+import {Methods} from '@models/method';
+import {Method} from './Method';
 import {CustomButton} from '@components/custom_button';
+import BankIcon from '@assets/image/bank.png';
+import CardIcon from '@assets/image/credit_card.png';
+import PaypalIcon from '@assets/image/paypal.png';
 
 import {styles} from './styles/change_profile';
+
+const methods = [
+  {id: 1, name: Methods.Card, image: BankIcon, background: '#F47B0A'},
+  {id: 2, name: Methods.Bank, image: CardIcon, background: '#EB4796'},
+  {id: 3, name: Methods.Paypal, image: PaypalIcon, background: '#0038FF'},
+];
 
 interface Props {
   onPress: () => void;
@@ -42,7 +52,9 @@ export class ChangeProfile extends React.Component<Props> {
               <Text style={styles.title}>Payment Method</Text>
             </View>
             <View style={styles.methods}>
-              <Method activeMethod={this.state.currentMethod} onPress={this.changeActivePaymentMethods} />
+              {methods.map((item) => (
+                <Method onPress={this.changeActivePaymentMethods} item={item} activeMethod={this.state.currentMethod} />
+              ))}
             </View>
           </View>
           <CustomButton title="Upgrade" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={this.props.onPress} />

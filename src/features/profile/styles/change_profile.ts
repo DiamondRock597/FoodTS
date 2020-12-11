@@ -4,7 +4,7 @@ const {height}: ScaledSize = Dimensions.get('window');
 
 const ratioPadding = 0.02;
 const ratioPaddingBottomHeader = 0.01;
-const ratioHeightPersonalDetail = 0.18;
+const ratioHeightPersonalDetail = 0.25;
 const paddingTop = height * ratioPadding;
 
 export const styles = StyleSheet.create({
@@ -18,11 +18,9 @@ export const styles = StyleSheet.create({
     paddingBottom: height * ratioPaddingBottomHeader,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
     fontSize: 34,
-    lineHeight: 30,
+    lineHeight: 35,
   },
-  content: {
-    flex: 2,
-  },
+  content: {flex: 2},
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -31,54 +29,54 @@ export const styles = StyleSheet.create({
   methodsTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: paddingTop,
-    paddingBottom: 15,
+    paddingTop: 2,
+    paddingBottom: 3,
   },
   methods: {
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    paddingBottom: 10,
+    paddingBottom: 8,
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
-    fontSize: 17,
-    lineHeight: 20,
+    fontSize: 18,
+    lineHeight: 21,
   },
   personalDetails: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     flexDirection: 'row',
     height: height * ratioHeightPersonalDetail,
-    paddingVertical: 16,
+    paddingVertical: 10,
     paddingHorizontal: 16,
   },
   personalData: {
     paddingHorizontal: 15,
-    alignItems: 'flex-start',
   },
   name: {
     fontFamily: 'FontsFree-Net-SFProText-Light',
     fontSize: 18,
     color: '#000000',
-    lineHeight: 18,
+    lineHeight: 21,
   },
   textData: {
-    maxWidth: 190,
+    maxWidth: 180,
     fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 13,
+    fontSize: 15,
     color: '#000000',
-    lineHeight: 12,
+    lineHeight: 18,
     opacity: 0.5,
+    borderColor: '#000000',
+    borderBottomWidth: 0.7,
     paddingVertical: 5,
-    borderBottomWidth: 1,
   },
   image: {
-    width: 60,
+    width: 91,
     borderRadius: 10,
-    height: 60,
+    height: 100,
     backgroundColor: 'gray',
   },
   paymentMethods: {
-    paddingVertical: 20,
+    paddingVertical: 22,
   },
 });
