@@ -19,7 +19,7 @@ export const Info: React.FC<Props> = ({onPress}: Props) => (
         <Text style={styles.title}>Personal details</Text>
       </View>
       <View style={styles.personalDetails}>
-        <Image source={require('../../assets/image/profile.png')} style={styles.image} />
+        <Image source={require('@assets/image/profile.png')} style={styles.image} />
         <View style={styles.personalData}>
           <Text style={styles.name}>Marvis Ighedosa</Text>
           <Text style={styles.textData}>Dosamarvis@gmail.com</Text>

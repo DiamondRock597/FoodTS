@@ -5,6 +5,7 @@ const {height}: ScaledSize = Dimensions.get('window');
 const ratioPadding = 0.02;
 const ratioPaddingBottomHeader = 0.01;
 const ratioHeightPersonalDetail = 0.18;
+const paddingTop = height * ratioPadding;
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,7 +14,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   headerTitle: {
-    paddingTop: height * ratioPadding,
+    paddingTop: paddingTop,
     paddingBottom: height * ratioPaddingBottomHeader,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
     fontSize: 34,
@@ -30,7 +31,7 @@ export const styles = StyleSheet.create({
   methodsTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: height * ratioPadding,
+    paddingTop: paddingTop,
     paddingBottom: 15,
   },
   methods: {
@@ -59,16 +60,17 @@ export const styles = StyleSheet.create({
     fontFamily: 'FontsFree-Net-SFProText-Light',
     fontSize: 18,
     color: '#000000',
-    lineHeight: 21,
+    lineHeight: 18,
   },
   textData: {
     maxWidth: 190,
     fontFamily: 'FontsFree-Net-SFProText-Light',
     fontSize: 13,
     color: '#000000',
-    lineHeight: 16,
+    lineHeight: 12,
     opacity: 0.5,
     paddingVertical: 5,
+    borderBottomWidth: 1,
   },
   image: {
     width: 60,
@@ -77,6 +79,6 @@ export const styles = StyleSheet.create({
     backgroundColor: 'gray',
   },
   paymentMethods: {
-    paddingVertical: 15,
+    paddingVertical: 20,
   },
 });
