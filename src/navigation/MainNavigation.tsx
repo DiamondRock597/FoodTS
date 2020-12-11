@@ -1,13 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {OnBoarding} from '../features/onboarding/OnBoarding';
 import {RootScreens, RootStackParamList} from './screens';
-import {Auth} from '../features/auth/Auth';
+import {OnBoarding} from '@features/onboarding/OnBoarding';
+import {Auth} from '@features/auth/Auth';
 import {TabNavigation} from './Tab/TabNavigation';
-import {Dish} from '../features/dish_details/Dish';
-import {Search} from '../features/search/Search';
-import {Profile} from '../features/profile/Profile';
+import {Dish} from '@features/dish_details/Dish';
+import {Search} from '@features/search/Search';
+import {Profile} from '@features/profile/Profile';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
