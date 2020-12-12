@@ -719,10 +719,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@computools/eslint-config-react-native@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@computools/eslint-config-react-native/-/eslint-config-react-native-1.0.10.tgz#f238b5ef96dae9fc471bb07ce060233ecb91a88c"
-  integrity sha512-V8h3RY+wULvOqgCYNVvK7bJldUA4XAVXPy7N2I5uEMzZMjEP0iGUCqTppZYNIKLuiVZX+dhrFa38HZpubas4Gw==
+"@computools/eslint-config-react-native@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@computools/eslint-config-react-native/-/eslint-config-react-native-1.0.11.tgz#c8a9e0f15efc4ece545b76d186888c3668738d89"
+  integrity sha512-jbu1RevQbowUWtxcD+0RfKYOkte5WjAOhyg8NjjgeaVizMMmIGlFV0Y9j/92sCE7deU25f584cSBE6fL8WSVrg==
   dependencies:
     "@react-native-community/eslint-config" "2.0.0"
     eslint-import-resolver-typescript "2.3.0"
@@ -6261,6 +6261,11 @@ react-native-splash-screen@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
+
+react-native-swipe-list-view@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-3.2.5.tgz#e10297ae53c9df79a5ef93bd01f47c47ad5dc23b"
+  integrity sha512-WWXUO7rF4UD+Mu49ZKghK6wrcSREAHni6w5km5j4AqCJh8YypVvmfV2byVLTvWPzDosdxQmh/DXQHsKlnLR3uQ==
 
 react-native-vector-icons@7.1.0:
   version "7.1.0"
