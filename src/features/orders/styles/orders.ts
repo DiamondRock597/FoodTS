@@ -2,6 +2,10 @@ import {StyleSheet, Dimensions, ScaledSize} from 'react-native';
 
 const {height, width}: ScaledSize = Dimensions.get('window');
 
+const PADDING_FOR_SWIPE_ITEM = 100;
+const RATIO_HEIGHT_FOR_SWIPE_ITEM = 0.12;
+const RATIO_FOR_CART_INFO = 0.48;
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -33,13 +37,14 @@ export const styles = StyleSheet.create({
   },
   swipeBlock: {
     paddingVertical: 30,
-    width: width - 100,
-    height: height * 0.12,
+    width: width - PADDING_FOR_SWIPE_ITEM,
+    height: height * RATIO_HEIGHT_FOR_SWIPE_ITEM,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
+    marginVertical: 10,
   },
   imageBlock: {
     padding: 10,
@@ -50,7 +55,7 @@ export const styles = StyleSheet.create({
   },
   cartInfo: {
     paddingHorizontal: 5,
-    width: width * 0.48,
+    width: width * RATIO_FOR_CART_INFO,
   },
   cartName: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
@@ -71,5 +76,24 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: 5,
+  },
+  containerSwipe: {
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  swipeButton: {
+    backgroundColor: '#DF2C2C',
+    width: 45,
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 22,
+    marginHorizontal: 8,
+  },
+  swipeButtonsBlock: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingTop: 30,
   },
 });

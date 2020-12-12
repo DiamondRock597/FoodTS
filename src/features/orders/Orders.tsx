@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ListRenderItemInfo, TouchableOpacity} from 'react-native';
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
+import HeartIcon from 'react-native-vector-icons/FontAwesome5';
 
 import {Counter} from './Counter';
 
@@ -16,14 +17,20 @@ interface Item {
   name: string;
 }
 
+const OPEN_SWIPE_VALUE = -125;
+
 export class Orders extends React.Component<null, State> {
   public state: State = {
-    carts: [{id: 1, name: '1 cart'}],
+    carts: [
+      {id: 1, name: '1 cart'},
+      {id: 2, name: '1 cart'},
+      {id: 3, name: '1 cart'},
+    ],
   };
 
-  public render() {
+  public get ListHeaderComponent() {
     return (
-      <View style={styles.container}>
+      <>
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Cart</Text>
         </View>
@@ -31,27 +38,41 @@ export class Orders extends React.Component<null, State> {
           <SwipeIcon name="swipe" size={14} />
           <Text style={styles.infoSwipe}>swipe on an item to delete</Text>
         </View>
-        <View>
-          <SwipeListView
-            contentContainerStyle={styles.swipeContentContainer}
-            data={this.state.carts}
-            renderHiddenItem={this.renderHiddenItem}
-            leftOpenValue={100}
-            renderItem={this.renderItem}
-          />
-        </View>
+      </>
+    );
+  }
+
+  public render() {
+    return (
+      <View style={styles.container}>
+        <SwipeListView
+          ListHeaderComponent={this.ListHeaderComponent}
+          contentContainerStyle={styles.containerSwipe}
+          data={this.state.carts}
+          renderHiddenItem={this.renderHiddenItem}
+          rightOpenValue={OPEN_SWIPE_VALUE}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+        />
       </View>
     );
   }
 
-  private renderHiddenItem = (data, rowMap: RowMap<Item>) => (
-    <View>
-      <Text>Right</Text>
+  private keyExtractor = (item: Item) => `${item.id}`;
+
+  private renderHiddenItem = (rowData: ListRenderItemInfo<Item>, rowMap: RowMap<Item>) => (
+    <View style={[styles.swipeButtonsBlock]}>
+      <TouchableOpacity onPress={() => this.closeRow(rowMap, rowData.item.id)} style={styles.swipeButton}>
+        <HeartIcon name="heart" size={16} color="white" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => this.onDelete(rowMap, rowData.item.id)} style={styles.swipeButton}>
+        <HeartIcon name="trash" size={16} color="white" />
+      </TouchableOpacity>
     </View>
   );
 
-  private renderItem = (item: Item, rowMap) => (
-    <View style={styles.swipeBlock} key={item.id}>
+  private renderItem = (rowData: ListRenderItemInfo<Item>) => (
+    <View style={styles.swipeBlock} key={rowData.item.id}>
       <View style={styles.imageBlock}>
         <Image source={require('@assets/image/food.png')} style={styles.image} />
       </View>
@@ -64,4 +85,16 @@ export class Orders extends React.Component<null, State> {
       </View>
     </View>
   );
+
+  private onDelete = (rowMap: RowMap<Item>, rowKey: number) => {
+    this.closeRow(rowMap, rowKey);
+    const newArr = this.state.carts.filter((item) => item.id !== rowKey);
+    this.setState({carts: newArr});
+  };
+
+  private closeRow = (rowMap: RowMap<Item>, rowKey: number) => {
+    if (rowMap[rowKey]) {
+      rowMap[rowKey].closeRow();
+    }
+  };
 }
