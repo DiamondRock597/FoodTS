@@ -1,13 +1,17 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions, ScaledSize} from 'react-native';
+
+const {height}: ScaledSize = Dimensions.get('window');
+
+const ratioPaddingVertical = 0.02;
 
 export const styles = StyleSheet.create({
   methodBlock: {
     paddingHorizontal: 15,
-    paddingVertical: 15,
+    paddingVertical: height * ratioPaddingVertical,
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 0.5,
-    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
   },
   radioButton: {
     width: 15,
