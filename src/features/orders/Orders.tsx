@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, Image, ListRenderItemInfo, TouchableOpacity} from 'react-native';
+import {View, Text, Image, ListRenderItemInfo, TouchableOpacity, ImageProps} from 'react-native';
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
 import HeartIcon from 'react-native-vector-icons/FontAwesome5';
 
 import {Counter} from './Counter';
-
-import {styles} from './styles/orders';
 import {CustomButton} from 'components/custom_button';
+import Food1 from '@assets/image/food.png';
+import Food2 from '@assets/image/food2.png';
+import Food3 from '@assets/image/food3.png';
+import {styles} from './styles/orders';
 
 interface State {
   carts: Array<Item>;
@@ -16,6 +18,7 @@ interface State {
 interface Item {
   id: number;
   name: string;
+  image: ImageProps;
 }
 
 const OPEN_SWIPE_VALUE = -125;
@@ -23,12 +26,12 @@ const OPEN_SWIPE_VALUE = -125;
 export class Orders extends React.Component<null, State> {
   public state: State = {
     carts: [
-      {id: 1, name: '1 cart'},
-      {id: 2, name: '1 cart'},
-      {id: 3, name: '1 cart'},
-      {id: 4, name: '1 cart'},
-      {id: 5, name: '1 cart'},
-      {id: 6, name: '1 cart'},
+      {id: 1, name: '1 cart', image: Food1},
+      {id: 2, name: '1 cart', image: Food2},
+      {id: 3, name: '1 cart', image: Food3},
+      {id: 4, name: '1 cart', image: Food1},
+      {id: 5, name: '1 cart', image: Food2},
+      {id: 6, name: '1 cart', image: Food3},
     ],
   };
 
@@ -88,7 +91,7 @@ export class Orders extends React.Component<null, State> {
   private renderItem = (rowData: ListRenderItemInfo<Item>) => (
     <View style={styles.swipeBlock} key={rowData.item.id}>
       <View style={styles.imageBlock}>
-        <Image source={require('@assets/image/food.png')} style={styles.image} />
+        <Image source={rowData.item.image} style={styles.image} />
       </View>
       <View style={styles.cartInfo}>
         <Text style={styles.cartName}>Veggie tomato mix</Text>
