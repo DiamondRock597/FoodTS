@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions, ScaledSize} from 'react-native';
 
 const {height, width}: ScaledSize = Dimensions.get('window');
 
-const PADDING_FOR_SWIPE_ITEM = 100;
+const PADDING_FOR_ITEM = 100;
 const RATIO_HEIGHT_FOR_SWIPE_ITEM = 0.12;
 const RATIO_FOR_CART_INFO = 0.48;
 
@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
   },
   swipeBlock: {
     paddingVertical: 30,
-    width: width - PADDING_FOR_SWIPE_ITEM,
+    width: width - PADDING_FOR_ITEM,
     height: height * RATIO_HEIGHT_FOR_SWIPE_ITEM,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
@@ -80,6 +80,7 @@ export const styles = StyleSheet.create({
   containerSwipe: {
     justifyContent: 'space-around',
     alignItems: 'center',
+    paddingVertical: 10,
   },
   swipeButton: {
     backgroundColor: '#DF2C2C',
@@ -95,5 +96,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     paddingTop: 30,
+  },
+  acceptButton: {
+    paddingVertical: 15,
+    width: width - PADDING_FOR_ITEM,
   },
 });

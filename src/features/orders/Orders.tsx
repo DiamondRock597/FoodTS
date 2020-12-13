@@ -7,6 +7,7 @@ import HeartIcon from 'react-native-vector-icons/FontAwesome5';
 import {Counter} from './Counter';
 
 import {styles} from './styles/orders';
+import {CustomButton} from 'components/custom_button';
 
 interface State {
   carts: Array<Item>;
@@ -25,6 +26,9 @@ export class Orders extends React.Component<null, State> {
       {id: 1, name: '1 cart'},
       {id: 2, name: '1 cart'},
       {id: 3, name: '1 cart'},
+      {id: 4, name: '1 cart'},
+      {id: 5, name: '1 cart'},
+      {id: 6, name: '1 cart'},
     ],
   };
 
@@ -47,6 +51,8 @@ export class Orders extends React.Component<null, State> {
       <View style={styles.container}>
         <SwipeListView
           ListHeaderComponent={this.ListHeaderComponent}
+          ListFooterComponent={this.ListFooterComponent}
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.containerSwipe}
           data={this.state.carts}
           renderHiddenItem={this.renderHiddenItem}
@@ -54,6 +60,14 @@ export class Orders extends React.Component<null, State> {
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
         />
+      </View>
+    );
+  }
+
+  private get ListFooterComponent() {
+    return (
+      <View style={styles.acceptButton}>
+        <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={() => console.log(123)} />
       </View>
     );
   }
