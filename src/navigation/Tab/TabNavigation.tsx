@@ -6,6 +6,7 @@ import {Home} from '@features/home/Home';
 import {Orders} from '@features/orders/Orders';
 import {TabBarIcon} from '@components/tab_bar_icon';
 import {Profile} from '@features/profile/Profile';
+import {History} from '@features/history/History';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +41,7 @@ export const TabNavigation = () => (
     />
     <Tab.Screen
       name={TabScreens.History}
-      component={Home}
+      component={History}
       options={{
         tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.History} tintColor={color} />,
       }}
