@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {TabScreens} from '../screens';
-import {Home} from '@features/home/Home';
+import {DrawerNavigation} from '../Drawer/DrawerNavigation';
 import {Orders} from '@features/orders/Orders';
 import {TabBarIcon} from '@components/tab_bar_icon';
 import {Profile} from '@features/profile/Profile';
@@ -13,14 +13,14 @@ const Tab = createBottomTabNavigator();
 export const TabNavigation = () => (
   <Tab.Navigator
     tabBarOptions={{
-      style: {backgroundColor: '#F2F2F2', borderWidth: 0, elevation: 0},
       showLabel: false,
+      style: {},
       activeTintColor: '#FA4A0C',
       inactiveTintColor: '#B1B1B3',
     }}>
     <Tab.Screen
       name={TabScreens.Home}
-      component={Home}
+      component={DrawerNavigation}
       options={{
         tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Home} tintColor={color} />,
       }}
