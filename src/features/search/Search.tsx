@@ -4,12 +4,12 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Extrapolate} from 'react-native-reanimated';
 
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Dish} from '@models/dish';
 
-import {styles} from './styles/search';
-import {Extrapolate} from 'react-native-reanimated';
+import {HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE, styles} from './styles/search';
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Search>;
@@ -21,25 +21,36 @@ interface State {
   scrollY: Animated.Value;
 }
 
+const startPositionValue = 0;
+const startOpacity = 1;
+const half = 2;
+
 export class Search extends Component<Props, State> {
   public state: State = {
     valueInput: '',
-    scrollY: new Animated.Value(0),
+    scrollY: new Animated.Value(startPositionValue),
   };
 
   public get dishes() {
     return this.props.route.params.dishes.filter((dish) => dish.name.toLowerCase().includes(this.state.valueInput.toLowerCase()));
   }
 
+  public get ListEmptyComponent() {
+    return (
+      <View style={styles.listEmptyComponent}>
+        <Text>Such cards are not</Text>
+      </View>
+    );
+  }
   public get ListHeaderComponent() {
     const height = this.state.scrollY.interpolate({
-      inputRange: [0, 130],
-      outputRange: [130, 0],
+      inputRange: [startPositionValue, HEADER_SCROLL_DISTANCE],
+      outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
       extrapolate: Extrapolate.CLAMP,
     });
     const opacity = this.state.scrollY.interpolate({
-      inputRange: [0, 130],
-      outputRange: [1, 0],
+      inputRange: [startPositionValue, HEADER_SCROLL_DISTANCE / half, HEADER_SCROLL_DISTANCE],
+      outputRange: [startOpacity, startOpacity, startPositionValue],
       extrapolate: Extrapolate.CLAMP,
     });
     return (
@@ -52,15 +63,15 @@ export class Search extends Component<Props, State> {
     );
   }
 
-  public componentDidMount() {}
   public render() {
     return (
       <View style={styles.container}>
         <Animated.FlatList
+          ListEmptyComponent={this.ListEmptyComponent}
           scrollEventThrottle={16}
           keyExtractor={this.keyExtractor}
           showsVerticalScrollIndicator={false}
-          style={{paddingVertical: 130}}
+          style={styles.paddingList}
           data={this.dishes}
           renderItem={this.renderItem}
           columnWrapperStyle={styles.columnFlatList}
@@ -79,11 +90,10 @@ export class Search extends Component<Props, State> {
   private keyExtractor: (item: Dish) => string = (item) => `Dish - ${item.id}`;
 
   private renderItem = ({item}: {item: Dish}) => (
-    <View style={styles.dishesItem}>
+    <View style={[styles.dishesItem, {marginTop: item.id % 2 === 0 ? 160 : 60}]}>
       <Text numberOfLines={2} style={styles.dishesTitle}>
         {item.name}
       </Text>
-      {console.log({item})}
       <Text style={styles.dishesCost}>N{item.cost}</Text>
       <View style={styles.dishesCircle}>
         <Image source={{uri: item.image}} style={styles.image} />
