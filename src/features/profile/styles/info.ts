@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 5,
+    paddingVertical: 10,
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',

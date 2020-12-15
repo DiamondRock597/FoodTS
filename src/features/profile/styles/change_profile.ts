@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   methods: {
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    paddingBottom: 10,
+    paddingBottom: 21,
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
