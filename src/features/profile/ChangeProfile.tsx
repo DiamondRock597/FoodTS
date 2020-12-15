@@ -1,24 +1,19 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TextInput} from 'react-native';
 
+import {Methods} from '@models/method';
 import {Method} from './Method';
 import {CustomButton} from '@components/custom_button';
-import BankIcon from '../../assets/image/bank.png';
-import CardIcon from '../../assets/image/credit_card.png';
-import PaypalIcon from '../../assets/image/paypal.png';
+import BankIcon from '@assets/image/bank.png';
+import CardIcon from '@assets/image/credit_card.png';
+import PaypalIcon from '@assets/image/paypal.png';
 
 import {styles} from './styles/change_profile';
 
-export enum Methods {
-  Card = 'Card',
-  Bank = 'Bank account',
-  Paypal = 'Paypal',
-}
-
 const methods = [
-  {id: 1, name: 'Card', image: BankIcon, background: '#F47B0A'},
-  {id: 2, name: 'Bank account', image: CardIcon, background: '#EB4796'},
-  {id: 3, name: 'Paypal', image: PaypalIcon, background: '#0038FF'},
+  {id: 1, name: Methods.Card, image: BankIcon, background: '#F47B0A'},
+  {id: 2, name: Methods.Bank, image: CardIcon, background: '#EB4796'},
+  {id: 3, name: Methods.Paypal, image: PaypalIcon, background: '#0038FF'},
 ];
 
 interface Props {
@@ -49,7 +44,7 @@ export class ChangeProfile extends React.Component<Props> {
             <View style={styles.personalData}>
               <Text style={styles.name}>Marvis Ighedosa</Text>
               <TextInput style={styles.textData} value="Dosamarvis@gmail.com" />
-              <Text style={styles.textData}>No 15 uti street off ovie palace road effurun delta state</Text>
+              <TextInput style={styles.textData} multiline value="No 15 uti street off ovie palace road effurun delta state" />
             </View>
           </View>
           <View style={styles.paymentMethods}>
@@ -59,12 +54,10 @@ export class ChangeProfile extends React.Component<Props> {
             <View style={styles.methods}>
               {methods.map((item) => (
                 <Method
-                  backgroundColor={item.background}
-                  name={item.name}
-                  image={item.image}
-                  key={item.id}
-                  active={this.state.currentMethod === item.name}
-                  onPress={this.changeActivePaymentMethod}
+                  onPress={this.changeActivePaymentMethods}
+                  item={item}
+                  active={item.name === this.state.currentMethod}
+                  key={`Method-${item.id}`}
                 />
               ))}
             </View>
@@ -75,7 +68,7 @@ export class ChangeProfile extends React.Component<Props> {
     );
   }
 
-  private changeActivePaymentMethod: (currentMethod: Methods) => void = (currentMethod) => {
+  private changeActivePaymentMethods = (currentMethod: Methods) => {
     this.setState({currentMethod});
   };
 }

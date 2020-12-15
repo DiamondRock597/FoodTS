@@ -13,6 +13,7 @@ export enum TabScreens {
   Home = 'Home',
   Profile = 'Profile',
   History = 'History',
+  Orders = 'Orders',
 }
 
 export type RootStackParamList = {

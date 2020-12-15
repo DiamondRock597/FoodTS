@@ -7,6 +7,7 @@ const imageMap = {
   [TabScreens.Home]: 'home',
   [TabScreens.Profile]: 'user',
   [TabScreens.History]: 'history',
+  [TabScreens.Orders]: 'shopping-basket',
 };
 
 interface Props {
