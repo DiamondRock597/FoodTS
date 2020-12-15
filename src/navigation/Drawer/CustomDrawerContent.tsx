@@ -4,18 +4,14 @@ import {View, Text, Image} from 'react-native';
 import IconFont from 'react-native-vector-icons/FontAwesome5';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootScreens, RootStackParamList} from 'navigation/screens';
+import {RootScreens} from 'navigation/screens';
+import {DrawerContentComponentProps, DrawerContentOptions} from '@react-navigation/drawer';
 
 import {styles} from './styles/custom_drawer_content';
 
 import DrawerImage from '@assets/image/drawer.png';
 
-interface Props {
-  navigation: StackNavigationProp<RootStackParamList, RootScreens.Home>;
-}
-
-export const CustomDrawerContent: React.FC<Props> = ({navigation}) => (
+export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerContentOptions>> = ({navigation}) => (
   <View style={styles.container}>
     <View style={styles.menuBlock}>
       <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Profile)} style={styles.menu}>
@@ -44,7 +40,9 @@ export const CustomDrawerContent: React.FC<Props> = ({navigation}) => (
       </TouchableOpacity>
     </View>
     <View>
-      <Image source={DrawerImage} />
+      <BoxShadow>
+        <Image source={DrawerImage} />
+      </BoxShadow>
     </View>
   </View>
 );
