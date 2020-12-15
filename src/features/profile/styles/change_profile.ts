@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 10,
+    paddingVertical: 5,
   },
   methodsTitle: {
     flexDirection: 'row',
