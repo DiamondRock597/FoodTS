@@ -49,20 +49,11 @@ export class Orders extends React.Component<null, State> {
     );
   }
 
-  private get ListFooterComponent() {
-    return (
-      <View style={styles.acceptButton}>
-        <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={() => console.log(123)} />
-      </View>
-    );
-  }
-
   public render() {
     return (
       <View style={styles.container}>
         <SwipeListView
           ListHeaderComponent={this.ListHeaderComponent}
-          ListFooterComponent={this.ListFooterComponent}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.containerSwipe}
           data={this.state.carts}
@@ -71,6 +62,11 @@ export class Orders extends React.Component<null, State> {
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
         />
+        <View style={styles.acceptBlock}>
+          <View style={styles.acceptButton}>
+            <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={() => console.log(123)} />
+          </View>
+        </View>
       </View>
     );
   }

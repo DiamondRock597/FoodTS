@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F8',
+    justifyContent: 'center',
   },
   header: {
     justifyContent: 'center',
@@ -46,6 +47,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     marginVertical: 10,
+    elevation: 1,
   },
   imageBlock: {
     padding: 10,
@@ -101,5 +103,9 @@ export const styles = StyleSheet.create({
   acceptButton: {
     paddingVertical: 15,
     width: WIDTH_FOR_BLOCK,
+  },
+  acceptBlock: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
