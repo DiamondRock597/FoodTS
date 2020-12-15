@@ -1,6 +1,4 @@
-import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
-
-const {height, width}: ScaledSize = Dimensions.get('window');
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -40,5 +38,18 @@ export const styles = StyleSheet.create({
     lineHeight: 25,
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     color: '#FFFFFF',
+  },
+  shadowImage: {
+    position: 'absolute',
+    width: 175,
+    height: 531,
+    top: 50,
+    left: -15,
+    opacity: 0.2,
+    borderRadius: 30,
+    borderBottomRightRadius: 0,
+    backgroundColor: '#F2F2F2',
+    zIndex: 0,
+    elevation: 10,
   },
 });
