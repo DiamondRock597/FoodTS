@@ -5,6 +5,7 @@ const {height, width}: ScaledSize = Dimensions.get('window');
 const PADDING_FOR_ITEM = 100;
 const RATIO_HEIGHT_FOR_SWIPE_ITEM = 0.12;
 const RATIO_FOR_CART_INFO = 0.48;
+const WIDTH_FOR_BLOCK = width - PADDING_FOR_ITEM;
 
 export const styles = StyleSheet.create({
   container: {
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
   },
   swipeBlock: {
     paddingVertical: 30,
-    width: width - PADDING_FOR_ITEM,
+    width: WIDTH_FOR_BLOCK,
     height: height * RATIO_HEIGHT_FOR_SWIPE_ITEM,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
@@ -99,6 +100,6 @@ export const styles = StyleSheet.create({
   },
   acceptButton: {
     paddingVertical: 15,
-    width: width - PADDING_FOR_ITEM,
+    width: WIDTH_FOR_BLOCK,
   },
 });
