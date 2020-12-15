@@ -2,6 +2,7 @@ import {StyleSheet, ScaledSize, Dimensions} from 'react-native';
 
 const {height}: ScaledSize = Dimensions.get('window');
 
+const ratioFontSize = 0.04;
 const ratioPaddingTopHeader = 0.02;
 const ratioPaddingBottomHeader = 0.01;
 const ratioHeightPersonalDetail = 0.25;
@@ -16,8 +17,8 @@ export const styles = StyleSheet.create({
     paddingTop: height * ratioPaddingTopHeader,
     paddingBottom: height * ratioPaddingBottomHeader,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
-    fontSize: 34,
-    lineHeight: 35,
+    fontSize: height * ratioFontSize,
+    lineHeight: height * ratioFontSize,
   },
   content: {},
   contentTitle: {

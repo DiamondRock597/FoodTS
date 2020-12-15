@@ -20,10 +20,15 @@ interface Item {
 interface State {
   carts: Array<Item>;
 }
+interface Props {}
+
+interface State {
+  carts: Array<Item>;
+}
 
 const OPEN_SWIPE_VALUE = -125;
 
-export class Orders extends React.Component<null, State> {
+export class Orders extends React.Component<Props, State> {
   public state: State = {
     carts: [
       {id: 1, name: '1 cart', image: Food1},

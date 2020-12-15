@@ -53,7 +53,12 @@ export class ChangeProfile extends React.Component<Props> {
             </View>
             <View style={styles.methods}>
               {methods.map((item) => (
-                <Method onPress={this.changeActivePaymentMethods} item={item} activeMethod={this.state.currentMethod} />
+                <Method
+                  onPress={this.changeActivePaymentMethods}
+                  item={item}
+                  active={item.name === this.state.currentMethod}
+                  key={`Method-${item.id}`}
+                />
               ))}
             </View>
           </View>

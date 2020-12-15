@@ -1,10 +1,19 @@
 import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 
+export const HEADER_MAX_HEIGHT = 130;
+export const HEADER_MIN_HEIGHT = 40;
+export const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
 const {width, height}: ScaledSize = Dimensions.get('window');
+
 const half = 2;
 const ratioForCircle = 0.3;
 const ratioWidthDishesItem = 0.4;
+const ratioHeightDishesItem = 0.25;
 const backButtonPadding = 34;
+const halfCircle = (width * ratioForCircle) / half;
+const widthCircle = width * ratioForCircle;
+const paddingListEmpty = 460;
 
 export const styles = StyleSheet.create({
   container: {
@@ -32,11 +41,10 @@ export const styles = StyleSheet.create({
   },
   columnFlatList: {
     justifyContent: 'space-between',
-    paddingVertical: (width * ratioForCircle) / half,
   },
   dishesItem: {
-    height: height * 0.25,
-    width: width * 0.4,
+    height: height * ratioHeightDishesItem,
+    width: width * ratioWidthDishesItem,
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     justifyContent: 'flex-end',
@@ -48,7 +56,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     paddingHorizontal: 25,
-    paddingBottom: 130,
+    paddingBottom: 150,
     backgroundColor: '#F9F9F9',
   },
   dishesTitle: {
@@ -58,7 +66,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     opacity: 0.9,
     lineHeight: 22,
-    width: width * 0.3,
+    width: widthCircle,
   },
   dishesCost: {
     color: '#FA4A0C',
@@ -71,14 +79,22 @@ export const styles = StyleSheet.create({
   dishesCircle: {
     position: 'absolute',
     zIndex: 1,
-    width: width * ratioForCircle,
-    height: height * ratioForCircle,
-    borderRadius: (width * ratioForCircle) / half,
-    left: (width * ratioWidthDishesItem) / half - (width * ratioForCircle) / half,
-    top: -(width * ratioForCircle) / half,
+    width: widthCircle,
+    height: widthCircle,
+    borderRadius: halfCircle,
+    left: (width * ratioWidthDishesItem) / half - halfCircle,
+    top: -halfCircle,
   },
   image: {
-    width: width * ratioForCircle,
-    height: width * ratioForCircle,
+    width: widthCircle,
+    height: widthCircle,
+  },
+  paddingList: {
+    paddingVertical: HEADER_MAX_HEIGHT,
+    flex: 2,
+  },
+  listEmptyComponent: {
+    height: height - paddingListEmpty,
+    backgroundColor: 'transparent',
   },
 });

@@ -8,13 +8,13 @@ import {styles} from './styles/method';
 
 interface Props {
   item: MethodModel;
-  activeMethod: Methods;
+  active: boolean;
   onPress: (name: Methods) => void;
 }
 
-export const Method: React.FC<Props> = ({onPress, activeMethod, item}) => (
+export const Method: React.FC<Props> = ({onPress, active, item}) => (
   <RectButton style={styles.methodBlock} onPress={() => onPress(item.name)}>
-    <View style={styles.radioButton}>{activeMethod === item.name ? <View style={styles.activeButton} /> : null}</View>
+    <View style={styles.radioButton}>{active && <View style={styles.activeButton} />}</View>
 
     <View style={styles.titleBlock}>
       <View style={[styles.imageBackground, {backgroundColor: item.background}]}>

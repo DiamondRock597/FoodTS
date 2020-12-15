@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RouteProp} from '@react-navigation/native';
+import {DrawerActions, RouteProp} from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
 
 import {CardOfDish} from './CardOfDish';
@@ -38,7 +38,7 @@ export class Home extends React.Component<Props, State> {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.hangleOpenDrawer}>
             <Image source={require('../../assets/image/Vector.png')} />
           </TouchableOpacity>
           <TouchableOpacity>
@@ -77,6 +77,10 @@ export class Home extends React.Component<Props, State> {
       </ScrollView>
     );
   }
+
+  private hangleOpenDrawer = () => {
+    this.props.navigation.dispatch(DrawerActions.toggleDrawer());
+  };
 
   private keyExtractorType: (item) => string = (item) => `Type - ${item.id}`;
   private keyExtractorDish: (item) => string = (item) => `Dish - ${item.id}`;

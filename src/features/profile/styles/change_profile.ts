@@ -2,6 +2,7 @@ import {StyleSheet, ScaledSize, Dimensions} from 'react-native';
 
 const {height}: ScaledSize = Dimensions.get('window');
 
+const ratioFontSize = 0.04;
 const ratioPadding = 0.02;
 const ratioPaddingBottomHeader = 0.01;
 const ratioHeightPersonalDetail = 0.25;
@@ -17,25 +18,25 @@ export const styles = StyleSheet.create({
     paddingTop: paddingTop,
     paddingBottom: height * ratioPaddingBottomHeader,
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
-    fontSize: 34,
-    lineHeight: 35,
+    fontSize: height * ratioFontSize,
+    lineHeight: height * ratioFontSize,
   },
   content: {flex: 2},
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 10,
+    paddingVertical: 5,
   },
   methodsTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 2,
-    paddingBottom: 3,
+    paddingBottom: 15,
   },
   methods: {
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    paddingBottom: 8,
+    paddingBottom: 21,
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
@@ -77,6 +78,6 @@ export const styles = StyleSheet.create({
     backgroundColor: 'gray',
   },
   paymentMethods: {
-    paddingVertical: 22,
+    paddingVertical: 15,
   },
 });
