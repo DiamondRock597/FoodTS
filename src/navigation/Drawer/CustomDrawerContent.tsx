@@ -40,9 +40,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerCon
       </TouchableOpacity>
     </View>
     <View>
-      <BoxShadow>
-        <Image source={DrawerImage} />
-      </BoxShadow>
+      <Image source={DrawerImage} />
     </View>
   </View>
 );
