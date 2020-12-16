@@ -39,9 +39,9 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerCon
         <IconMaterial name="arrow-forward" size={22} color="#FFFFFF" />
       </TouchableOpacity>
     </View>
-    <View style={{position: 'relative'}}>
+    <View style={styles.imageBlock}>
       <View style={styles.shadowImage} />
-      <Image source={DrawerImage} style={{zIndex: 1}} />
+      <Image source={DrawerImage} style={styles.image} />
     </View>
   </View>
 );

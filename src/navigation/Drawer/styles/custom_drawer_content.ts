@@ -52,4 +52,10 @@ export const styles = StyleSheet.create({
     zIndex: 0,
     elevation: 10,
   },
+  imageBlock: {
+    position: 'relative',
+  },
+  image: {
+    zIndex: 1,
+  },
 });
