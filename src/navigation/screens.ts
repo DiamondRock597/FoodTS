@@ -7,6 +7,7 @@ export enum RootScreens {
   Dish = 'Dish',
   Search = 'Search',
   Profile = 'Profile',
+  Orders = 'Orders',
 }
 
 export enum TabScreens {
@@ -23,4 +24,5 @@ export type RootStackParamList = {
   [RootScreens.Dish]: {dish: DishModel};
   [RootScreens.Search]: {dishes: Array<DishModel>};
   [RootScreens.Profile]: undefined;
+  [RootScreens.Orders]: undefined;
 };
