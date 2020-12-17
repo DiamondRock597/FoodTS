@@ -38,6 +38,7 @@ interface State {
   carts: Array<Item>;
 }
 
+const RATIO_SCALE_ITEM = 0.9;
 const OPEN_SWIPE_VALUE = 125;
 
 export class Orders extends React.Component<Props, State> {
@@ -79,8 +80,8 @@ export class Orders extends React.Component<Props, State> {
           data={this.state.carts}
           ListHeaderComponent={this.ListHeaderComponent}
           renderItem={this.renderItem}
-          style={{flex: 1, width}}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={{width}}
         />
 
         <View style={styles.acceptBlock}>
@@ -94,19 +95,22 @@ export class Orders extends React.Component<Props, State> {
 
   private keyExtractor = (item: Item) => `${item.id}`;
 
-  private renderHiddenItem = ({percentOpen}: UnderlayParams<Item>) => (
-    <Animated.View style={[styles.swipeButtonsBlock, {opacity: percentOpen}]}>
-      <TouchableOpacity style={styles.swipeButton}>
-        <HeartIcon name="heart" size={16} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.swipeButton}>
-        <HeartIcon name="trash" size={16} color="white" />
-      </TouchableOpacity>
+  private renderHiddenItem = (swipeItem: UnderlayParams<Item>) => (
+    <Animated.View
+      style={[styles.row, {opacity: swipeItem.percentOpen, transform: [{scale: Animated.multiply(swipeItem.percentOpen, RATIO_SCALE_ITEM)}]}]}>
+      <View style={styles.swipeButtonsBlock}>
+        <TouchableOpacity onPress={() => swipeItem.close()} style={styles.swipeButton}>
+          <HeartIcon name="heart" size={16} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.onDelete(swipeItem)} style={styles.swipeButton}>
+          <HeartIcon name="trash" size={16} color="white" />
+        </TouchableOpacity>
+      </View>
     </Animated.View>
   );
 
   private renderItem = ({item}: ListRenderItemInfo<Item>) => (
-    <View style={{alignItems: 'center'}}>
+    <View style={styles.flatRow}>
       <SwipeableItem renderOverlay={this.renderOverlayItem} key={this.keyExtractor(item)} item={item} {...this.swipebleOptions} />
     </View>
   );
@@ -126,15 +130,9 @@ export class Orders extends React.Component<Props, State> {
     </View>
   );
 
-  private onDelete = (rowMap: RowMap<Item>, rowKey: number) => {
-    this.closeRow(rowMap, rowKey);
-    const newArr = this.state.carts.filter((item) => item.id !== rowKey);
+  private onDelete = ({item, close}: UnderlayParams<Item>) => {
+    close();
+    const newArr = this.state.carts.filter((swipeItem) => swipeItem.id !== item.id);
     this.setState({carts: newArr});
-  };
-
-  private closeRow = (rowMap: RowMap<Item>, rowKey: number) => {
-    if (rowMap[rowKey]) {
-      rowMap[rowKey].closeRow();
-    }
   };
 }

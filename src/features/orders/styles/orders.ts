@@ -56,6 +56,10 @@ export const styles = StyleSheet.create({
     width: 75,
     height: 75,
   },
+  flatRow: {
+    alignItems: 'center',
+    flex: 1,
+  },
   cartInfo: {
     paddingHorizontal: 5,
     width: width * RATIO_FOR_CART_INFO,
@@ -98,8 +102,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingTop: 30,
-    backgroundColor: 'blue',
     width: WIDTH_FOR_BLOCK,
   },
   acceptButton: {
@@ -109,5 +111,10 @@ export const styles = StyleSheet.create({
   acceptBlock: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  row: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
   },
 });
