@@ -5,15 +5,13 @@ import {ImageProps} from 'react-native';
 import TrashIcon from '@assets/image/trash.png';
 import HeartIcon from '@assets/image/heart.png';
 
-import {styles} from './styles/swipe_icon';
+import {styles, TRASH_WIDTH, TRASH_HEIGHT, HEART_WIDTH, HEART_HEIGHT} from './styles/swipe_icon';
 
 const SIZE_BUTTON = 40;
-const SIZE_ICON_WIDTH = 14;
-const SIZE_ICON_HEIGHT = 16;
 
 const icons: {[key: string]: {image: ImageProps; width: number; height: number}} = {
-  ['trash']: {image: TrashIcon, width: SIZE_ICON_WIDTH, height: SIZE_ICON_HEIGHT},
-  ['heart']: {image: HeartIcon, width: SIZE_ICON_HEIGHT, height: SIZE_ICON_WIDTH},
+  trash: {image: TrashIcon, width: TRASH_WIDTH, height: TRASH_HEIGHT},
+  heart: {image: HeartIcon, width: HEART_WIDTH, height: HEART_HEIGHT},
 };
 
 interface Props {

@@ -3,21 +3,19 @@ import {View, Text, Image, ListRenderItemInfo, ImageProps, Dimensions} from 'rea
 import SwipeIconHeader from 'react-native-vector-icons/MaterialIcons';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootScreens, RootStackParamList} from 'navigation/screens';
-import {RouteProp, ThemeProvider} from '@react-navigation/native';
+import {RouteProp} from '@react-navigation/native';
 import SwipeableItem, {OverlayParams, UnderlayParams} from 'react-native-swipeable-item';
-import Animated, {multiply} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import {FlatList} from 'react-native-gesture-handler';
 
 import {Counter} from './Counter';
 import {SwipeIcon} from './SwipeIcon';
-import {CustomButton} from 'components/custom_button';
+import {CustomButton} from '@components/custom_button';
 import Food1 from '@assets/image/food.png';
 import Food2 from '@assets/image/food2.png';
 import Food3 from '@assets/image/food3.png';
 
 import {styles} from './styles/orders';
-
-const {width} = Dimensions.get('window');
 
 export interface Item {
   id: number;
@@ -73,12 +71,10 @@ export class Orders extends React.Component<Props, State> {
           ListHeaderComponent={this.ListHeaderComponent}
           renderItem={this.renderItem}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{width}}
+          contentContainerStyle={styles.contentContainer}
         />
         <View style={styles.acceptBlock}>
-          <View style={styles.acceptButton}>
-            <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
-          </View>
+          <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
         </View>
       </View>
     );

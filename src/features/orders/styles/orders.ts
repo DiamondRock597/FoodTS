@@ -13,6 +13,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F5F5F8',
     alignItems: 'center',
   },
+  contentContainer: {
+    width,
+    paddingBottom: 80,
+  },
   header: {
     justifyContent: 'center',
     alignContent: 'center',
@@ -107,8 +111,9 @@ export const styles = StyleSheet.create({
     width: WIDTH_FOR_BLOCK,
   },
   acceptBlock: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    position: 'absolute',
+    width: WIDTH_FOR_BLOCK,
+    bottom: 10,
   },
   row: {
     justifyContent: 'center',
