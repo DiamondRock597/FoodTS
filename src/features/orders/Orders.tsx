@@ -3,23 +3,34 @@ import {View, Text, Image, ListRenderItemInfo, TouchableOpacity, ImageProps} fro
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
 import HeartIcon from 'react-native-vector-icons/FontAwesome5';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootScreens, RootStackParamList} from 'navigation/screens';
+import {RouteProp} from '@react-navigation/native';
 
 import {Counter} from './Counter';
 import {CustomButton} from 'components/custom_button';
 import Food1 from '@assets/image/food.png';
 import Food2 from '@assets/image/food2.png';
 import Food3 from '@assets/image/food3.png';
-import {styles} from './styles/orders';
 
-interface State {
-  carts: Array<Item>;
-}
-interface Props {}
+import {styles} from './styles/orders';
 
 interface Item {
   id: number;
   name: string;
   image: ImageProps;
+}
+
+interface State {
+  carts: Array<Item>;
+}
+interface Props {
+  navigation: StackNavigationProp<RootStackParamList, RootScreens.Orders>;
+  route: RouteProp<RootStackParamList, RootScreens.Orders>;
+}
+
+interface State {
+  carts: Array<Item>;
 }
 
 const OPEN_SWIPE_VALUE = -125;
@@ -36,7 +47,7 @@ export class Orders extends React.Component<Props, State> {
     ],
   };
 
-  public get ListHeaderComponent() {
+  private get ListHeaderComponent() {
     return (
       <>
         <View style={styles.header}>
@@ -55,7 +66,6 @@ export class Orders extends React.Component<Props, State> {
       <View style={styles.container}>
         <SwipeListView
           ListHeaderComponent={this.ListHeaderComponent}
-          ListFooterComponent={this.ListFooterComponent}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.containerSwipe}
           data={this.state.carts}
@@ -64,14 +74,11 @@ export class Orders extends React.Component<Props, State> {
           renderItem={this.renderItem}
           keyExtractor={this.keyExtractor}
         />
-      </View>
-    );
-  }
-
-  private get ListFooterComponent() {
-    return (
-      <View style={styles.acceptButton}>
-        <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={() => console.log(123)} />
+        <View style={styles.acceptBlock}>
+          <View style={styles.acceptButton}>
+            <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
+          </View>
+        </View>
       </View>
     );
   }

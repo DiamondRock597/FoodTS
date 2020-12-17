@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    elevation: 5,
   },
   text: {
     fontStyle: 'normal',

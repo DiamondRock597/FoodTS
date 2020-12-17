@@ -5,7 +5,7 @@ import {RectButton} from 'react-native-gesture-handler';
 import {styles} from './styles';
 
 interface Props {
-  onPress: () => void;
+  onPress?: () => void;
   title: string;
   color: string;
   backgroundColor: string;
