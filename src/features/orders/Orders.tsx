@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text, Image, ListRenderItemInfo, TouchableOpacity, ImageProps, Dimensions} from 'react-native';
-import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
 import HeartIcon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootScreens, RootStackParamList} from 'navigation/screens';
 import {RouteProp} from '@react-navigation/native';
-import SwipeableItem, {OverlayParams, RenderUnderlay, UnderlayParams} from 'react-native-swipeable-item';
+import SwipeableItem, {OverlayParams, UnderlayParams} from 'react-native-swipeable-item';
+import Animated, {multiply} from 'react-native-reanimated';
+import {FlatList} from 'react-native-gesture-handler';
 
 import {Counter} from './Counter';
 import {CustomButton} from 'components/custom_button';
@@ -15,8 +16,6 @@ import Food2 from '@assets/image/food2.png';
 import Food3 from '@assets/image/food3.png';
 
 import {styles} from './styles/orders';
-import Animated, {multiply} from 'react-native-reanimated';
-import {FlatList} from 'react-native-gesture-handler';
 
 const {width} = Dimensions.get('window');
 
@@ -38,7 +37,7 @@ interface State {
   carts: Array<Item>;
 }
 
-const RATIO_SCALE_ITEM = 0.9;
+const SIZE_ICON = 40;
 const OPEN_SWIPE_VALUE = 125;
 
 export class Orders extends React.Component<Props, State> {
@@ -66,12 +65,6 @@ export class Orders extends React.Component<Props, State> {
       </>
     );
   }
-  private get swipebleOptions() {
-    return {
-      renderUnderlayLeft: this.renderHiddenItem,
-      snapPointsLeft: [OPEN_SWIPE_VALUE],
-    };
-  }
 
   public render() {
     return (
@@ -83,7 +76,6 @@ export class Orders extends React.Component<Props, State> {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{width}}
         />
-
         <View style={styles.acceptBlock}>
           <View style={styles.acceptButton}>
             <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
@@ -93,25 +85,40 @@ export class Orders extends React.Component<Props, State> {
     );
   }
 
-  private keyExtractor = (item: Item) => `${item.id}`;
+  private keyExtractor = (item: Item) => `Dish-${item.id}`;
 
   private renderHiddenItem = (swipeItem: UnderlayParams<Item>) => (
-    <Animated.View
-      style={[styles.row, {opacity: swipeItem.percentOpen, transform: [{scale: Animated.multiply(swipeItem.percentOpen, RATIO_SCALE_ITEM)}]}]}>
+    <Animated.View style={[styles.row, {opacity: swipeItem.percentOpen}]}>
       <View style={styles.swipeButtonsBlock}>
-        <TouchableOpacity onPress={() => swipeItem.close()} style={styles.swipeButton}>
+        <Animated.View
+          onTouchStart={() => swipeItem.close()}
+          style={[styles.swipeButton, {height: multiply(swipeItem.percentOpen, SIZE_ICON), width: multiply(swipeItem.percentOpen, SIZE_ICON)}]}>
           <HeartIcon name="heart" size={16} color="white" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.onDelete(swipeItem)} style={styles.swipeButton}>
+        </Animated.View>
+        <Animated.View
+          onTouchStart={() => this.onDelete(swipeItem)}
+          style={[
+            styles.swipeButton,
+            {
+              height: multiply(swipeItem.percentOpen, SIZE_ICON),
+              width: multiply(swipeItem.percentOpen, SIZE_ICON),
+            },
+          ]}>
           <HeartIcon name="trash" size={16} color="white" />
-        </TouchableOpacity>
+        </Animated.View>
       </View>
     </Animated.View>
   );
 
   private renderItem = ({item}: ListRenderItemInfo<Item>) => (
     <View style={styles.flatRow}>
-      <SwipeableItem renderOverlay={this.renderOverlayItem} key={this.keyExtractor(item)} item={item} {...this.swipebleOptions} />
+      <SwipeableItem
+        snapPointsLeft={[OPEN_SWIPE_VALUE]}
+        renderUnderlayLeft={this.renderHiddenItem}
+        renderOverlay={this.renderOverlayItem}
+        key={this.keyExtractor(item)}
+        item={item}
+      />
     </View>
   );
 

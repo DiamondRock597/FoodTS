@@ -91,11 +91,9 @@ export const styles = StyleSheet.create({
   },
   swipeButton: {
     backgroundColor: '#DF2C2C',
-    width: 45,
-    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 22,
+    borderRadius: 20,
     marginHorizontal: 8,
   },
   swipeButtonsBlock: {
