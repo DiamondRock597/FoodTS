@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F8',
-    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
     justifyContent: 'center',
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     height: height * RATIO_HEIGHT_FOR_SWIPE_ITEM,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginVertical: 10,
@@ -99,6 +99,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     paddingTop: 30,
+    backgroundColor: 'blue',
+    width: WIDTH_FOR_BLOCK,
   },
   acceptButton: {
     paddingVertical: 15,

@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text, Image, ListRenderItemInfo, TouchableOpacity, ImageProps} from 'react-native';
+import {View, Text, Image, ListRenderItemInfo, TouchableOpacity, ImageProps, Dimensions} from 'react-native';
 import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
 import HeartIcon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootScreens, RootStackParamList} from 'navigation/screens';
 import {RouteProp} from '@react-navigation/native';
+import SwipeableItem, {OverlayParams, RenderUnderlay, UnderlayParams} from 'react-native-swipeable-item';
 
 import {Counter} from './Counter';
 import {CustomButton} from 'components/custom_button';
@@ -14,6 +15,10 @@ import Food2 from '@assets/image/food2.png';
 import Food3 from '@assets/image/food3.png';
 
 import {styles} from './styles/orders';
+import Animated, {multiply} from 'react-native-reanimated';
+import {FlatList} from 'react-native-gesture-handler';
+
+const {width} = Dimensions.get('window');
 
 interface Item {
   id: number;
@@ -33,7 +38,7 @@ interface State {
   carts: Array<Item>;
 }
 
-const OPEN_SWIPE_VALUE = -125;
+const OPEN_SWIPE_VALUE = 125;
 
 export class Orders extends React.Component<Props, State> {
   public state: State = {
@@ -60,20 +65,24 @@ export class Orders extends React.Component<Props, State> {
       </>
     );
   }
+  private get swipebleOptions() {
+    return {
+      renderUnderlayLeft: this.renderHiddenItem,
+      snapPointsLeft: [OPEN_SWIPE_VALUE],
+    };
+  }
 
   public render() {
     return (
       <View style={styles.container}>
-        <SwipeListView
-          ListHeaderComponent={this.ListHeaderComponent}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.containerSwipe}
+        <FlatList
           data={this.state.carts}
-          renderHiddenItem={this.renderHiddenItem}
-          rightOpenValue={OPEN_SWIPE_VALUE}
+          ListHeaderComponent={this.ListHeaderComponent}
           renderItem={this.renderItem}
-          keyExtractor={this.keyExtractor}
+          style={{flex: 1, width}}
+          showsVerticalScrollIndicator={false}
         />
+
         <View style={styles.acceptBlock}>
           <View style={styles.acceptButton}>
             <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
@@ -85,21 +94,27 @@ export class Orders extends React.Component<Props, State> {
 
   private keyExtractor = (item: Item) => `${item.id}`;
 
-  private renderHiddenItem = (rowData: ListRenderItemInfo<Item>, rowMap: RowMap<Item>) => (
-    <View style={[styles.swipeButtonsBlock]}>
-      <TouchableOpacity onPress={() => this.closeRow(rowMap, rowData.item.id)} style={styles.swipeButton}>
+  private renderHiddenItem = ({percentOpen}: UnderlayParams<Item>) => (
+    <Animated.View style={[styles.swipeButtonsBlock, {opacity: percentOpen}]}>
+      <TouchableOpacity style={styles.swipeButton}>
         <HeartIcon name="heart" size={16} color="white" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => this.onDelete(rowMap, rowData.item.id)} style={styles.swipeButton}>
+      <TouchableOpacity style={styles.swipeButton}>
         <HeartIcon name="trash" size={16} color="white" />
       </TouchableOpacity>
+    </Animated.View>
+  );
+
+  private renderItem = ({item}: ListRenderItemInfo<Item>) => (
+    <View style={{alignItems: 'center'}}>
+      <SwipeableItem renderOverlay={this.renderOverlayItem} key={this.keyExtractor(item)} item={item} {...this.swipebleOptions} />
     </View>
   );
 
-  private renderItem = (rowData: ListRenderItemInfo<Item>) => (
-    <View style={styles.swipeBlock} key={rowData.item.id}>
+  private renderOverlayItem = ({item}: OverlayParams<Item>) => (
+    <View style={styles.swipeBlock} key={item.id}>
       <View style={styles.imageBlock}>
-        <Image source={rowData.item.image} style={styles.image} />
+        <Image source={item.image} style={styles.image} />
       </View>
       <View style={styles.cartInfo}>
         <Text style={styles.cartName}>Veggie tomato mix</Text>
