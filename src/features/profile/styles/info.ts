@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     lineHeight: 21,
   },
   personalDetails: {
+    elevation: 2,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     flexDirection: 'row',
