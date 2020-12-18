@@ -5,11 +5,15 @@ import {FoodsAPI} from '@api/dish';
 
 export interface FoodsStore {
   dishesList: Array<DishModel>;
+  dishesListInBasket: Array<DishModel>;
+
   fetchDishes: () => void;
+  addInBasket: (item: DishModel) => void;
 }
 
 export class Foods implements FoodsStore {
   @observable public dishes: Array<DishModel> = [];
+  @observable public dishesInBasket: Array<DishModel> = [];
   @observable public error: boolean = false;
   @observable public isLoading: boolean = false;
 
@@ -24,6 +28,10 @@ export class Foods implements FoodsStore {
     return toJS(this.dishes);
   }
 
+  @computed public get dishesListInBasket() {
+    return toJS(this.dishesInBasket);
+  }
+
   @action.bound public fetchDishes = () => {
     try {
       this.isLoading = true;
@@ -34,5 +42,10 @@ export class Foods implements FoodsStore {
     } finally {
       this.isLoading = false;
     }
+  };
+
+  @action.bound public addInBasket = (item: DishModel) => {
+    item.capacity++;
+    this.dishesInBasket = [...this.dishesInBasket, item];
   };
 }

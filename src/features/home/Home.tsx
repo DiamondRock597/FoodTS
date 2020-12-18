@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard} from 'react-native';
+import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard, ListRenderItem} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions, RouteProp} from '@react-navigation/native';
@@ -9,11 +9,9 @@ import {inject, observer} from 'mobx-react';
 import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
-import {Dish, TypesDish} from '@models/dish';
-import {Stores} from '@stores/stores';
+import {Dish as DishModel, TypesDish} from '@models/dish';
+import {Stores} from 'stores/stores';
 import {FoodsStore} from 'stores/foods';
-
-import dishes from './dishes.json';
 
 import {styles} from './styles/home';
 
@@ -92,26 +90,30 @@ export class Home extends React.Component<Props, State> {
     this.props.navigation.dispatch(DrawerActions.toggleDrawer());
   };
 
-  private keyExtractorType: (item) => string = (item) => `Type - ${item.id}`;
-  private keyExtractorDish: (item) => string = (item) => `Dish - ${item.id}`;
+  private keyExtractorType: (item: {id: number; type: TypesDish}) => string = (item) => `Type - ${item.id}`;
+  private keyExtractorDish: (item: DishModel) => string = (item) => `Dish - ${item.id}`;
 
   private changeType: (currentType: TypesDish) => void = (currentType) => {
     this.setState({currentType});
   };
 
-  private navigateDish: (dish: Dish) => void = (dish) => {
-    this.props.navigation.navigate(RootScreens.Dish, {dish});
+  private navigateDish: (dish: DishModel) => void = (dish) => {
+    this.props.navigation.navigate(RootScreens.Dish, {dish, onPress: this.addDishInBasket});
   };
 
   private navigateSearch: () => void = () => {
     Keyboard.dismiss();
-    this.props.navigation.navigate(RootScreens.Search, {dishes});
+    this.props.navigation.navigate(RootScreens.Search);
   };
 
   private renderType = ({item}) => (
     <TypeFood name={item.type} key={item.id} onPress={this.changeType} active={item.type === this.state.currentType} />
   );
 
-  private renderDish = ({item}: {item: Dish}) =>
+  private addDishInBasket = (item: DishModel) => {
+    this.props.dish.addInBasket(item);
+  };
+
+  private renderDish = ({item}: {item: DishModel}) =>
     this.state.currentType === item.type ? <CardOfDish onPress={this.navigateDish} dish={item} /> : null;
 }

@@ -1,4 +1,4 @@
-import FoodsJSON from '@features/home/dishes.json';
+import FoodsJSON from './dishes.json';
 import {Dish} from '@models/dish';
 
 const data: {[key: string]: Array<Dish>} = {

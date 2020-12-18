@@ -4,6 +4,7 @@ export interface Dish {
   image: string;
   cost: number;
   type: string;
+  capacity?: number;
   info?: string;
   policy?: string;
 }

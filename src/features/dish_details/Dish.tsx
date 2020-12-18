@@ -78,7 +78,7 @@ export const Dish = ({route, navigation}: Props) => {
           <Text style={styles.info}>{route.params.dish.policy}</Text>
         </View>
         <View style={styles.button}>
-          <CustomButton color="#F6F6F9" onPress={() => console.log(123)} backgroundColor="#FA4A0C" title="Add to Cart" />
+          <CustomButton color="#F6F6F9" onPress={() => route.params.onPress(route.params.dish)} backgroundColor="#FA4A0C" title="Add to Cart" />
         </View>
       </View>
     </ScrollView>
