@@ -4,11 +4,14 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions, RouteProp} from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
+import {inject, observer} from 'mobx-react';
 
 import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Dish, TypesDish} from '@models/dish';
+import {Stores} from '../../stores/stores';
+import {FoodsStore} from 'stores/foods';
 
 import dishes from './dishes.json';
 
@@ -17,6 +20,7 @@ import {styles} from './styles/home';
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Home>;
   route: RouteProp<RootStackParamList, RootScreens.Home>;
+  dishes: FoodsStore;
 }
 
 interface State {
@@ -29,12 +33,16 @@ const types = [
   {id: 3, type: TypesDish.Snacks},
 ];
 
+@inject(Stores.DishStore)
+@observer
 export class Home extends React.Component<Props, State> {
   public state: State = {
     currentType: TypesDish.Foods,
   };
 
   public render() {
+    console.log({state: this.props});
+
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>

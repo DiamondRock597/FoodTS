@@ -257,6 +257,15 @@
     "@babel/helper-create-class-features-plugin" "^7.12.1"
     "@babel/helper-plugin-utils" "^7.10.4"
 
+"@babel/plugin-proposal-decorators@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.12.1.tgz#59271439fed4145456c41067450543aee332d15f"
+  integrity sha512-knNIuusychgYN8fGJHONL0RbFxLGawhXOJNLBk75TniTsZZeA+wdkDuv6wp4lGwzQEKjZi6/WYtnb3udNPmQmQ==
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.12.1"
+    "@babel/helper-plugin-utils" "^7.10.4"
+    "@babel/plugin-syntax-decorators" "^7.12.1"
+
 "@babel/plugin-proposal-export-default-from@^7.0.0":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-export-default-from/-/plugin-proposal-export-default-from-7.12.1.tgz#c6e62d668a8abcfe0d28b82f560395fecb611c5a"
@@ -317,6 +326,13 @@
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-class-properties/-/plugin-syntax-class-properties-7.12.1.tgz#bcb297c5366e79bebadef509549cd93b04f19978"
   integrity sha512-U40A76x5gTwmESz+qiqssqmeEsKvcSyvtgktrm0uzcARAmM9I1jR221f6Oq+GmHrcD+LvZDag1UTOTe2fL3TeA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.10.4"
+
+"@babel/plugin-syntax-decorators@^7.12.1":
+  version "7.12.1"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-decorators/-/plugin-syntax-decorators-7.12.1.tgz#81a8b535b284476c41be6de06853a8802b98c5dd"
+  integrity sha512-ir9YW5daRrTYiy9UJ2TzdNIJEZu8KclVzDcfSt4iEmOtwQ4llPtWInNKJyKnVXp1vE4bbVd5S31M/im3mYMO1w==
   dependencies:
     "@babel/helper-plugin-utils" "^7.10.4"
 
@@ -719,7 +735,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@computools/eslint-config-react-native@^1.0.11":
+"@computools/eslint-config-react-native@1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@computools/eslint-config-react-native/-/eslint-config-react-native-1.0.11.tgz#c8a9e0f15efc4ece545b76d186888c3668738d89"
   integrity sha512-jbu1RevQbowUWtxcD+0RfKYOkte5WjAOhyg8NjjgeaVizMMmIGlFV0Y9j/92sCE7deU25f584cSBE6fL8WSVrg==
@@ -5502,6 +5518,23 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+mobx-react-lite@^3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-3.1.6.tgz#e7f4809ab66edd1acca5adb00c6b88c600ae1952"
+  integrity sha512-MM3x9BLt5nC7iE/ILA5n2+hfrplEKYbFjqROEuGkzBdZP/KD+Z44+2gseczRrTG0xFuiPWfEzgT68+6/zqOiEw==
+
+mobx-react@^7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/mobx-react/-/mobx-react-7.0.5.tgz#a458ec3fd44349d398274eb08aec1abe9b5129ff"
+  integrity sha512-WmHl3Ni30ujVcOOnllmGmyccsbfFCKtAwpkIwncwxhgLcvXcE0Wa9lGJIhoqQdTJzGr0AJqGzMVAdwNc3Fj2DQ==
+  dependencies:
+    mobx-react-lite "^3.1.6"
+
+mobx@^6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.0.4.tgz#8fc3e3629a3346f8afddf5bd954411974744dad1"
+  integrity sha512-wT2QJT9tW19VSHo9x7RPKU3z/I2Ps6wUS8Kb1OO+kzmg7UY3n4AkcaYG6jq95Lp1R9ohjC/NGYuT2PtuvBjhFg==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6209,13 +6242,6 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-native-auto-height-image@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/react-native-auto-height-image/-/react-native-auto-height-image-3.2.3.tgz#64de6ba345b929ad2ac309d297351450c56ddb94"
-  integrity sha512-xa0vsEfexIRlW+x8EI13egfAuENYH7u9Mfrh373RiONkMzTzEKTebZeESXmgYPyit7FEfcLCZD9c44WUwrwL4Q==
-  dependencies:
-    prop-types "^15.7.2"
-
 react-native-gesture-handler@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.8.0.tgz#18f61f51da50320f938957b0ee79bc58f47449dc"
@@ -6257,12 +6283,12 @@ react-native-screens@^2.15.0:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.15.0.tgz#9b97c1881c4fcdf304bf363f0013225901625f44"
   integrity sha512-qTSQPy0WKHtlb8xt5gY0Gt6sdvfQUQAnFSqgsggW9UEvySbkHzpqOrOYNA79Ca8oXO0dCFwp6X8buIiDefa7+Q==
 
-react-native-splash-screen@^3.2.0:
+react-native-splash-screen@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
   integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
 
-react-native-swipe-list-view@^3.2.5:
+react-native-swipe-list-view@3.2.5:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-3.2.5.tgz#e10297ae53c9df79a5ef93bd01f47c47ad5dc23b"
   integrity sha512-WWXUO7rF4UD+Mu49ZKghK6wrcSREAHni6w5km5j4AqCJh8YypVvmfV2byVLTvWPzDosdxQmh/DXQHsKlnLR3uQ==
