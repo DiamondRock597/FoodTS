@@ -10,7 +10,7 @@ import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Dish, TypesDish} from '@models/dish';
-import {Stores} from '../../stores/stores';
+import {Stores} from '@stores/stores';
 import {FoodsStore} from 'stores/foods';
 
 import dishes from './dishes.json';
@@ -20,7 +20,7 @@ import {styles} from './styles/home';
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Home>;
   route: RouteProp<RootStackParamList, RootScreens.Home>;
-  dishes: FoodsStore;
+  dish: FoodsStore;
 }
 
 interface State {
@@ -40,9 +40,11 @@ export class Home extends React.Component<Props, State> {
     currentType: TypesDish.Foods,
   };
 
-  public render() {
-    console.log({state: this.props});
+  public componentDidMount() {
+    this.props.dish.fetchDishes();
+  }
 
+  public render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
@@ -75,7 +77,7 @@ export class Home extends React.Component<Props, State> {
         />
 
         <FlatList
-          data={dishes}
+          data={this.props.dish.dishesList}
           keyExtractor={this.keyExtractorDish}
           renderItem={this.renderDish}
           contentContainerStyle={styles.dishesContainer}

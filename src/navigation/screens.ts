@@ -22,7 +22,7 @@ export type RootStackParamList = {
   [RootScreens.Register]: undefined;
   [RootScreens.Home]: undefined;
   [RootScreens.Dish]: {dish: DishModel};
-  [RootScreens.Search]: {dishes: Array<DishModel>};
+  [RootScreens.Search]: undefined;
   [RootScreens.Profile]: undefined;
   [RootScreens.Orders]: undefined;
 };
