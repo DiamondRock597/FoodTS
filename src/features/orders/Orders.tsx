@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, Image, ListRenderItemInfo, TouchableOpacity, ImageProps} from 'react-native';
-import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
 import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
 import HeartIcon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';

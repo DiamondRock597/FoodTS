@@ -37,6 +37,8 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
     paddingBottom: 21,
+    elevation: 1,
+    justifyContent: 'center',
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
@@ -50,6 +52,7 @@ export const styles = StyleSheet.create({
     height: height * ratioHeightPersonalDetail,
     paddingVertical: 10,
     paddingHorizontal: 16,
+    elevation: 2,
   },
   personalData: {
     paddingHorizontal: 15,

@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 20,
+    elevation: 1,
     paddingVertical: height * ratioPaddingContainer,
   },
   text: {

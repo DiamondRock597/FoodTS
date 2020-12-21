@@ -50,6 +50,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     position: 'relative',
+    elevation: 3,
   },
   contentContainer: {
     paddingTop: 10,
