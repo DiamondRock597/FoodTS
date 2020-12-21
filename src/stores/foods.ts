@@ -9,6 +9,7 @@ export interface FoodsStore {
 
   fetchDishes: () => void;
   addInBasket: (item: DishModel) => void;
+  deleteFromBasket: (item: DishModel) => void;
 }
 
 export class Foods implements FoodsStore {
@@ -20,7 +21,7 @@ export class Foods implements FoodsStore {
   public DishAPI: FoodsAPI;
 
   public constructor(DishAPI: FoodsAPI) {
-    makeObservable(this);
+    makeObservable<Foods>(this);
     this.DishAPI = DishAPI;
   }
 
@@ -48,4 +49,10 @@ export class Foods implements FoodsStore {
     item.capacity++;
     this.dishesInBasket = [...this.dishesInBasket, item];
   };
+
+  @action.bound public deleteFromBasket = (item: DishModel) => {
+    this.dishesInBasket = this.dishesInBasket.filter((dish) => item.id !== dish.id);
+  };
+
+  @action.bound public increase = (id: number) => {};
 }

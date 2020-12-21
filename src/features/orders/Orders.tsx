@@ -13,6 +13,7 @@ import {CustomButton} from 'components/custom_button';
 import {Stores} from 'stores/stores';
 import {FoodsStore} from 'stores/foods';
 import {Dish as DishModel} from 'models/dish';
+import {EmptyOrders} from './EmptyOrders';
 
 import {styles} from './styles/orders';
 
@@ -41,8 +42,12 @@ export class Orders extends React.Component<Props> {
     );
   }
 
+  private get ListEmptyComponent() {
+    return <EmptyOrders />;
+  }
+
   public render() {
-    return (
+    return this.props.dish.dishesListInBasket.length ? (
       <View style={styles.container}>
         <SwipeListView
           ListHeaderComponent={this.ListHeaderComponent}
@@ -60,6 +65,8 @@ export class Orders extends React.Component<Props> {
           </View>
         </View>
       </View>
+    ) : (
+      <EmptyOrders />
     );
   }
 
@@ -70,7 +77,7 @@ export class Orders extends React.Component<Props> {
       <TouchableOpacity onPress={() => this.closeRow(rowMap, rowData.item.id)} style={styles.swipeButton}>
         <HeartIcon name="heart" size={16} color="white" />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.swipeButton}>
+      <TouchableOpacity onPress={() => this.onDelete(rowMap, rowData.item)} style={styles.swipeButton}>
         <HeartIcon name="trash" size={16} color="white" />
       </TouchableOpacity>
     </View>
@@ -91,11 +98,11 @@ export class Orders extends React.Component<Props> {
     </View>
   );
 
-  // private onDelete = (rowMap: RowMap<Dish>, rowKey: number) => {
-  //   this.closeRow(rowMap, rowKey);
-  //   const newArr = this.carts.filter((item) => item.id !== rowKey);
-  //   this.setState({carts: newArr});
-  // };
+  private onDelete = (rowMap: RowMap<DishModel>, item: DishModel) => {
+    this.closeRow(rowMap, item.id);
+
+    this.props.dish.deleteFromBasket(item);
+  };
 
   private closeRow = (rowMap: RowMap<DishModel>, rowKey: number) => {
     if (rowMap[rowKey]) {

@@ -90,18 +90,18 @@ export class Home extends React.Component<Props, State> {
     this.props.navigation.dispatch(DrawerActions.toggleDrawer());
   };
 
-  private keyExtractorType: (item: {id: number; type: TypesDish}) => string = (item) => `Type - ${item.id}`;
-  private keyExtractorDish: (item: DishModel) => string = (item) => `Dish - ${item.id}`;
+  private keyExtractorType = (item: {id: number; type: TypesDish}) => `Type - ${item.id}`;
+  private keyExtractorDish = (item: DishModel) => `Dish - ${item.id}`;
 
-  private changeType: (currentType: TypesDish) => void = (currentType) => {
+  private changeType = (currentType: TypesDish) => {
     this.setState({currentType});
   };
 
-  private navigateDish: (dish: DishModel) => void = (dish) => {
+  private navigateDish = (dish: DishModel) => {
     this.props.navigation.navigate(RootScreens.Dish, {dish, onPress: this.addDishInBasket});
   };
 
-  private navigateSearch: () => void = () => {
+  private navigateSearch = () => {
     Keyboard.dismiss();
     this.props.navigation.navigate(RootScreens.Search);
   };

@@ -10,13 +10,11 @@ export interface HttpAPI {
 }
 
 export interface Params {
-  [key: string]: number | undefined | string | boolean;
+  [key: string]: number | string | boolean;
 }
 
 export class Http implements HttpAPI {
   private params: Params;
 
-  public get(path: string) {
-    return data[path];
-  }
+  public get = (path: string) => data[path];
 }
