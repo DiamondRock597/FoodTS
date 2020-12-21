@@ -9,13 +9,13 @@ const sizeCircle = width * ratioForCircle;
 const borderRadiusCircle = sizeCircle * half;
 const widthDishCard = width * ratioWidthDishesItem;
 const ratioPaddingBlock = 0.11;
+const ratioWidthTitle = 0.4;
 const ratioSizeItem = 0.3;
 
 export const styles = StyleSheet.create({
   dishesBlock: {
     paddingTop: height * ratioPaddingBlock,
     paddingHorizontal: 9,
-    elevation: 5,
   },
   dishesItem: {
     height: height * ratioSizeItem,
@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     position: 'relative',
+    elevation: 3,
   },
   dishesTitle: {
     paddingVertical: 15,
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     opacity: 0.9,
     lineHeight: 22,
-    width: width * ratioSizeItem,
+    width: width * ratioWidthTitle,
   },
   dishesCost: {
     color: '#FA4A0C',

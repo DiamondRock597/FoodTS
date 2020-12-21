@@ -4,12 +4,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions, RouteProp} from '@react-navigation/native';
 import {inject, observer} from 'mobx-react';
-import {FlatGrid} from 'react-native-super-grid';
 
 import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
-import {Dish as DishModel, TypesDish} from '@models/dish';
+import {Dish as DishModel, Type as TypeModel, TypesDish} from '@models/dish';
 import {Stores} from '@stores/stores';
 import {FoodsStore} from '@stores/foods';
 
@@ -20,9 +19,9 @@ interface Props {
   route: RouteProp<RootStackParamList, RootScreens.Home>;
   dish: FoodsStore;
 }
-
 interface State {
   currentType: TypesDish;
+  refresh: boolean;
 }
 
 const types = [
@@ -36,6 +35,7 @@ const types = [
 export class Home extends React.Component<Props, State> {
   public state: State = {
     currentType: TypesDish.Foods,
+    refresh: false,
   };
 
   public async componentDidMount() {
@@ -67,6 +67,7 @@ export class Home extends React.Component<Props, State> {
 
         <FlatList
           data={types}
+          extraData={this.state.refresh}
           keyExtractor={this.keyExtractorType}
           renderItem={this.renderType}
           contentContainerStyle={styles.foods}
@@ -76,6 +77,7 @@ export class Home extends React.Component<Props, State> {
 
         <FlatList
           data={this.props.dish.dishesList}
+          extraData={this.state.refresh}
           keyExtractor={this.keyExtractorDish}
           renderItem={this.renderDish}
           contentContainerStyle={styles.dishesContainer}
@@ -90,11 +92,11 @@ export class Home extends React.Component<Props, State> {
     this.props.navigation.dispatch(DrawerActions.toggleDrawer());
   };
 
-  private keyExtractorType = (item: {id: number; type: TypesDish}) => `Type - ${item.id}`;
+  private keyExtractorType = (item: TypeModel) => `Type - ${item.id}`;
   private keyExtractorDish = (item: DishModel) => `Dish - ${item.id}`;
 
   private changeType = (currentType: TypesDish) => {
-    this.setState({currentType});
+    this.setState({currentType, refresh: !this.state.refresh});
   };
 
   private navigateDish = (dish: DishModel) => {
@@ -111,7 +113,7 @@ export class Home extends React.Component<Props, State> {
   );
 
   private addDishInBasket = (item: DishModel) => {
-    this.props.dish.addInBasket(item);
+    this.props.dish.addInBasket(item.id);
   };
 
   private renderDish = ({item}: {item: DishModel}) =>

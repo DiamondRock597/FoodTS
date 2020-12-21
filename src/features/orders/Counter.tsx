@@ -34,6 +34,6 @@ export class Counter extends React.Component<Props> {
     );
   }
 
-  public onPlus = () => this.props.dish.addDish(this.props.id);
-  public onMinus = () => this.props.dish.deleteDish(this.props.id);
+  public onPlus = () => this.props.dish.addInBasket(this.props.id);
+  public onMinus = () => this.props.dish.deleteFromBasket(this.props.id);
 }

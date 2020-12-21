@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const CardOfDish: React.FC<Props> = ({dish, onPress}: Props) => (
-  <TouchableOpacity style={styles.dishesBlock} onPress={() => onPress(dish)}>
-    <View style={styles.dishesItem}>
+  <View style={styles.dishesBlock}>
+    <TouchableOpacity onPress={() => onPress(dish)} style={styles.dishesItem}>
       <Text numberOfLines={2} style={styles.dishesTitle}>
         {dish.name}
       </Text>
@@ -20,6 +20,6 @@ export const CardOfDish: React.FC<Props> = ({dish, onPress}: Props) => (
       <View style={styles.dishesCircle}>
         <Image source={{uri: dish.image}} style={styles.image} />
       </View>
-    </View>
-  </TouchableOpacity>
+    </TouchableOpacity>
+  </View>
 );

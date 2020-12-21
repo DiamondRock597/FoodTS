@@ -116,6 +116,6 @@ export class Orders extends React.Component<Props> {
 
   private onDelete = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
     await close();
-    this.props.dish.deleteFromBasket(item);
+    this.props.dish.deleteFromBasket(item.id);
   };
 }

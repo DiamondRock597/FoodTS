@@ -9,6 +9,11 @@ export interface Dish {
   policy?: string;
 }
 
+export interface Type {
+  id: number;
+  type: TypesDish;
+}
+
 export enum TypesDish {
   Foods = 'Foods',
   Drinks = 'Drinks',
