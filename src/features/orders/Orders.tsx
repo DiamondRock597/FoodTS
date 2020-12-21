@@ -1,19 +1,21 @@
 import React from 'react';
-import {View, Text, Image, ListRenderItemInfo, TouchableOpacity} from 'react-native';
-import {RowMap, SwipeListView} from 'react-native-swipe-list-view';
-import SwipeIcon from 'react-native-vector-icons/MaterialIcons';
-import HeartIcon from 'react-native-vector-icons/FontAwesome5';
+import {View, Text, Image, ListRenderItemInfo} from 'react-native';
+import SwipeIconHeader from 'react-native-vector-icons/MaterialIcons';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootScreens, RootStackParamList} from 'navigation/screens';
 import {RouteProp} from '@react-navigation/native';
+import SwipeableItem, {OverlayParams, UnderlayParams} from 'react-native-swipeable-item';
+import Animated from 'react-native-reanimated';
+import {FlatList} from 'react-native-gesture-handler';
 import {inject, observer} from 'mobx-react';
 
-import {Counter} from './Counter';
-import {CustomButton} from 'components/custom_button';
-import {Stores} from 'stores/stores';
-import {FoodsStore} from 'stores/foods';
-import {Dish as DishModel} from 'models/dish';
 import {EmptyOrders} from './EmptyOrders';
+import {Counter} from './Counter';
+import {SwipeIcon} from './SwipeIcon';
+import {CustomButton} from '@components/custom_button';
+import {FoodsStore} from 'stores/foods';
+import {Stores} from 'stores/stores';
+import {Dish as DishModel} from '@models/dish';
 
 import {styles} from './styles/orders';
 
@@ -23,7 +25,7 @@ interface Props {
   dish: FoodsStore;
 }
 
-const OPEN_SWIPE_VALUE = -125;
+const OPEN_SWIPE_VALUE = 125;
 
 @inject(Stores.DishStore)
 @observer
@@ -35,7 +37,7 @@ export class Orders extends React.Component<Props> {
           <Text style={styles.headerTitle}>Cart</Text>
         </View>
         <View style={styles.info}>
-          <SwipeIcon name="swipe" size={14} />
+          <SwipeIconHeader name="swipe" size={14} />
           <Text style={styles.infoSwipe}>swipe on an item to delete</Text>
         </View>
       </>
@@ -49,20 +51,16 @@ export class Orders extends React.Component<Props> {
   public render() {
     return this.props.dish.dishesListInBasket.length ? (
       <View style={styles.container}>
-        <SwipeListView
-          ListHeaderComponent={this.ListHeaderComponent}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.containerSwipe}
+        <FlatList
+          ListEmptyComponent={this.ListEmptyComponent}
           data={this.props.dish.dishesListInBasket}
-          renderHiddenItem={this.renderHiddenItem}
-          rightOpenValue={OPEN_SWIPE_VALUE}
+          ListHeaderComponent={this.ListHeaderComponent}
           renderItem={this.renderItem}
-          keyExtractor={this.keyExtractor}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.contentContainer}
         />
         <View style={styles.acceptBlock}>
-          <View style={styles.acceptButton}>
-            <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
-          </View>
+          <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
         </View>
       </View>
     ) : (
@@ -70,43 +68,58 @@ export class Orders extends React.Component<Props> {
     );
   }
 
-  private keyExtractor = (item: DishModel) => `${item.id}`;
+  private keyExtractor = (item: DishModel) => `Dish-${item.id}`;
 
-  private renderHiddenItem = (rowData: ListRenderItemInfo<DishModel>, rowMap: RowMap<DishModel>) => (
-    <View style={[styles.swipeButtonsBlock]}>
-      <TouchableOpacity onPress={() => this.closeRow(rowMap, rowData.item.id)} style={styles.swipeButton}>
-        <HeartIcon name="heart" size={16} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => this.onDelete(rowMap, rowData.item)} style={styles.swipeButton}>
-        <HeartIcon name="trash" size={16} color="white" />
-      </TouchableOpacity>
+  private renderHiddenItem = (swipeItem: UnderlayParams<DishModel>) => (
+    <Animated.View style={[styles.row, {opacity: swipeItem.percentOpen}]}>
+      <View style={styles.swipeButtonsBlock}>
+        <SwipeIcon
+          id={swipeItem.item.id}
+          name="heart"
+          onPress={() => this.onDelete(swipeItem)}
+          close={swipeItem.close}
+          percentOpen={swipeItem.percentOpen}
+        />
+        <SwipeIcon
+          id={swipeItem.item.id}
+          name="trash"
+          onPress={() => this.onDelete(swipeItem)}
+          close={swipeItem.close}
+          percentOpen={swipeItem.percentOpen}
+        />
+      </View>
+    </Animated.View>
+  );
+
+  private renderItem = ({item}: ListRenderItemInfo<DishModel>) => (
+    <View style={styles.flatRow}>
+      <SwipeableItem
+        snapPointsLeft={[OPEN_SWIPE_VALUE]}
+        renderUnderlayLeft={this.renderHiddenItem}
+        renderOverlay={this.renderOverlayItem}
+        key={this.keyExtractor(item)}
+        item={item}
+      />
     </View>
   );
 
-  private renderItem = (rowData: ListRenderItemInfo<DishModel>) => (
-    <View style={styles.swipeBlock} key={rowData.item.id}>
+  private renderOverlayItem = ({item}: OverlayParams<DishModel>) => (
+    <View style={styles.swipeBlock} key={item.id}>
       <View style={styles.imageBlock}>
-        <Image source={{uri: rowData.item.image}} style={styles.image} />
+        <Image source={{uri: item.image}} style={styles.image} />
       </View>
       <View style={styles.cartInfo}>
-        <Text style={styles.cartName}>{rowData.item.name}</Text>
+        <Text style={styles.cartName}>{item.name}</Text>
         <View style={styles.counterBlock}>
-          <Text style={styles.cartCost}>{rowData.item.cost}</Text>
+          <Text style={styles.cartCost}>{item.cost}</Text>
           <Counter />
         </View>
       </View>
     </View>
   );
 
-  private onDelete = (rowMap: RowMap<DishModel>, item: DishModel) => {
-    this.closeRow(rowMap, item.id);
-
+  private onDelete = ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
+    close();
     this.props.dish.deleteFromBasket(item);
-  };
-
-  private closeRow = (rowMap: RowMap<DishModel>, rowKey: number) => {
-    if (rowMap[rowKey]) {
-      rowMap[rowKey].closeRow();
-    }
   };
 }

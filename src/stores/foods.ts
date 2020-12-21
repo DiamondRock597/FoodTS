@@ -53,6 +53,4 @@ export class Foods implements FoodsStore {
   @action.bound public deleteFromBasket = (item: DishModel) => {
     this.dishesInBasket = this.dishesInBasket.filter((dish) => item.id !== dish.id);
   };
-
-  @action.bound public increase = (id: number) => {};
 }
