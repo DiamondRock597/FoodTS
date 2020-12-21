@@ -11,7 +11,11 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F5F8',
-    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  contentContainer: {
+    width,
+    paddingBottom: 80,
   },
   header: {
     justifyContent: 'center',
@@ -43,7 +47,7 @@ export const styles = StyleSheet.create({
     height: height * RATIO_HEIGHT_FOR_SWIPE_ITEM,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginVertical: 10,
@@ -55,6 +59,10 @@ export const styles = StyleSheet.create({
   image: {
     width: 75,
     height: 75,
+  },
+  flatRow: {
+    alignItems: 'center',
+    flex: 1,
   },
   cartInfo: {
     paddingHorizontal: 5,
@@ -87,25 +95,29 @@ export const styles = StyleSheet.create({
   },
   swipeButton: {
     backgroundColor: '#DF2C2C',
-    width: 45,
-    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 22,
+    borderRadius: 20,
     marginHorizontal: 8,
   },
   swipeButtonsBlock: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingTop: 30,
+    width: WIDTH_FOR_BLOCK,
   },
   acceptButton: {
     paddingVertical: 15,
     width: WIDTH_FOR_BLOCK,
   },
   acceptBlock: {
+    position: 'absolute',
+    width: WIDTH_FOR_BLOCK,
+    bottom: 10,
+  },
+  row: {
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 1,
   },
 });
