@@ -50,7 +50,7 @@ export const Auth = ({navigation}: Props) => {
           style={{width, height}}
           keyboardShouldPersistTaps="handled"
           {...scrollHandler}>
-          <ScrollView style={styles.form} contentContainerStyle={{alignItems: 'center'}}>
+          <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
             <View style={styles.inputBlock}>
               <Text style={styles.title}>Email address</Text>
               <TextInput style={styles.input} autoCompleteType="email" />
@@ -64,7 +64,7 @@ export const Auth = ({navigation}: Props) => {
               <CustomButton onPress={() => navigation.replace(RootScreens.Home)} title="Login" color="white" backgroundColor="#FF460A" />
             </View>
           </ScrollView>
-          <ScrollView style={styles.form} contentContainerStyle={{alignItems: 'center'}}>
+          <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
             <View style={styles.inputBlock}>
               <Text style={styles.title}>Email address</Text>
               <TextInput style={styles.input} />

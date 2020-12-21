@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
   searchInput: {
     backgroundColor: '#EFEEEE',
     borderRadius: 30,
+    elevation: 1,
     paddingVertical: 15,
     width: width - marginForInput,
     paddingHorizontal: 35,
@@ -35,6 +36,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'FontsFree-Net-SpaceGrotesk-SemiBold',
     fontSize: 17,
     lineHeight: 20,
+    zIndex: 1,
   },
   inputBlock: {
     position: 'relative',
@@ -43,7 +45,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   search: {
-    zIndex: 1,
+    zIndex: 100,
+    paddingRight: 5,
   },
   foods: {
     paddingLeft: width * paddingFoodsContainer,
@@ -55,5 +58,6 @@ export const styles = StyleSheet.create({
 
   dishesContainer: {
     paddingLeft: width * paddingFoodsContainer,
+    paddingBottom: 20,
   },
 });

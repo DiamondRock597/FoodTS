@@ -1,12 +1,16 @@
 import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 
+const {width, height}: ScaledSize = Dimensions.get('window');
+
 const LOGO_IMAGE_WIDTH = 414;
 const LOGO_IMAGE_HEIGHT = 534;
 
-const {width, height}: ScaledSize = Dimensions.get('window');
-
 const ratio = width / LOGO_IMAGE_WIDTH;
 const heightImage = LOGO_IMAGE_HEIGHT * ratio;
+
+const ratioBottomPositionButton = 0.02;
+const ratioLeftPositionButton = 0.1;
+const ratioWidthButton = 0.8;
 
 export const styles = StyleSheet.create({
   bckg: {
@@ -23,6 +27,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: 'white',
     justifyContent: 'center',
+    elevation: 1,
     alignItems: 'center',
   },
   header: {
@@ -41,9 +46,9 @@ export const styles = StyleSheet.create({
   },
   buttonBlock: {
     position: 'absolute',
-    left: width * 0.1,
-    width: width * 0.8,
-    bottom: height * 0.02,
+    left: width * ratioLeftPositionButton,
+    width: width * ratioWidthButton,
+    bottom: height * ratioBottomPositionButton,
   },
   image: {
     height: heightImage,

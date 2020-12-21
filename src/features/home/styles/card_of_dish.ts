@@ -8,15 +8,18 @@ const ratioWidthDishesItem = 0.53;
 const sizeCircle = width * ratioForCircle;
 const borderRadiusCircle = sizeCircle * half;
 const widthDishCard = width * ratioWidthDishesItem;
+const ratioPaddingBlock = 0.11;
+const ratioSizeItem = 0.3;
 
 export const styles = StyleSheet.create({
   dishesBlock: {
-    paddingTop: height * 0.11,
+    paddingTop: height * ratioPaddingBlock,
     paddingHorizontal: 9,
   },
   dishesItem: {
-    height: height * 0.3,
+    height: height * ratioSizeItem,
     width: widthDishCard,
+    elevation: 2,
     backgroundColor: 'white',
     borderRadius: 30,
     justifyContent: 'flex-end',
@@ -30,7 +33,7 @@ export const styles = StyleSheet.create({
     fontSize: 22,
     opacity: 0.9,
     lineHeight: 22,
-    width: width * 0.3,
+    width: width * ratioSizeItem,
   },
   dishesCost: {
     color: '#FA4A0C',
