@@ -15,11 +15,11 @@ export const styles = StyleSheet.create({
   dishesBlock: {
     paddingTop: height * ratioPaddingBlock,
     paddingHorizontal: 9,
+    elevation: 5,
   },
   dishesItem: {
     height: height * ratioSizeItem,
     width: widthDishCard,
-    elevation: 2,
     backgroundColor: 'white',
     borderRadius: 30,
     justifyContent: 'flex-end',

@@ -13,8 +13,8 @@ import {EmptyOrders} from './EmptyOrders';
 import {Counter} from './Counter';
 import {SwipeIcon} from './SwipeIcon';
 import {CustomButton} from '@components/custom_button';
-import {FoodsStore} from 'stores/foods';
-import {Stores} from 'stores/stores';
+import {FoodsStore} from '@stores/foods';
+import {Stores} from '@stores/stores';
 import {Dish as DishModel} from '@models/dish';
 
 import {styles} from './styles/orders';
@@ -44,31 +44,27 @@ export class Orders extends React.Component<Props> {
     );
   }
 
-  private get ListEmptyComponent() {
-    return <EmptyOrders />;
-  }
-
   public render() {
     return this.props.dish.dishesListInBasket.length ? (
       <View style={styles.container}>
         <FlatList
-          ListEmptyComponent={this.ListEmptyComponent}
           data={this.props.dish.dishesListInBasket}
           ListHeaderComponent={this.ListHeaderComponent}
           renderItem={this.renderItem}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.contentContainer}
+          keyExtractor={this.keyExtractor}
         />
         <View style={styles.acceptBlock}>
           <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
         </View>
       </View>
     ) : (
-      <EmptyOrders />
+      <EmptyOrders navigation={this.props.navigation} />
     );
   }
 
-  private keyExtractor = (item: DishModel) => `Dish-${item.id}`;
+  private keyExtractor = (item: DishModel) => `SwipeDish - ${item.id}`;
 
   private renderHiddenItem = (swipeItem: UnderlayParams<DishModel>) => (
     <Animated.View style={[styles.row, {opacity: swipeItem.percentOpen}]}>

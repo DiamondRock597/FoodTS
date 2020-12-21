@@ -4,11 +4,13 @@ import {View, Text, ScrollView, Image} from 'react-native';
 import {Menu} from './Menu';
 import {User as UserModel} from '@models/user';
 import Profile from '@assets/image/profile.png';
+import {RootScreens, RootStackParamList} from '@navigation/screens';
 
 import {styles} from './styles/info';
 
 interface Props {
   onPress: () => void;
+  navigate: (screen: RootScreens) => void;
 }
 
 const user: UserModel = {
@@ -19,7 +21,7 @@ const user: UserModel = {
   image: Profile,
 };
 
-export const Info: React.FC<Props> = ({onPress}: Props) => (
+export const Info: React.FC<Props> = ({onPress, navigate}: Props) => (
   <ScrollView style={styles.container}>
     <View>
       <Text style={styles.headerTitle}>My profile</Text>
@@ -37,7 +39,7 @@ export const Info: React.FC<Props> = ({onPress}: Props) => (
           <Text style={[styles.textData, styles.lastText]}>{user.info}</Text>
         </View>
       </View>
-      <Menu onPress={onPress} />
+      <Menu onPress={onPress} handleNavigate={navigate} />
     </View>
   </ScrollView>
 );

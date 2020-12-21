@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
+
 import {Dish} from '../../models/dish';
 
 import {styles} from './styles/card_of_dish';
