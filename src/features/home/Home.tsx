@@ -1,17 +1,17 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard, ListRenderItem} from 'react-native';
+import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions, RouteProp} from '@react-navigation/native';
-import {FlatList} from 'react-native-gesture-handler';
 import {inject, observer} from 'mobx-react';
+import {FlatGrid} from 'react-native-super-grid';
 
 import {CardOfDish} from './CardOfDish';
 import {TypeFood} from './TypeFood';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Dish as DishModel, TypesDish} from '@models/dish';
-import {Stores} from 'stores/stores';
-import {FoodsStore} from 'stores/foods';
+import {Stores} from '@stores/stores';
+import {FoodsStore} from '@stores/foods';
 
 import {styles} from './styles/home';
 
@@ -38,8 +38,8 @@ export class Home extends React.Component<Props, State> {
     currentType: TypesDish.Foods,
   };
 
-  public componentDidMount() {
-    this.props.dish.fetchDishes();
+  public async componentDidMount() {
+    await this.props.dish.fetchDishes();
   }
 
   public render() {

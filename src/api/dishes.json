@@ -5,9 +5,9 @@
     "name": "Veggie tomato mix",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
-    "image": "https://picresize.com/images/tfood.png",
+    "image": "https://picresize.com/images/t1food.png",
     "cost": 500,
-    "capacity": 0
+    "capacity": 1
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/tfood2.png",
     "cost": 200,
-    "capacity": 0
+    "capacity": 2
   },
   {
     "id": 3,
@@ -25,7 +25,7 @@
     "name": "Fried chicken m.",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
-    "image": "https://picresize.com/images/tfood3.png",
+    "image": "https://picresize.com/images/t1food3.png",
     "cost": 300,
     "capacity": 0
   },
@@ -35,7 +35,7 @@
     "name": "Veggie tomato mix",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
-    "image": "https://picresize.com/images/tfood.png",
+    "image": "https://picresize.com/images/t1food.png",
     "cost": 500,
     "capacity": 0
   },
@@ -56,7 +56,7 @@
     "name": "Fried chicken m.",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
-    "image": "https://picresize.com/images/tfood3.png",
+    "image": "https://picresize.com/images/t1food3.png",
     "cost": 300
   },
   {
@@ -66,7 +66,7 @@
     "name": "Veggie tomato mix",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
-    "image": "https://picresize.com/images/tfood.png",
+    "image": "https://picresize.com/images/t1food.png",
     "cost": 500
   },
   {
@@ -85,7 +85,7 @@
     "name": "Fried chicken m.",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
-    "image": "https://picresize.com/images/tfood3.png",
+    "image": "https://picresize.com/images/t1food3.png",
     "cost": 300,
     "capacity": 0
   }

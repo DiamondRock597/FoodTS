@@ -112,14 +112,14 @@ export class Orders extends React.Component<Props> {
         <Text style={styles.cartName}>{item.name}</Text>
         <View style={styles.counterBlock}>
           <Text style={styles.cartCost}>{item.cost}</Text>
-          <Counter />
+          <Counter id={item.id} />
         </View>
       </View>
     </View>
   );
 
-  private onDelete = ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
-    close();
+  private onDelete = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
+    await close();
     this.props.dish.deleteFromBasket(item);
   };
 }

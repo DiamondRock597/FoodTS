@@ -10,11 +10,13 @@ export interface FoodsStore {
   fetchDishes: () => void;
   addInBasket: (item: DishModel) => void;
   deleteFromBasket: (item: DishModel) => void;
+  addDish: (id: number) => void;
+  deleteDish: (id: number) => void;
 }
 
 export class Foods implements FoodsStore {
   @observable public dishes: Array<DishModel> = [];
-  @observable public dishesInBasket: Array<DishModel> = [];
+
   @observable public error: boolean = false;
   @observable public isLoading: boolean = false;
 
@@ -30,7 +32,8 @@ export class Foods implements FoodsStore {
   }
 
   @computed public get dishesListInBasket() {
-    return toJS(this.dishesInBasket);
+    const newArr = this.dishes.filter((item) => item.capacity > 0);
+    return toJS(newArr);
   }
 
   @action.bound public fetchDishes = () => {
@@ -46,11 +49,45 @@ export class Foods implements FoodsStore {
   };
 
   @action.bound public addInBasket = (item: DishModel) => {
-    item.capacity++;
-    this.dishesInBasket = [...this.dishesInBasket, item];
+    const newArr = this.dishes.map((dish) => {
+      if (item.id === dish.id) {
+        dish.capacity++;
+        return dish;
+      }
+      return dish;
+    });
+
+    this.dishes = newArr;
   };
 
   @action.bound public deleteFromBasket = (item: DishModel) => {
-    this.dishesInBasket = this.dishesInBasket.filter((dish) => item.id !== dish.id);
+    const newArr = this.dishes.map((dish) => {
+      if (item.id === dish.id) {
+        dish.capacity--;
+      }
+
+      return dish;
+    });
+    this.dishes = newArr;
+  };
+
+  @action.bound public addDish = (id: number) => {
+    const newArr = this.dishes.map((dish) => {
+      if (id === dish.id) {
+        dish.capacity++;
+      }
+      return dish;
+    });
+    this.dishes = newArr;
+  };
+
+  @action.bound public deleteDish = (id: number) => {
+    const newArr = this.dishes.map((dish) => {
+      if (id === dish.id) {
+        dish.capacity--;
+      }
+      return dish;
+    });
+    this.dishes = newArr;
   };
 }
