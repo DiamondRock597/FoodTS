@@ -1,9 +1,9 @@
-import {ImageProps} from 'react-native';
-
 export interface User {
+  id: number;
   name: string;
   email: string;
   phoneNumber: string;
-  image: ImageProps;
+  image: string;
   info: string;
+  password: number;
 }

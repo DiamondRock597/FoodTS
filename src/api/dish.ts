@@ -5,7 +5,7 @@ export interface FoodsAPI {
   getDishes: () => Array<Dish>;
 }
 
-export class DishAPI implements FoodsAPI {
+export class FoodsHTTP implements FoodsAPI {
   private http: HttpAPI;
 
   public constructor(http: HttpAPI) {

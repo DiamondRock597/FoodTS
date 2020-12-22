@@ -12,7 +12,7 @@ import {Profile} from '@features/profile/Profile';
 const Stack = createStackNavigator<RootStackParamList>();
 
 export const MainNavigation = () => (
-  <Stack.Navigator screenOptions={{headerShown: false}}>
+  <Stack.Navigator initialRouteName={RootScreens.OnBoarding} screenOptions={{headerShown: false}}>
     <Stack.Screen name={RootScreens.OnBoarding} component={OnBoarding} />
     <Stack.Screen name={RootScreens.Register} component={Auth} />
     <Stack.Screen name={RootScreens.Home} component={TabNavigation} />

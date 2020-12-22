@@ -4,7 +4,7 @@ import {View, Text, ScrollView, Image} from 'react-native';
 import {Menu} from './Menu';
 import {User as UserModel} from '@models/user';
 import Profile from '@assets/image/profile.png';
-import {RootScreens, RootStackParamList} from '@navigation/screens';
+import {RootScreens} from '@navigation/screens';
 
 import {styles} from './styles/info';
 
@@ -19,6 +19,7 @@ const user: UserModel = {
   phoneNumber: '+234 9011039271',
   info: 'No 15 uti street off ovie palace road effurun delta state',
   image: Profile,
+  password: 123456,
 };
 
 export const Info: React.FC<Props> = ({onPress, navigate}: Props) => (

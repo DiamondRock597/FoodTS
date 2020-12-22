@@ -1,0 +1,20 @@
+[
+  {
+    "id": 100,
+    "name": "Marvis Ighedosa",
+    "email": "Dosamarvis@gmail.com",
+    "phoneNumber": "+234 9011039271",
+    "info": "No 15 uti street off ovie palace road effurun delta state",
+    "image": "https://picresize.com/images/tprofile.png",
+    "password": 123456
+  },
+  {
+    "id": 101,
+    "name": "Danil Ivanov",
+    "email": "Dosamarvis@gmail.com",
+    "phoneNumber": "+234 9011039271",
+    "info": "No 15 uti street off ovie palace road effurun delta state",
+    "image": "https://picresize.com/images/tprofile.png",
+    "password": 654321
+  }
+]
