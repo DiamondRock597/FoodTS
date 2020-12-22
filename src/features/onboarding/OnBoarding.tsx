@@ -22,7 +22,6 @@ interface Props {
 export class OnBoarding extends React.Component<Props> {
   public async componentDidMount() {
     this.props.account.login();
-    console.log({data: this.props.account});
   }
   public render() {
     return (

@@ -40,7 +40,7 @@ class RootStore implements MainStore {
   };
 
   private loadStore = async (storeName: PersistStores) => {
-    const hydrate = create({storage: AsyncStorage, jsonify: true});
+    const hydrate = create({storage: AsyncStorage});
     await hydrate(storeName, this[storeName]);
   };
 }

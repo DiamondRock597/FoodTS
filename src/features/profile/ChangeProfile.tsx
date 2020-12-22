@@ -1,9 +1,13 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TextInput} from 'react-native';
 
+import {inject, observer} from 'mobx-react';
+
 import {Methods} from '@models/method';
 import {Method} from './Method';
 import {CustomButton} from '@components/custom_button';
+import {Stores} from '@stores/stores';
+import {AccountStore} from '@stores/account';
 import BankIcon from '@assets/image/bank.png';
 import CardIcon from '@assets/image/credit_card.png';
 import PaypalIcon from '@assets/image/paypal.png';
@@ -18,15 +22,20 @@ const methods = [
 
 interface Props {
   onPress: () => void;
+  account: AccountStore;
 }
 
 interface State {
   currentMethod: Methods;
+  valueName: string;
 }
 
-export class ChangeProfile extends React.Component<Props> {
+@inject(Stores.AccountStore)
+@observer
+export class ChangeProfile extends React.Component<Props, State> {
   public state: State = {
     currentMethod: Methods.Card,
+    valueName: this.props.account.userName,
   };
 
   public render() {
@@ -43,7 +52,7 @@ export class ChangeProfile extends React.Component<Props> {
             <Image source={require('../../assets/image/profile.png')} style={styles.image} />
             <View style={styles.personalData}>
               <Text style={styles.name}>Marvis Ighedosa</Text>
-              <TextInput style={styles.textData} value="Dosamarvis@gmail.com" />
+              <TextInput style={styles.textData} onChangeText={this.handleChangeName} value={this.state.valueName} />
               <TextInput style={styles.textData} multiline value="No 15 uti street off ovie palace road effurun delta state" />
             </View>
           </View>
@@ -62,7 +71,7 @@ export class ChangeProfile extends React.Component<Props> {
               ))}
             </View>
           </View>
-          <CustomButton title="Upgrade" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={this.props.onPress} />
+          <CustomButton title="Upgrade" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={this.handlePress} />
         </View>
       </ScrollView>
     );
@@ -70,5 +79,14 @@ export class ChangeProfile extends React.Component<Props> {
 
   private changeActivePaymentMethods = (currentMethod: Methods) => {
     this.setState({currentMethod});
+  };
+
+  private handlePress = () => {
+    this.props.onPress();
+    this.props.account.changeName(this.state.valueName);
+  };
+
+  private handleChangeName = (name: string) => {
+    this.setState({valueName: name});
   };
 }
