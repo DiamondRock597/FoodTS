@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Image, Dimensions, ScaledSize, Text, ScrollView}
 import Animated, {divide} from 'react-native-reanimated';
 import BackIcon from 'react-native-vector-icons/MaterialIcons';
 import {RouteProp} from '@react-navigation/native';
-import FavouriteIcon from 'react-native-vector-icons/FontAwesome5';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useScrollHandler} from 'react-native-redash';
 import {StackNavigationProp} from '@react-navigation/stack';
 
@@ -31,7 +31,7 @@ export const Dish = ({route, navigation}: Props) => {
           <BackIcon name="arrow-back-ios" size={24} color="#000000" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.backButton}>
-          <FavouriteIcon name="heart" size={20} color="#000000" />
+          <MaterialCommunityIcons name={route.params.dish.favourite ? 'heart' : 'heart-outline'} size={20} color="red" />
         </TouchableOpacity>
       </View>
       <View>

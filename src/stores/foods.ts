@@ -8,10 +8,12 @@ const ZERO = 0;
 export interface FoodsStore {
   dishesList: Array<DishModel>;
   dishesListInBasket: Array<DishModel>;
+  favouritesDishes: Array<DishModel>;
 
   fetchDishes: () => void;
   addInBasket: (id: number) => void;
   deleteFromBasket: (id: number) => void;
+  addFavourite: (id: number) => void;
 }
 
 export class Foods implements FoodsStore {
@@ -30,6 +32,9 @@ export class Foods implements FoodsStore {
     return toJS(this.dishes);
   }
 
+  @computed public get favouritesDishes() {
+    return this.dishes.filter((item) => item.favourite);
+  }
   @computed public get dishesListInBasket() {
     const newArr = this.dishes.filter((item) => item.capacity > ZERO);
     return toJS(newArr);
@@ -68,5 +73,14 @@ export class Foods implements FoodsStore {
       return dish;
     });
     this.dishes = newArr;
+  };
+
+  @action.bound public addFavourite = (id: number) => {
+    this.dishes = this.dishes.map((item) => {
+      if (item.id === id) {
+        item.favourite = !item.favourite;
+      }
+      return item;
+    });
   };
 }

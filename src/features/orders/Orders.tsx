@@ -75,7 +75,7 @@ export class Orders extends React.Component<Props> {
         <SwipeIcon
           id={swipeItem.item.id}
           name="heart"
-          onPress={() => this.onDelete(swipeItem)}
+          onPress={() => this.onAdd(swipeItem)}
           close={swipeItem.close}
           percentOpen={swipeItem.percentOpen}
         />
@@ -120,5 +120,10 @@ export class Orders extends React.Component<Props> {
   private onDelete = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
     await close();
     this.props.dish.deleteFromBasket(item.id);
+  };
+
+  private onAdd = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
+    await close();
+    this.props.dish.addFavourite(item.id);
   };
 }

@@ -1,3 +1,5 @@
+import {Methods} from './method';
+
 export interface User {
   id: number;
   name: string;
@@ -6,4 +8,5 @@ export interface User {
   image: string;
   info: string;
   password: number;
+  paymontMethods?: Methods;
 }
