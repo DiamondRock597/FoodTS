@@ -2,8 +2,8 @@ import {HttpAPI} from './http_api';
 import {User} from '@models/user';
 
 export interface UserAPI {
-  getUsers: () => Array<User>;
-  login: (email: string, password: number) => User;
+  getUsers: () => void;
+  login: (email: string, password: number) => User | undefined;
 }
 
 export class UserHTTP implements UserAPI {
@@ -14,7 +14,7 @@ export class UserHTTP implements UserAPI {
   }
 
   public getUsers = () => {
-    this.users = this.http.get('users');
+    this.users = this.http.get<Array<User>>('users');
   };
 
   public login = (email: string, password: number) => this.users.find((elem) => elem.email === email && elem.password === password);

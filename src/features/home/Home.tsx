@@ -49,7 +49,7 @@ export class Home extends React.Component<Props, State> {
           <TouchableOpacity onPress={this.hangleOpenDrawer}>
             <Image source={require('../../assets/image/Vector.png')} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.navigateOrders}>
             <Image source={require('../../assets/image/orders.png')} />
           </TouchableOpacity>
         </View>
@@ -114,6 +114,10 @@ export class Home extends React.Component<Props, State> {
 
   private addDishInBasket = (item: DishModel) => {
     this.props.dish.addInBasket(item.id);
+  };
+
+  private navigateOrders = () => {
+    this.props.navigation.navigate(RootScreens.Orders);
   };
 
   private renderDish = ({item}: {item: DishModel}) =>

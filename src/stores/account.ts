@@ -14,7 +14,6 @@ export interface AccountStore {
 
   login: () => void;
   changeName: (name: string) => void;
-  onLoad: () => void;
 }
 
 export class Account implements AccountStore {

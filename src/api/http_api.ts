@@ -8,14 +8,12 @@ const data: {[key: string]: Array<Dish> | Array<User>} = {
   users: UsersJSON,
 };
 
-type data = Array<Dish> | Array<User>;
-
 export interface Params {
   [key: string]: number | string | boolean;
 }
 
 export interface HttpAPI {
-  get: (path: string) => data;
+  get: <T = Array<Dish> | Array<User>>(path: string) => T;
 }
 
 export interface RequestConfig {

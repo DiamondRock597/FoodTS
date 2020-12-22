@@ -8,13 +8,14 @@ export enum RootScreens {
   Search = 'Search',
   Profile = 'Profile',
   Orders = 'Orders',
+  Favourites = 'Favourites',
 }
 
 export enum TabScreens {
   Home = 'Home',
   Profile = 'Profile',
   History = 'History',
-  Orders = 'Orders',
+  Favourites = 'Favourites',
 }
 
 export type RootStackParamList = {

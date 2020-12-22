@@ -12,5 +12,5 @@ export class FoodsHTTP implements FoodsAPI {
     this.http = http;
   }
 
-  public getDishes = () => this.http.get('foods');
+  public getDishes = () => this.http.get<Array<Dish>>('foods');
 }

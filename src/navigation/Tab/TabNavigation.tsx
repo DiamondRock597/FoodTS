@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {TabScreens} from '../screens';
 import {DrawerNavigation} from '../Drawer/DrawerNavigation';
-import {Orders} from '@features/orders/Orders';
+import {Favourites} from '@features/favourites/Favourites';
 import {TabBarIcon} from '@components/tab_bar_icon';
 import {Profile} from '@features/profile/Profile';
 import {History} from '@features/history/History';
@@ -25,10 +25,10 @@ export const TabNavigation = () => (
       }}
     />
     <Tab.Screen
-      name={TabScreens.Orders}
-      component={Orders}
+      name={TabScreens.Favourites}
+      component={Favourites}
       options={{
-        tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Orders} tintColor={color} />,
+        tabBarIcon: ({color}: {color: string}) => <TabBarIcon tab={TabScreens.Favourites} tintColor={color} />,
       }}
     />
     <Tab.Screen

@@ -6,7 +6,7 @@ import {RootScreens, RootStackParamList} from 'navigation/screens';
 import {RouteProp} from '@react-navigation/native';
 import SwipeableItem, {OverlayParams, UnderlayParams} from 'react-native-swipeable-item';
 import Animated from 'react-native-reanimated';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {inject, observer} from 'mobx-react';
 
 import {EmptyOrders} from './EmptyOrders';
@@ -34,6 +34,9 @@ export class Orders extends React.Component<Props> {
     return (
       <>
         <View style={styles.header}>
+          <TouchableOpacity onPress={this.props.navigation.goBack}>
+            <SwipeIconHeader name="arrow-back-ios" size={22} color="#000000" />
+          </TouchableOpacity>
           <Text style={styles.headerTitle}>Cart</Text>
         </View>
         <View style={styles.info}>
