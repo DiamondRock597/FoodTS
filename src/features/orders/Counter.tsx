@@ -10,14 +10,14 @@ import {styles} from './styles/counter';
 
 interface Props {
   id: number;
-  dish: FoodsStore;
+  dish?: FoodsStore;
 }
 
 @inject(Stores.DishStore)
 @observer
 export class Counter extends React.Component<Props> {
   private get capacity() {
-    return this.props.dish.dishesList.find((elem) => elem.id === this.props.id)?.capacity;
+    return this.props.dish!.dishesList.find((elem) => elem.id === this.props.id)?.capacity;
   }
 
   public render() {

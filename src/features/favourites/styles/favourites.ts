@@ -12,6 +12,7 @@ const widthCircle = width * ratioForCircle;
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F9F9F9',
   },
   header: {
     paddingVertical: 20,
@@ -25,8 +26,7 @@ export const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 10,
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+
     paddingHorizontal: 25,
     paddingBottom: 150,
     backgroundColor: '#F9F9F9',

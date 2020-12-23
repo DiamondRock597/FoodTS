@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, ListRenderItemInfo} from 'react-native';
+import {View, Text, Image, ListRenderItemInfo, NativeModules} from 'react-native';
 import SwipeIconHeader from 'react-native-vector-icons/MaterialIcons';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootScreens, RootStackParamList} from 'navigation/screens';
@@ -18,6 +18,8 @@ import {Stores} from '@stores/stores';
 import {Dish as DishModel} from '@models/dish';
 
 import {styles} from './styles/orders';
+
+const {MyToast} = NativeModules;
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Orders>;
@@ -59,7 +61,7 @@ export class Orders extends React.Component<Props> {
           keyExtractor={this.keyExtractor}
         />
         <View style={styles.acceptBlock}>
-          <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
+          <CustomButton title="Complete order" onPress={this.onCompleteOrder} color="#F6F6F9" backgroundColor="#FA4A0C" />
         </View>
       </View>
     ) : (
@@ -68,6 +70,10 @@ export class Orders extends React.Component<Props> {
   }
 
   private keyExtractor = (item: DishModel) => `SwipeDish - ${item.id}`;
+
+  private onCompleteOrder = () => {
+    MyToast.onCompletedOrders();
+  };
 
   private renderHiddenItem = (swipeItem: UnderlayParams<DishModel>) => (
     <Animated.View style={[styles.row, {opacity: swipeItem.percentOpen}]}>

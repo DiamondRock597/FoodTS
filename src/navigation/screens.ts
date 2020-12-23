@@ -22,7 +22,7 @@ export type RootStackParamList = {
   [RootScreens.OnBoarding]: undefined;
   [RootScreens.Register]: undefined;
   [RootScreens.Home]: undefined;
-  [RootScreens.Dish]: {dish: DishModel; onPress: (item: DishModel) => void};
+  [RootScreens.Dish]: {dish: DishModel};
   [RootScreens.Search]: undefined;
   [RootScreens.Profile]: undefined;
   [RootScreens.Orders]: undefined;

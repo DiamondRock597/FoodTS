@@ -100,7 +100,7 @@ export class Home extends React.Component<Props, State> {
   };
 
   private navigateDish = (dish: DishModel) => {
-    this.props.navigation.navigate(RootScreens.Dish, {dish, onPress: this.addDishInBasket});
+    this.props.navigation.navigate(RootScreens.Dish, {dish});
   };
 
   private navigateSearch = () => {
@@ -111,10 +111,6 @@ export class Home extends React.Component<Props, State> {
   private renderType = ({item}) => (
     <TypeFood name={item.type} key={item.id} onPress={this.changeType} active={item.type === this.state.currentType} />
   );
-
-  private addDishInBasket = (item: DishModel) => {
-    this.props.dish.addInBasket(item.id);
-  };
 
   private navigateOrders = () => {
     this.props.navigation.navigate(RootScreens.Orders);
