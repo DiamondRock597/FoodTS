@@ -6,7 +6,7 @@
     "phoneNumber": "+234 9011039271",
     "info": "No 15 uti street off ovie palace road effurun delta state",
     "image": "https://picresize.com/images/tprofile.png",
-    "password": 123456
+    "password": "123456"
   },
   {
     "id": 101,
@@ -15,6 +15,6 @@
     "phoneNumber": "+234 9011039271",
     "info": "No 15 uti street off ovie palace road effurun delta state",
     "image": "https://picresize.com/images/tprofile.png",
-    "password": 654321
+    "password": "654321"
   }
 ]

@@ -3,7 +3,7 @@ import {User} from '@models/user';
 
 export interface UserAPI {
   getUsers: () => void;
-  login: (email: string, password: number) => User | undefined;
+  login: (email: string, password: string) => User | undefined;
 }
 
 export class UserHTTP implements UserAPI {
@@ -17,5 +17,11 @@ export class UserHTTP implements UserAPI {
     this.users = this.http.get<Array<User>>('users');
   };
 
-  public login = (email: string, password: number) => this.users.find((elem) => elem.email === email && elem.password === password);
+  public login = (email: string, password: string) => {
+    console.log({email, password});
+
+    console.log({data: this.users.find((elem) => elem.email === email && elem.password === password)});
+
+    return this.users.find((elem) => elem.email === email && elem.password === password);
+  };
 }

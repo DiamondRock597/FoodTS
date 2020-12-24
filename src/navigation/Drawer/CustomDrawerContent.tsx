@@ -18,7 +18,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerCon
         <IconFont name="user" color="#FFFFFF" size={24} />
         <Text style={styles.menuTitle}>Profile</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Home)} style={styles.menu}>
+      <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Orders)} style={styles.menu}>
         <IconMaterial name="shopping-cart" color="#FFFFFF" size={24} />
         <Text style={styles.menuTitle}>orders</Text>
       </TouchableOpacity>

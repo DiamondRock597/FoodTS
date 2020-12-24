@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, ScrollView, Image, TextInput} from 'react-native';
-
 import {inject, observer} from 'mobx-react';
 
 import {Methods} from '@models/method';
@@ -22,12 +21,13 @@ const methods = [
 
 interface Props {
   onPress: () => void;
-  account: AccountStore;
+  account?: AccountStore;
 }
 
 interface State {
   currentMethod: Methods;
   valueName: string;
+  valueInfo: string;
 }
 
 @inject(Stores.AccountStore)
@@ -35,7 +35,8 @@ interface State {
 export class ChangeProfile extends React.Component<Props, State> {
   public state: State = {
     currentMethod: Methods.Card,
-    valueName: this.props.account.userName,
+    valueName: this.props.account!.userName,
+    valueInfo: this.props.account!.information,
   };
 
   public render() {
@@ -53,7 +54,7 @@ export class ChangeProfile extends React.Component<Props, State> {
             <View style={styles.personalData}>
               <Text style={styles.name}>Marvis Ighedosa</Text>
               <TextInput style={styles.textData} onChangeText={this.handleChangeName} value={this.state.valueName} />
-              <TextInput style={styles.textData} multiline value="No 15 uti street off ovie palace road effurun delta state" />
+              <TextInput style={styles.textData} onChangeText={this.handleChangeInfo} multiline value={this.state.valueInfo} />
             </View>
           </View>
           <View style={styles.paymentMethods}>
@@ -83,10 +84,15 @@ export class ChangeProfile extends React.Component<Props, State> {
 
   private handlePress = () => {
     this.props.onPress();
-    this.props.account.changeName(this.state.valueName);
+    this.props.account!.changeName(this.state.valueName);
+    this.props.account!.changeInfo(this.state.valueInfo);
   };
 
-  private handleChangeName = (name: string) => {
-    this.setState({valueName: name});
+  private handleChangeName = (valueName: string) => {
+    this.setState({valueName});
+  };
+
+  private handleChangeInfo = (valueInfo: string) => {
+    this.setState({valueInfo});
   };
 }

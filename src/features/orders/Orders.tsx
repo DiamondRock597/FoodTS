@@ -71,10 +71,6 @@ export class Orders extends React.Component<Props> {
 
   private keyExtractor = (item: DishModel) => `SwipeDish - ${item.id}`;
 
-  private onCompleteOrder = () => {
-    MyToast.onCompletedOrders();
-  };
-
   private renderHiddenItem = (swipeItem: UnderlayParams<DishModel>) => (
     <Animated.View style={[styles.row, {opacity: swipeItem.percentOpen}]}>
       <View style={styles.swipeButtonsBlock}>
@@ -131,5 +127,9 @@ export class Orders extends React.Component<Props> {
   private onAdd = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
     await close();
     this.props.dish.addFavourite(item.id);
+  };
+
+  private onCompleteOrder = () => {
+    MyToast.onCompletedOrders();
   };
 }

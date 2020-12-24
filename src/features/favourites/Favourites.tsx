@@ -23,11 +23,20 @@ export class Favourites extends React.Component<Props> {
       </View>
     );
   }
+
+  private get ListEmptyComponent() {
+    return (
+      <View>
+        <Text>Please add your favourite dishes</Text>
+      </View>
+    );
+  }
   public render() {
     return (
       <View style={styles.container}>
         <FlatList
           ListHeaderComponent={this.ListHeaderComponent}
+          ListEmptyComponent={this.ListEmptyComponent}
           keyExtractor={this.keyExtractor}
           contentContainerStyle={styles.contentContainer}
           numColumns={2}

@@ -12,7 +12,7 @@ import {styles} from './styles/info';
 interface Props {
   onPress: () => void;
   navigate: (screen: RootScreens) => void;
-  account: AccountStore;
+  account?: AccountStore;
 }
 
 @inject(Stores.AccountStore)
@@ -29,12 +29,12 @@ export class Info extends React.Component<Props> {
             <Text style={styles.title}>Personal details</Text>
           </View>
           <View style={styles.personalDetails}>
-            <Image source={{uri: this.props.account.profileImage}} style={styles.image} />
+            <Image source={{uri: this.props.account!.profileImage}} style={styles.image} />
             <View style={styles.personalData}>
-              <Text style={styles.name}>{this.props.account.userName}</Text>
-              <Text style={styles.textData}>{this.props.account.emailAddres}</Text>
-              <Text style={styles.textData}>{this.props.account.userPhoneNumber}</Text>
-              <Text style={[styles.textData, styles.lastText]}>{this.props.account.information}</Text>
+              <Text style={styles.name}>{this.props.account!.userName}</Text>
+              <Text style={styles.textData}>{this.props.account!.emailAddres}</Text>
+              <Text style={styles.textData}>{this.props.account!.userPhoneNumber}</Text>
+              <Text style={[styles.textData, styles.lastText]}>{this.props.account!.information}</Text>
             </View>
           </View>
           <Menu onPress={this.props.onPress} handleNavigate={this.props.navigate} />

@@ -4,13 +4,22 @@ import {Provider} from 'mobx-react';
 import SplashScreen from 'react-native-splash-screen';
 
 import {MainNavigation} from '@navigation/MainNavigation';
-import {createRootStore, MainStore} from '@stores/stores';
+import {createRootStore, MainStore, StoresMethods} from '@stores/stores';
+
+interface State {
+  hydrated: boolean;
+}
 
 export class App extends React.Component {
+  public state: State = {
+    hydrated: false,
+  };
   private mainStore: MainStore = createRootStore();
 
-  public componentDidMount() {
+  public async componentDidMount() {
     SplashScreen.hide();
+    await this.mainStore[StoresMethods.LoadStores]();
+    this.setState({hydrated: true});
   }
 
   public render() {

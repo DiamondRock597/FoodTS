@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
     lineHeight: 20,
     color: 'black',
   },
-  forgotPassword: {
+  forgotpassword: {
     paddingBottom: 20,
     fontFamily: 'FontsFree-Net-SFProText-Light',
     fontSize: 17,

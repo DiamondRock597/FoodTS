@@ -7,6 +7,6 @@ export interface User {
   phoneNumber: string;
   image: string;
   info: string;
-  password: number;
+  password: string;
   paymontMethods?: Methods;
 }
