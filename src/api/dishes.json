@@ -7,7 +7,7 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/t1food.png",
     "cost": 500,
-    "capacity": 1
+    "quantity": 1
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/t1food3.png",
     "cost": 200,
-    "capacity": 2
+    "quantity": 2
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/t1food3.png",
     "cost": 300,
-    "capacity": 0
+    "quantity": 0
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/t1food.png",
     "cost": 500,
-    "capacity": 0
+    "quantity": 0
   },
   {
     "id": 5,
@@ -47,11 +47,11 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/t1food3.png",
     "cost": 200,
-    "capacity": 0
+    "quantity": 0
   },
   {
     "id": 6,
-    "capacity": 0,
+    "quantity": 0,
     "type": "Drinks",
     "name": "Fried chicken m.",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
@@ -61,7 +61,7 @@
   },
   {
     "id": 7,
-    "capacity": 0,
+    "quantity": 0,
     "type": "Foods",
     "name": "Veggie tomato mix",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
@@ -71,7 +71,7 @@
   },
   {
     "id": 8,
-    "capacity": 0,
+    "quantity": 0,
     "type": "Snacks",
     "name": "Egg and cucmber...",
     "info": "Delivered between monday aug and thursday 20 from 8pm to 91:32 pm",
@@ -87,6 +87,6 @@
     "policy": "All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.",
     "image": "https://picresize.com/images/t1food3.png",
     "cost": 300,
-    "capacity": 0
+    "quantity": 0
   }
 ]

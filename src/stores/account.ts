@@ -13,9 +13,9 @@ export interface AccountStore {
   profileImage: string;
   isLogin: boolean;
 
-  login: (emailAddres: string, password: string) => void;
   changeName: (name: string) => void;
   changeInfo: (info: string) => void;
+  signIn: (emailAddres: string, password: string) => void;
 }
 
 export class Account implements AccountStore {
@@ -26,6 +26,7 @@ export class Account implements AccountStore {
   @persist @observable public phoneNumber: string = '';
   @persist @observable public name: string = '';
   @persist @observable public isLogin: boolean = false;
+  @observable public isError: boolean = false;
 
   private http: UserAPI;
 
@@ -62,18 +63,16 @@ export class Account implements AccountStore {
       await this.http.getUsers();
       const {email, phoneNumber, image, name}: User = await this.http.login(emailAddres, password);
       this.name = name;
-
       this.email = email;
       this.image = image;
       this.phoneNumber = phoneNumber;
       this.password = password;
       this.isLogin = true;
     } catch (error) {
-      console.log({error});
+      this.isError = true;
+      this.isLogin = false;
     }
   };
-
-  @action.bound public login = async () => {};
 
   @action.bound public changeName = (name: string) => {
     this.name = name;

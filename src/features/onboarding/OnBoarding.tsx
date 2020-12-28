@@ -20,9 +20,6 @@ interface Props {
 @inject(Stores.AccountStore)
 @observer
 export class OnBoarding extends React.Component<Props> {
-  public async componentDidMount() {
-    this.props.account.login();
-  }
   public render() {
     return (
       <SafeAreaView style={styles.bckg}>
@@ -39,7 +36,7 @@ export class OnBoarding extends React.Component<Props> {
         </View>
         <View style={styles.buttonBlock}>
           <CustomButton
-            onPress={() => this.props.navigation.dispatch(StackActions.replace(RootScreens.Register))}
+            onPress={() => this.props.navigation.dispatch(StackActions.replace(this.props.account.isLogin ? RootScreens.Home : RootScreens.Register))}
             title="Get started"
             color="#FF460A"
             backgroundColor="white"

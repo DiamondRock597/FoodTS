@@ -12,7 +12,7 @@ import {Orders} from '@features/orders/Orders';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export const MainNavigation = () => (
+export const MainNavigation: React.FC = () => (
   <Stack.Navigator initialRouteName={RootScreens.OnBoarding} screenOptions={{headerShown: false}}>
     <Stack.Screen name={RootScreens.OnBoarding} component={OnBoarding} />
     <Stack.Screen name={RootScreens.Register} component={Auth} />

@@ -17,11 +17,5 @@ export class UserHTTP implements UserAPI {
     this.users = this.http.get<Array<User>>('users');
   };
 
-  public login = (email: string, password: string) => {
-    console.log({email, password});
-
-    console.log({data: this.users.find((elem) => elem.email === email && elem.password === password)});
-
-    return this.users.find((elem) => elem.email === email && elem.password === password);
-  };
+  public login = (email: string, password: string) => this.users.find((elem) => elem.email === email && elem.password === password);
 }

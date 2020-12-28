@@ -16,8 +16,8 @@ interface Props {
 @inject(Stores.DishStore)
 @observer
 export class Counter extends React.Component<Props> {
-  private get capacity() {
-    return this.props.dish!.dishesList.find((elem) => elem.id === this.props.id)?.capacity;
+  private get quantity() {
+    return this.props.dish!.dishesList.find((elem) => elem.id === this.props.id)?.quantity;
   }
 
   public render() {
@@ -26,7 +26,7 @@ export class Counter extends React.Component<Props> {
         <TouchableOpacity onPress={this.onMinus} style={styles.counterButton}>
           <Text style={styles.counterText}>-</Text>
         </TouchableOpacity>
-        <Text style={styles.counterText}>{this.capacity}</Text>
+        <Text style={styles.counterText}>{this.quantity}</Text>
         <TouchableOpacity onPress={this.onPlus} style={styles.counterButton}>
           <Text style={styles.counterText}>+</Text>
         </TouchableOpacity>
@@ -34,6 +34,6 @@ export class Counter extends React.Component<Props> {
     );
   }
 
-  public onPlus = () => this.props.dish.addInBasket(this.props.id);
-  public onMinus = () => this.props.dish.deleteFromBasket(this.props.id);
+  public onPlus = () => this.props.dish!.addInBasket(this.props.id);
+  public onMinus = () => this.props.dish!.deleteFromBasket(this.props.id);
 }

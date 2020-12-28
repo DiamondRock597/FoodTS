@@ -36,7 +36,7 @@ export class Foods implements FoodsStore {
     return this.dishes.filter((item) => item.favourite);
   }
   @computed public get dishesListInBasket() {
-    const newArr = this.dishes.filter((item) => item.capacity > ZERO);
+    const newArr = this.dishes.filter((item) => item.quantity > ZERO);
     return toJS(newArr);
   }
 
@@ -55,7 +55,7 @@ export class Foods implements FoodsStore {
   @action.bound public addInBasket = (id: number) => {
     const newArr = this.dishes.map((dish) => {
       if (id === dish.id) {
-        dish.capacity++;
+        dish.quantity++;
         return dish;
       }
       return dish;
@@ -67,7 +67,7 @@ export class Foods implements FoodsStore {
   @action.bound public deleteFromBasket = (id: number) => {
     const newArr = this.dishes.map((dish) => {
       if (id === dish.id) {
-        dish.capacity--;
+        dish.quantity--;
       }
 
       return dish;
