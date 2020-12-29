@@ -6,7 +6,7 @@ import {useScrollHandler} from 'react-native-redash';
 import Animated, {interpolate} from 'react-native-reanimated';
 import {inject, observer} from 'mobx-react';
 
-import {CustomButton} from '@components/custom_button';
+import {AuthForm} from './AuthForm';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Stores} from '@stores/stores';
 import {AccountStore} from '@stores/account';
@@ -24,21 +24,19 @@ export const Auth = inject(Stores.AccountStore)(
   observer(({navigation, account}: Props) => {
     const scroll = useRef<Animated.ScrollView>(null);
     const {scrollHandler, x} = useScrollHandler();
-    const [email, setEmail] = useState<string>('');
-    const [password, setpassword] = useState<string>('');
 
     const left = interpolate(x, {
       inputRange: [0, width],
       outputRange: [cardRadius, endToScroll],
     });
 
-    const onNavigate = async () => {
+    const onNavigate = async (email: string, password: string) => {
       await account.signIn(email, password);
 
       if (account.isLogin) {
         navigation.replace(RootScreens.Home);
       } else {
-        Alert.alert('Warning', 'You make mistake');
+        Alert.alert('Warning', 'The account not found');
       }
     };
 
@@ -68,20 +66,7 @@ export const Auth = inject(Stores.AccountStore)(
             style={{width, height}}
             keyboardShouldPersistTaps="handled"
             {...scrollHandler}>
-            <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
-              <View style={styles.inputBlock}>
-                <Text style={styles.title}>Email address</Text>
-                <TextInput style={styles.input} value={email} onChangeText={setEmail} autoCompleteType="email" />
-              </View>
-              <View style={styles.inputBlock}>
-                <Text style={styles.title}>password</Text>
-                <TextInput secureTextEntry value={password} onChangeText={setpassword} style={styles.input} autoCompleteType="password" />
-              </View>
-              <View style={styles.inputBlock}>
-                <Text style={styles.forgotpassword}>Forgot passcode?</Text>
-                <CustomButton onPress={onNavigate} title="Login" color="white" backgroundColor="#FF460A" />
-              </View>
-            </ScrollView>
+            <AuthForm onSubmit={onNavigate} />
             <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
               <View style={styles.inputBlock}>
                 <Text style={styles.title}>Email address</Text>

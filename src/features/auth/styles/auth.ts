@@ -8,16 +8,13 @@ export const cardRadius = 35;
 export const endToScroll = width - cardRadius - stickWidth;
 
 const ratioHeightLogo = 2.5;
-const paddingInputBlock = 100;
 
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F2F2F2',
     flex: 1,
   },
-  contentContainer: {
-    alignItems: 'center',
-  },
+
   logoBlock: {
     height: height / ratioHeightLogo,
     borderBottomEndRadius: cardRadius,
@@ -66,7 +63,10 @@ export const styles = StyleSheet.create({
   },
   inputBlock: {
     paddingVertical: 20,
-    width: width - paddingInputBlock,
+    width: width - 100,
+  },
+  contentContainer: {
+    alignItems: 'center',
   },
   input: {
     height: 41,
