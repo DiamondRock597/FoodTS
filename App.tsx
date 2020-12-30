@@ -4,7 +4,7 @@ import {Provider} from 'mobx-react';
 import SplashScreen from 'react-native-splash-screen';
 
 import {MainNavigation} from '@navigation/MainNavigation';
-import {createRootStore, MainStore, Stores, StoresMethods} from '@stores/stores';
+import {createRootStore, MainStore, StoresMethods} from '@stores/stores';
 
 interface State {
   hydrated: boolean;

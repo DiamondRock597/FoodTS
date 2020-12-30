@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {View, Text, ScaledSize, Dimensions, Image, KeyboardAvoidingView, Platform, Alert} from 'react-native';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';

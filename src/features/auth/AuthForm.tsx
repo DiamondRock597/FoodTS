@@ -3,9 +3,12 @@ import {View, Text, ScrollView, TextInput} from 'react-native';
 import {withFormik, FormikProps} from 'formik';
 import * as Yup from 'yup';
 
-import {CustomButton} from 'components/custom_button';
+import {CustomButton} from '@components/custom_button';
 
 import {styles} from './styles/auth_form';
+
+const MIN_SYMBOLS_PASSWORD = 6;
+const MAX_SYMBOLS_PASSWORD = 16;
 
 interface Props {
   onSubmit: (email: string, password: string) => void;
@@ -23,7 +26,7 @@ interface FormValues {
 
 const validationSchema = Yup.object().shape({
   [Fields.Email]: Yup.string().email('Invalid email').required('Username is required'),
-  [Fields.Password]: Yup.string().min(6, 'Too short').max(16, 'Too long').required('Password is required'),
+  [Fields.Password]: Yup.string().min(MIN_SYMBOLS_PASSWORD, 'Too short').max(MAX_SYMBOLS_PASSWORD, 'Too long').required('Password is required'),
 });
 
 const InnerForm: React.FC<FormikProps<FormValues> & Props> = (props: FormikProps<FormValues> & Props) => {

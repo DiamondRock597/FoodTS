@@ -33,7 +33,7 @@ export class Foods implements FoodsStore {
   }
 
   @computed public get favouritesDishes() {
-    return this.dishes.filter((item) => item.favourite);
+    return toJS(this.dishes.filter((item) => item.favourite));
   }
   @computed public get dishesListInBasket() {
     const newArr = this.dishes.filter((item) => item.quantity > ZERO);
@@ -65,14 +65,13 @@ export class Foods implements FoodsStore {
   };
 
   @action.bound public deleteFromBasket = (id: number) => {
-    const newArr = this.dishes.map((dish) => {
+    this.dishes = this.dishes.map((dish) => {
       if (id === dish.id) {
         dish.quantity--;
       }
 
       return dish;
     });
-    this.dishes = newArr;
   };
 
   @action.bound public addFavourite = (id: number) => {
