@@ -1,43 +1,45 @@
 import React from 'react';
 import {View, Text, ScrollView, Image} from 'react-native';
+import {RootScreens} from '@navigation/screens';
+import {inject, observer} from 'mobx-react';
 
 import {Menu} from './Menu';
-import {User as UserModel} from '@models/user';
-import Profile from '@assets/image/profile.png';
+import {Stores} from '@stores/stores';
+import {AccountStore} from '@stores/account';
 
 import {styles} from './styles/info';
 
 interface Props {
   onPress: () => void;
+  navigate: (screen: RootScreens) => void;
+  account?: AccountStore;
 }
 
-const user: UserModel = {
-  name: 'Marvis Ighedosa',
-  email: 'Dosamarvis@gmail.com',
-  phoneNumber: '+234 9011039271',
-  info: 'No 15 uti street off ovie palace road effurun delta state',
-  image: Profile,
-};
-
-export const Info: React.FC<Props> = ({onPress}: Props) => (
-  <ScrollView style={styles.container}>
-    <View>
-      <Text style={styles.headerTitle}>My profile</Text>
-    </View>
-    <View style={styles.content}>
-      <View style={styles.contentTitle}>
-        <Text style={styles.title}>Personal details</Text>
-      </View>
-      <View style={styles.personalDetails}>
-        <Image source={user.image} style={styles.image} />
-        <View style={styles.personalData}>
-          <Text style={styles.name}>{user.name}</Text>
-          <Text style={styles.textData}>{user.email}</Text>
-          <Text style={styles.textData}>{user.phoneNumber}</Text>
-          <Text style={[styles.textData, styles.lastText]}>{user.info}</Text>
+@inject(Stores.AccountStore)
+@observer
+export class Info extends React.Component<Props> {
+  public render() {
+    return (
+      <ScrollView style={styles.container}>
+        <View>
+          <Text style={styles.headerTitle}>My profile</Text>
         </View>
-      </View>
-      <Menu onPress={onPress} />
-    </View>
-  </ScrollView>
-);
+        <View style={styles.content}>
+          <View style={styles.contentTitle}>
+            <Text style={styles.title}>Personal details</Text>
+          </View>
+          <View style={styles.personalDetails}>
+            <Image source={{uri: this.props.account!.profileImage}} style={styles.image} />
+            <View style={styles.personalData}>
+              <Text style={styles.name}>{this.props.account!.userName}</Text>
+              <Text style={styles.textData}>{this.props.account!.emailAddres}</Text>
+              <Text style={styles.textData}>{this.props.account!.userPhoneNumber}</Text>
+              <Text style={[styles.textData, styles.lastText]}>{this.props.account!.information}</Text>
+            </View>
+          </View>
+          <Menu onPress={this.props.onPress} handleNavigate={this.props.navigate} />
+        </View>
+      </ScrollView>
+    );
+  }
+}

@@ -3,16 +3,18 @@ import {View} from 'react-native';
 
 import {CustomButton} from '@components/custom_button';
 import {MenuButton} from './MenuButton';
+import {RootScreens, RootStackParamList} from '@navigation/screens';
 
 import {styles} from './styles/menu';
 
 interface Props {
   onPress: () => void;
+  handleNavigate: (screen: RootScreens, params?: RootStackParamList) => void;
 }
 
-export const Menu: React.FC<Props> = ({onPress}: Props) => (
+export const Menu: React.FC<Props> = ({onPress, handleNavigate}) => (
   <View style={styles.container}>
-    <MenuButton title="Orders" />
+    <MenuButton title={RootScreens.Orders} onPress={handleNavigate} />
     <MenuButton title="Pending reviews" />
     <MenuButton title="Faq" />
     <MenuButton title="Help" />

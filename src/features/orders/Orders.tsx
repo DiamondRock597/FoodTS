@@ -1,58 +1,44 @@
 import React from 'react';
-import {View, Text, Image, ListRenderItemInfo, ImageProps, Dimensions} from 'react-native';
+import {View, Text, Image, ListRenderItemInfo, NativeModules} from 'react-native';
 import SwipeIconHeader from 'react-native-vector-icons/MaterialIcons';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootScreens, RootStackParamList} from 'navigation/screens';
 import {RouteProp} from '@react-navigation/native';
 import SwipeableItem, {OverlayParams, UnderlayParams} from 'react-native-swipeable-item';
 import Animated from 'react-native-reanimated';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {inject, observer} from 'mobx-react';
 
+import {EmptyOrders} from './EmptyOrders';
 import {Counter} from './Counter';
 import {SwipeIcon} from './SwipeIcon';
 import {CustomButton} from '@components/custom_button';
-import Food1 from '@assets/image/food.png';
-import Food2 from '@assets/image/food2.png';
-import Food3 from '@assets/image/food3.png';
+import {FoodsStore} from '@stores/foods';
+import {Stores} from '@stores/stores';
+import {Dish as DishModel} from '@models/dish';
 
 import {styles} from './styles/orders';
 
-export interface Item {
-  id: number;
-  name: string;
-  image: ImageProps;
-}
+const {MyToast} = NativeModules;
 
-interface State {
-  carts: Array<Item>;
-}
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Orders>;
   route: RouteProp<RootStackParamList, RootScreens.Orders>;
-}
-
-interface State {
-  carts: Array<Item>;
+  dish: FoodsStore;
 }
 
 const OPEN_SWIPE_VALUE = 125;
 
-export class Orders extends React.Component<Props, State> {
-  public state: State = {
-    carts: [
-      {id: 1, name: '1 cart', image: Food1},
-      {id: 2, name: '1 cart', image: Food2},
-      {id: 3, name: '1 cart', image: Food3},
-      {id: 4, name: '1 cart', image: Food1},
-      {id: 5, name: '1 cart', image: Food2},
-      {id: 6, name: '1 cart', image: Food3},
-    ],
-  };
-
+@inject(Stores.DishStore)
+@observer
+export class Orders extends React.Component<Props> {
   private get ListHeaderComponent() {
     return (
       <>
         <View style={styles.header}>
+          <TouchableOpacity onPress={this.props.navigation.goBack}>
+            <SwipeIconHeader name="arrow-back-ios" size={22} color="#000000" />
+          </TouchableOpacity>
           <Text style={styles.headerTitle}>Cart</Text>
         </View>
         <View style={styles.info}>
@@ -64,34 +50,49 @@ export class Orders extends React.Component<Props, State> {
   }
 
   public render() {
-    return (
+    return this.props.dish.dishesListInBasket.length ? (
       <View style={styles.container}>
         <FlatList
-          data={this.state.carts}
+          data={this.props.dish.dishesListInBasket}
           ListHeaderComponent={this.ListHeaderComponent}
           renderItem={this.renderItem}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.contentContainer}
+          keyExtractor={this.keyExtractor}
         />
         <View style={styles.acceptBlock}>
-          <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" />
+          <CustomButton title="Complete order" onPress={this.onCompleteOrder} color="#F6F6F9" backgroundColor="#FA4A0C" />
         </View>
       </View>
+    ) : (
+      <EmptyOrders navigation={this.props.navigation} />
     );
   }
 
-  private keyExtractor = (item: Item) => `Dish-${item.id}`;
+  private keyExtractor = (item: DishModel) => `SwipeDish - ${item.id}`;
 
-  private renderHiddenItem = (swipeItem: UnderlayParams<Item>) => (
+  private renderHiddenItem = (swipeItem: UnderlayParams<DishModel>) => (
     <Animated.View style={[styles.row, {opacity: swipeItem.percentOpen}]}>
       <View style={styles.swipeButtonsBlock}>
-        <SwipeIcon id={swipeItem.item.id} name="heart" onPress={this.onDelete} close={swipeItem.close} percentOpen={swipeItem.percentOpen} />
-        <SwipeIcon id={swipeItem.item.id} name="trash" onPress={this.onDelete} close={swipeItem.close} percentOpen={swipeItem.percentOpen} />
+        <SwipeIcon
+          id={swipeItem.item.id}
+          name="heart"
+          onPress={() => this.onAdd(swipeItem)}
+          close={swipeItem.close}
+          percentOpen={swipeItem.percentOpen}
+        />
+        <SwipeIcon
+          id={swipeItem.item.id}
+          name="trash"
+          onPress={() => this.onDelete(swipeItem)}
+          close={swipeItem.close}
+          percentOpen={swipeItem.percentOpen}
+        />
       </View>
     </Animated.View>
   );
 
-  private renderItem = ({item}: ListRenderItemInfo<Item>) => (
+  private renderItem = ({item}: ListRenderItemInfo<DishModel>) => (
     <View style={styles.flatRow}>
       <SwipeableItem
         snapPointsLeft={[OPEN_SWIPE_VALUE]}
@@ -103,24 +104,32 @@ export class Orders extends React.Component<Props, State> {
     </View>
   );
 
-  private renderOverlayItem = ({item}: OverlayParams<Item>) => (
+  private renderOverlayItem = ({item}: OverlayParams<DishModel>) => (
     <View style={styles.swipeBlock} key={item.id}>
       <View style={styles.imageBlock}>
-        <Image source={item.image} style={styles.image} />
+        <Image source={{uri: item.image}} style={styles.image} />
       </View>
       <View style={styles.cartInfo}>
-        <Text style={styles.cartName}>Veggie tomato mix</Text>
+        <Text style={styles.cartName}>{item.name}</Text>
         <View style={styles.counterBlock}>
-          <Text style={styles.cartCost}>#1,900</Text>
-          <Counter />
+          <Text style={styles.cartCost}>{item.cost}</Text>
+          <Counter id={item.id} />
         </View>
       </View>
     </View>
   );
 
-  private onDelete = ({id, close}: {id: number; close: () => Promise<void>}) => {
-    close();
-    const newArr = this.state.carts.filter((swipeItem) => swipeItem.id !== id);
-    this.setState({carts: newArr});
+  private onDelete = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
+    await close();
+    this.props.dish.deleteFromBasket(item.id);
+  };
+
+  private onAdd = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
+    await close();
+    this.props.dish.addFavourite(item.id);
+  };
+
+  private onCompleteOrder = () => {
+    MyToast.onCompletedOrders();
   };
 }

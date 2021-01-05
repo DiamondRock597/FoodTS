@@ -12,8 +12,11 @@ module.exports = {
           '@features': './src/features',
           '@models': './src/models',
           '@navigation': './src/navigation',
+          '@api': './src/api',
+          '@stores': './src/stores',
         },
       },
     ],
+    ['@babel/plugin-proposal-decorators', {legacy: true}],
   ],
 };

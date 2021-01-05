@@ -8,16 +8,18 @@ import {TabNavigation} from './Tab/TabNavigation';
 import {Dish} from '@features/dish_details/Dish';
 import {Search} from '@features/search/Search';
 import {Profile} from '@features/profile/Profile';
+import {Orders} from '@features/orders/Orders';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export const MainNavigation = () => (
-  <Stack.Navigator screenOptions={{headerShown: false}}>
+export const MainNavigation: React.FC = () => (
+  <Stack.Navigator initialRouteName={RootScreens.OnBoarding} screenOptions={{headerShown: false}}>
     <Stack.Screen name={RootScreens.OnBoarding} component={OnBoarding} />
     <Stack.Screen name={RootScreens.Register} component={Auth} />
     <Stack.Screen name={RootScreens.Home} component={TabNavigation} />
     <Stack.Screen name={RootScreens.Dish} component={Dish} />
     <Stack.Screen name={RootScreens.Search} component={Search} />
     <Stack.Screen name={RootScreens.Profile} component={Profile} />
+    <Stack.Screen name={RootScreens.Orders} component={Orders} />
   </Stack.Navigator>
 );
