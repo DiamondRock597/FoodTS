@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
     textAlign: 'left',
     width: width / half,
     paddingVertical: 25,
-    fontSize: 30,
-    lineHeight: 35,
+    fontSize: 20,
+    lineHeight: 30,
   },
   searchInput: {
     backgroundColor: '#EFEEEE',

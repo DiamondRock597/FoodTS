@@ -26,8 +26,8 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'black',
     fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 17,
-    lineHeight: 20,
+    fontSize: 15,
+    lineHeight: 12,
     color: 'black',
   },
   forgotpassword: {
@@ -39,9 +39,7 @@ export const styles = StyleSheet.create({
   },
   errorMessage: {
     fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 14,
-    lineHeight: 15,
+    fontSize: 12,
     color: 'red',
-    paddingTop: 10,
   },
 });

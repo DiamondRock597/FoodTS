@@ -35,12 +35,20 @@ const InnerForm: React.FC<FormikProps<FormValues> & Props> = (props: FormikProps
     <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
       <View style={styles.inputBlock}>
         <Text style={styles.title}>Email address</Text>
-        <TextInput style={styles.input} value={values[Fields.Email]} onChangeText={handleChange(Fields.Email)} autoCompleteType="email" />
+        <TextInput
+          style={styles.input}
+          scrollEnabled={false}
+          value={values[Fields.Email]}
+          onChangeText={handleChange(Fields.Email)}
+          autoCompleteType="email"
+        />
         {errors[Fields.Email] && touched[Fields.Email] && <Text style={styles.errorMessage}>{errors[Fields.Email]}</Text>}
       </View>
       <View style={styles.inputBlock}>
         <Text style={styles.title}>password</Text>
         <TextInput
+          allowFontScaling={false}
+          scrollEnabled={false}
           secureTextEntry
           value={values[Fields.Password]}
           onChangeText={handleChange(Fields.Password)}
