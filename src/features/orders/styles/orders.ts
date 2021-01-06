@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   header: {
     justifyContent: 'center',
-    alignContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
     paddingVertical: 25,
   },

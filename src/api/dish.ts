@@ -1,0 +1,16 @@
+import {HttpAPI} from './http_api';
+import {Dish} from '@models/dish';
+
+export interface FoodsAPI {
+  getDishes: () => Array<Dish>;
+}
+
+export class FoodsHTTP implements FoodsAPI {
+  private http: HttpAPI;
+
+  public constructor(http: HttpAPI) {
+    this.http = http;
+  }
+
+  public getDishes = () => this.http.get<Array<Dish>>('foods').map((item) => Dish.Parse(item));
+}

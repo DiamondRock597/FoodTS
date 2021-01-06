@@ -1,9 +1,12 @@
-import {ImageProps} from 'react-native';
+import {Methods} from './method';
 
 export interface User {
+  id: number;
   name: string;
   email: string;
   phoneNumber: string;
-  image: ImageProps;
+  image: string;
   info: string;
+  password: string;
+  paymontMethods?: Methods;
 }

@@ -5,15 +5,19 @@ import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Extrapolate} from 'react-native-reanimated';
+import {inject, observer} from 'mobx-react';
+import {Stores} from '@stores/stores';
 
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Dish} from '@models/dish';
+import {FoodsStore} from '@stores/foods';
 
 import {HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE, styles} from './styles/search';
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Search>;
   route: RouteProp<RootStackParamList, RootScreens.Search>;
+  dish: FoodsStore;
 }
 
 interface State {
@@ -25,6 +29,8 @@ const startPositionValue = 0;
 const startOpacity = 1;
 const half = 2;
 
+@inject(Stores.DishStore)
+@observer
 export class Search extends Component<Props, State> {
   public state: State = {
     valueInput: '',
@@ -32,7 +38,7 @@ export class Search extends Component<Props, State> {
   };
 
   public get dishes() {
-    return this.props.route.params.dishes.filter((dish) => dish.name.toLowerCase().includes(this.state.valueInput.toLowerCase()));
+    return this.props.dish.dishesList.filter((dish) => dish.name.toLowerCase().includes(this.state.valueInput.toLowerCase()));
   }
 
   public get ListEmptyComponent() {

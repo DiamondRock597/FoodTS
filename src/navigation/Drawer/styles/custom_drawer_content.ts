@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
+
+const {width}: ScaledSize = Dimensions.get('window');
+const ratioWidthMenuBlock = 0.4;
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,22 +11,21 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   menuBlock: {
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
   },
   menu: {
     flexDirection: 'row',
-
     justifyContent: 'flex-start',
     alignItems: 'center',
-  },
-  menuTitle: {
-    paddingLeft: 8,
-    width: 150,
     borderBottomWidth: 0.3,
     borderBottomColor: '#F4F4F8',
+    width: ratioWidthMenuBlock * width,
+  },
+  menuTitle: {
+    paddingLeft: 3,
     paddingVertical: 26,
-    fontSize: 17,
-    lineHeight: 25,
+    fontSize: 12,
+    lineHeight: 20,
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     color: '#FFFFFF',
   },

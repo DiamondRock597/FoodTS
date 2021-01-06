@@ -18,7 +18,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerCon
         <IconFont name="user" color="#FFFFFF" size={24} />
         <Text style={styles.menuTitle}>Profile</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Home)} style={styles.menu}>
+      <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Orders)} style={styles.menu}>
         <IconMaterial name="shopping-cart" color="#FFFFFF" size={24} />
         <Text style={styles.menuTitle}>orders</Text>
       </TouchableOpacity>
@@ -36,7 +36,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerCon
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Register)} style={styles.signOutBlock}>
         <Text style={styles.signOutText}>Sign-out</Text>
-        <IconMaterial name="arrow-forward" size={22} color="#FFFFFF" />
+        <IconMaterial name="arrow-forward" size={20} color="#FFFFFF" />
       </TouchableOpacity>
     </View>
     <View style={styles.imageBlock}>
