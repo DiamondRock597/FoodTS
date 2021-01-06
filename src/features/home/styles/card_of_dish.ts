@@ -4,13 +4,13 @@ const {width, height}: ScaledSize = Dimensions.get('window');
 
 const half = 0.5;
 const ratioForCircle = 0.34;
+const ratioPaddingBlock = 0.11;
+const ratioWidthTitle = 0.4;
+const ratioSizeItem = 0.3;
 const ratioWidthDishesItem = 0.53;
 const sizeCircle = width * ratioForCircle;
 const borderRadiusCircle = sizeCircle * half;
 const widthDishCard = width * ratioWidthDishesItem;
-const ratioPaddingBlock = 0.11;
-const ratioWidthTitle = 0.4;
-const ratioSizeItem = 0.3;
 
 export const styles = StyleSheet.create({
   dishesBlock: {

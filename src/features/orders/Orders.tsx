@@ -100,6 +100,8 @@ export class Orders extends React.Component<Props> {
         renderOverlay={this.renderOverlayItem}
         key={this.keyExtractor(item)}
         item={item}
+        overSwipe={0}
+        swipeDamping={20}
       />
     </View>
   );
