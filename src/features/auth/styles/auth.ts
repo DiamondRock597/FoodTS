@@ -52,31 +52,7 @@ export const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginTop: 20,
   },
-  title: {
-    fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 15,
-    lineHeight: 18,
-    opacity: 0.4,
-  },
-  form: {
-    width,
-  },
-  inputBlock: {
-    paddingVertical: 20,
-    width: width - 100,
-  },
-  contentContainer: {
-    alignItems: 'center',
-  },
-  input: {
-    height: 41,
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
-    fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 17,
-    lineHeight: 20,
-    color: 'black',
-  },
+
   forgotpassword: {
     paddingBottom: 20,
     fontFamily: 'FontsFree-Net-SFProText-Light',

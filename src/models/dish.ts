@@ -17,7 +17,7 @@ export class Dish implements DishModel {
   public cost: number;
   public type: string;
   public quantity: number;
-  public favourite: boolean = false;
+  public favourite?: boolean = false;
   public info?: string;
   public policy?: string;
 

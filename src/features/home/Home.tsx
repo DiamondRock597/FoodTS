@@ -65,7 +65,7 @@ export class Home extends React.Component<Props, State> {
           </View>
         </View>
 
-        <FlatList
+        {/* <FlatList
           data={types}
           extraData={this.state.refresh}
           keyExtractor={this.keyExtractorType}
@@ -73,9 +73,9 @@ export class Home extends React.Component<Props, State> {
           contentContainerStyle={styles.foods}
           horizontal
           showsHorizontalScrollIndicator={false}
-        />
+        /> */}
 
-        <FlatList
+        {/* <FlatList
           data={this.props.dish.dishesList}
           extraData={this.state.refresh}
           keyExtractor={this.keyExtractorDish}
@@ -83,7 +83,7 @@ export class Home extends React.Component<Props, State> {
           contentContainerStyle={styles.dishesContainer}
           horizontal
           showsHorizontalScrollIndicator={false}
-        />
+        /> */}
       </ScrollView>
     );
   }

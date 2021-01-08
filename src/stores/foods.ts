@@ -40,10 +40,12 @@ export class Foods implements FoodsStore {
     return toJS(newArr);
   }
 
-  @action.bound public fetchDishes = () => {
+  @action.bound public fetchDishes = async () => {
     try {
       this.isLoading = true;
-      const newArr = [...this.dishes, ...this.FoodsHTTP.getDishes()];
+      const newDishes = await this.FoodsHTTP.getDishes();
+
+      const newArr = [...this.dishes, ...newDishes];
       this.dishes = newArr;
     } catch (error) {
       this.error = true;

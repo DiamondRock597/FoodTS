@@ -2,7 +2,7 @@ import {HttpAPI} from './http_api';
 import {Dish} from '@models/dish';
 
 export interface FoodsAPI {
-  getDishes: () => Array<Dish>;
+  getDishes: () => Promise<Array<Dish>>;
 }
 
 export class FoodsHTTP implements FoodsAPI {
@@ -12,5 +12,12 @@ export class FoodsHTTP implements FoodsAPI {
     this.http = http;
   }
 
-  public getDishes = () => this.http.get<Array<Dish>>('foods').map((item) => Dish.Parse(item));
+  public getDishes = async () => {
+    const {data, error} = await this.http.get<Array<Dish>>('foods');
+    if (error) {
+      throw new Error('');
+    }
+
+    return data.map((item) => Dish.Parse(item));
+  };
 }
