@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard, FlatList} from 'react-native';
+import {View, Image, Text, TouchableOpacity, TextInput, ScrollView, Keyboard, FlatList, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {DrawerActions, RouteProp} from '@react-navigation/native';
@@ -74,7 +74,6 @@ export class Home extends React.Component<Props, State> {
           horizontal
           showsHorizontalScrollIndicator={false}
         />
-
         <FlatList
           data={this.props.dish.dishesList}
           extraData={this.state.refresh}

@@ -13,11 +13,10 @@ const ratioWidthTitle = 0.4;
 const ratioSizeItem = 0.3;
 
 export const styles = StyleSheet.create({
-  dishesBlock: {
-    paddingTop: height * ratioPaddingBlock,
-    paddingHorizontal: 9,
-  },
   dishesItem: {
+    marginBottom: 10,
+    marginTop: height * ratioPaddingBlock,
+    marginHorizontal: 9,
     height: height * ratioSizeItem,
     width: widthDishCard,
     backgroundColor: 'white',
@@ -25,6 +24,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     position: 'relative',
+    paddingBottom: 15,
     elevation: 3,
   },
   dishesTitle: {

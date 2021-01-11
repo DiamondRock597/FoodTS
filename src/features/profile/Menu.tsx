@@ -14,7 +14,7 @@ interface Props {
 
 export const Menu: React.FC<Props> = ({onPress, handleNavigate}) => (
   <View style={styles.container}>
-    <MenuButton title={RootScreens.Orders} onPress={handleNavigate} />
+    <MenuButton title="Orders" onPress={handleNavigate} />
     <MenuButton title="Pending reviews" />
     <MenuButton title="Faq" />
     <MenuButton title="Help" />

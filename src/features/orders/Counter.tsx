@@ -5,8 +5,14 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import {FoodsStore} from 'stores/foods';
 import {Stores} from 'stores/stores';
+import {CounterButton} from './CounterButton';
 
 import {styles} from './styles/counter';
+
+enum ActionsCounter {
+  Plus = '+',
+  Minus = '-',
+}
 
 interface Props {
   id: number;
@@ -23,13 +29,9 @@ export class Counter extends React.Component<Props> {
   public render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.onMinus} style={styles.counterButton}>
-          <Text style={styles.counterText}>-</Text>
-        </TouchableOpacity>
+        <CounterButton onPress={this.onMinus} title={ActionsCounter.Minus} />
         <Text style={styles.counterText}>{this.quantity}</Text>
-        <TouchableOpacity onPress={this.onPlus} style={styles.counterButton}>
-          <Text style={styles.counterText}>+</Text>
-        </TouchableOpacity>
+        <CounterButton onPress={this.onPlus} title={ActionsCounter.Plus} />
       </View>
     );
   }
