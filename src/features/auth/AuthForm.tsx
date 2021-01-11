@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, Text, ScrollView, TextInput} from 'react-native';
-import {withFormik, FormikProps} from 'formik';
+import {FormikProps} from 'formik';
 import * as Yup from 'yup';
 
 import {CustomButton} from '@components/custom_button';
+import {withFormik} from '@utils/with_formik';
 
 import {styles} from './styles/auth_form';
 
@@ -29,39 +30,50 @@ const validationSchema = Yup.object().shape({
   [Fields.Password]: Yup.string().min(MIN_SYMBOLS_PASSWORD, 'Too short').max(MAX_SYMBOLS_PASSWORD, 'Too long').required('Password is required'),
 });
 
-const InnerForm: React.FC<FormikProps<FormValues> & Props> = (props: FormikProps<FormValues> & Props) => {
-  const {handleSubmit, handleChange, values, errors, touched} = props;
-  return (
-    <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
-      <View style={styles.inputBlock}>
-        <Text style={styles.title}>Email address</Text>
-        <TextInput style={styles.input} value={values[Fields.Email]} onChangeText={handleChange(Fields.Email)} autoCompleteType="email" />
-        {errors[Fields.Email] && touched[Fields.Email] && <Text style={styles.errorMessage}>{errors[Fields.Email]}</Text>}
-      </View>
-      <View style={styles.inputBlock}>
-        <Text style={styles.title}>password</Text>
-        <TextInput
-          secureTextEntry
-          value={values[Fields.Password]}
-          onChangeText={handleChange(Fields.Password)}
-          style={styles.input}
-          autoCompleteType="password"
-        />
-        {errors[Fields.Password] && touched[Fields.Password] && <Text style={styles.errorMessage}>{errors[Fields.Password]}</Text>}
-      </View>
-      <View style={styles.inputBlock}>
-        <Text style={styles.forgotpassword}>Forgot passcode?</Text>
-        <CustomButton onPress={handleSubmit} title="Login" color="white" backgroundColor="#FF460A" />
-      </View>
-    </ScrollView>
-  );
-};
-
-export const AuthForm = withFormik<Props, FormValues>({
+const formikEnhance = withFormik<Props, FormValues>({
   validationSchema,
   mapPropsToValues: () => ({
     [Fields.Email]: '',
     [Fields.Password]: '',
   }),
-  handleSubmit: (values: FormValues, {props}) => props.onSubmit(values[Fields.Email], values[Fields.Password]),
-})(InnerForm);
+  handleSubmit: (values: FormValues, {props}: {props: Props}) => props.onSubmit(values[Fields.Email], values[Fields.Password]),
+});
+
+@formikEnhance
+export class AuthForm extends React.Component<Props & FormikProps<FormValues>> {
+  public render() {
+    return (
+      <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
+        <View style={styles.inputBlock}>
+          <Text style={styles.title}>Email address</Text>
+          <TextInput
+            style={styles.input}
+            value={this.props.values[Fields.Email]}
+            onChangeText={this.props.handleChange(Fields.Email)}
+            autoCompleteType="email"
+          />
+          {this.props.errors[Fields.Email] && this.props.touched[Fields.Email] && (
+            <Text style={styles.errorMessage}>{this.props.errors[Fields.Email]}</Text>
+          )}
+        </View>
+        <View style={styles.inputBlock}>
+          <Text style={styles.title}>password</Text>
+          <TextInput
+            secureTextEntry
+            value={this.props.values[Fields.Password]}
+            onChangeText={this.props.handleChange(Fields.Password)}
+            style={styles.input}
+            autoCompleteType="password"
+          />
+          {this.props.errors[Fields.Password] && this.props.touched[Fields.Password] && (
+            <Text style={styles.errorMessage}>{this.props.errors[Fields.Password]}</Text>
+          )}
+        </View>
+        <View style={styles.inputBlock}>
+          <Text style={styles.forgotpassword}>Forgot passcode?</Text>
+          <CustomButton onPress={this.props.handleSubmit} title="Login" color="white" backgroundColor="#FF460A" />
+        </View>
+      </ScrollView>
+    );
+  }
+}

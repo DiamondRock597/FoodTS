@@ -1,10 +1,11 @@
+import {create} from 'mobx-persist';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import {UserAPI, User} from 'api/user';
+import {Account, AccountStore} from './account';
 import {FoodsStore, Foods} from './foods';
 import {FoodsAPI, FoodsHTTP} from '@api/dish';
 import {Http} from '@api/http_api';
-import {Account, AccountStore} from './account';
-import {UserAPI, User} from 'api/user';
-import {create} from 'mobx-persist';
-import AsyncStorage from '@react-native-community/async-storage';
 
 export enum Stores {
   DishStore = 'dish',

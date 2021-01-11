@@ -33,19 +33,17 @@ export class Favourites extends React.Component<Props> {
   }
   public render() {
     return (
-      <View style={styles.container}>
-        <FlatList
-          ListHeaderComponent={this.ListHeaderComponent}
-          ListEmptyComponent={this.ListEmptyComponent}
-          keyExtractor={this.keyExtractor}
-          contentContainerStyle={styles.contentContainer}
-          numColumns={2}
-          data={this.props.dish.favouritesDishes}
-          renderItem={this.renderItem}
-          columnWrapperStyle={styles.columnFlatList}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+      <FlatList
+        ListHeaderComponent={this.ListHeaderComponent}
+        ListEmptyComponent={this.ListEmptyComponent}
+        keyExtractor={this.keyExtractor}
+        contentContainerStyle={styles.contentContainer}
+        numColumns={2}
+        data={this.props.dish.favouritesDishes}
+        renderItem={this.renderItem}
+        columnWrapperStyle={styles.columnFlatList}
+        showsVerticalScrollIndicator={false}
+      />
     );
   }
 

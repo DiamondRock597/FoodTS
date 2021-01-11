@@ -16,6 +16,7 @@ module.exports = {
           '@navigation': './src/navigation',
           '@api': './src/api',
           '@stores': './src/stores',
+          '@utils': './src/utils',
         },
       },
     ],

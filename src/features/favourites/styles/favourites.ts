@@ -8,12 +8,9 @@ const ratioWidthDishesItem = 0.4;
 const ratioHeightDishesItem = 0.25;
 const halfCircle = (width * ratioForCircle) / half;
 const widthCircle = width * ratioForCircle;
+const distanceToCenterForDishesCirle = (width * ratioWidthDishesItem) / half - halfCircle;
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F9F9F9',
-  },
   header: {
     paddingVertical: 20,
     justifyContent: 'center',
@@ -26,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 10,
-
+    flex: 1,
     paddingHorizontal: 25,
     paddingBottom: 150,
     backgroundColor: '#F9F9F9',
@@ -65,7 +62,7 @@ export const styles = StyleSheet.create({
     width: widthCircle,
     height: widthCircle,
     borderRadius: halfCircle,
-    left: (width * ratioWidthDishesItem) / half - halfCircle,
+    left: distanceToCenterForDishesCirle,
     top: -halfCircle,
   },
   image: {
