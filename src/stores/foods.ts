@@ -1,4 +1,4 @@
-import {observable, action, computed, makeObservable, toJS} from 'mobx';
+import {observable, action, computed, makeObservable, toJS, runInAction} from 'mobx';
 
 import {Dish as DishModel} from '@models/dish';
 import {FoodsAPI} from '@api/dish';
@@ -9,6 +9,7 @@ export interface FoodsStore {
   dishesList: Array<DishModel>;
   dishesListInBasket: Array<DishModel>;
   favouritesDishes: Array<DishModel>;
+  errorMessage: string;
 
   fetchDishes: () => void;
   addInBasket: (id: number) => void;
@@ -18,7 +19,7 @@ export interface FoodsStore {
 
 export class Foods implements FoodsStore {
   @observable public dishes: Array<DishModel> = [];
-  @observable public error: boolean = false;
+  @observable public error: string = '';
   @observable public isLoading: boolean = false;
 
   public FoodsHTTP: FoodsAPI;
@@ -29,7 +30,11 @@ export class Foods implements FoodsStore {
   }
 
   @computed public get dishesList() {
-    return toJS(this.dishes);
+    return this.dishes.slice();
+  }
+
+  @computed public get errorMessage() {
+    return this.error;
   }
 
   @computed public get favouritesDishes() {
@@ -46,24 +51,25 @@ export class Foods implements FoodsStore {
       const newDishes = await this.FoodsHTTP.getDishes();
 
       const newArr = [...this.dishes, ...newDishes];
-      this.dishes = newArr;
+
+      runInAction(() => {
+        this.dishes = newArr;
+      });
     } catch (error) {
-      this.error = true;
+      this.error = error.message;
     } finally {
       this.isLoading = false;
     }
   };
 
   @action.bound public addInBasket = (id: number) => {
-    const newArr = this.dishes.map((dish) => {
+    this.dishes = this.dishes.map((dish) => {
       if (id === dish.id) {
         dish.quantity++;
         return dish;
       }
       return dish;
     });
-
-    this.dishes = newArr;
   };
 
   @action.bound public deleteFromBasket = (id: number) => {

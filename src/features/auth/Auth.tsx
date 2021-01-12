@@ -15,6 +15,8 @@ import {styles, cardRadius, endToScroll} from './styles/auth';
 
 const {width, height}: ScaledSize = Dimensions.get('window');
 
+const startPositionHover = 0;
+
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Register>;
   account: AccountStore;
@@ -26,17 +28,20 @@ export const Auth = inject(Stores.AccountStore)(
     const {scrollHandler, x} = useScrollHandler();
 
     const left = interpolate(x, {
-      inputRange: [0, width],
+      inputRange: [startPositionHover, width],
       outputRange: [cardRadius, endToScroll],
     });
 
     const onNavigate = async (email: string, password: string) => {
       await account.signIn(email, password);
+      navigateAccount();
+    };
 
+    const navigateAccount = () => {
       if (account.isLogin) {
         navigation.replace(RootScreens.Home);
       } else {
-        Alert.alert('Warning', 'The account not found');
+        Alert.alert(account.errorMessage);
       }
     };
 
@@ -47,7 +52,7 @@ export const Auth = inject(Stores.AccountStore)(
             <Image style={styles.img} source={require('../../assets/image/iconX.png')} />
           </View>
           <View style={styles.menuBlock}>
-            <Text onPress={() => scroll.current?.getNode().scrollTo({x: 0})} style={styles.login}>
+            <Text onPress={() => scroll.current?.getNode().scrollTo({x: startPositionHover})} style={styles.login}>
               Login
             </Text>
             <Text onPress={() => scroll.current?.getNode().scrollTo({x: width})} style={styles.login}>

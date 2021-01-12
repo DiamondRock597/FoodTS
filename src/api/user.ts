@@ -15,7 +15,6 @@ export class User implements UserAPI {
 
   public getUsers = async () => {
     const {data} = await this.http.get<Array<UserModel>>('users');
-
     this.users = data;
   };
 

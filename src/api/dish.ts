@@ -15,7 +15,7 @@ export class FoodsHTTP implements FoodsAPI {
   public getDishes = async () => {
     const {data, error} = await this.http.get<Array<Dish>>('foods');
     if (error) {
-      throw new Error('');
+      throw new Error(error);
     }
 
     return data.map((item) => Dish.Parse(item));
