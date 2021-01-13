@@ -1,21 +1,21 @@
 import React, {useRef} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {View, Text, ScaledSize, Dimensions, Image, KeyboardAvoidingView, Platform, Alert} from 'react-native';
+import {View, ScaledSize, Dimensions, KeyboardAvoidingView, Platform, Alert} from 'react-native';
 import {useScrollHandler} from 'react-native-redash';
-import Animated, {interpolate} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import {inject, observer} from 'mobx-react';
 
+import {LogoBlock} from './LogoBlock';
 import {AuthForm} from './AuthForm';
 import {SignUp} from './SignUp';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Stores} from '@stores/stores';
 import {AccountStore} from '@stores/account';
+import {startPositionHover, finishPositionHover} from './styles/logo_block';
 
-import {styles, cardRadius, endToScroll} from './styles/auth';
+import {styles} from './styles/auth';
 
 const {width, height}: ScaledSize = Dimensions.get('window');
-
-const startPositionHover = 0;
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Register>;
@@ -26,11 +26,6 @@ export const Auth = inject(Stores.AccountStore)(
   observer(({navigation, account}: Props) => {
     const scroll = useRef<Animated.ScrollView>(null);
     const {scrollHandler, x} = useScrollHandler();
-
-    const left = interpolate(x, {
-      inputRange: [startPositionHover, width],
-      outputRange: [cardRadius, endToScroll],
-    });
 
     const onNavigate = async (email: string, password: string) => {
       await account.signIn(email, password);
@@ -45,22 +40,12 @@ export const Auth = inject(Stores.AccountStore)(
       }
     };
 
+    const onPressLogin = () => scroll.current?.getNode().scrollTo({x: startPositionHover});
+    const onPressSignUp = () => scroll.current?.getNode().scrollTo({x: finishPositionHover});
+
     return (
       <View style={styles.container}>
-        <View style={styles.logoBlock}>
-          <View style={styles.imageBlock}>
-            <Image style={styles.img} source={require('@assets/image/iconX.png')} />
-          </View>
-          <View style={styles.menuBlock}>
-            <Text onPress={() => scroll.current?.getNode().scrollTo({x: startPositionHover})} style={styles.login}>
-              Login
-            </Text>
-            <Text onPress={() => scroll.current?.getNode().scrollTo({x: width})} style={styles.login}>
-              Sign-up
-            </Text>
-          </View>
-          <Animated.View style={[styles.hover, {left}]} />
-        </View>
+        <LogoBlock onPressLogin={onPressLogin} onPressSignUp={onPressSignUp} x={x} />
         <KeyboardAvoidingView enabled behavior={Platform.select({ios: 'padding', android: 'height'})}>
           <Animated.ScrollView
             ref={scroll}

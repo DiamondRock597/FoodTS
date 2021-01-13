@@ -50,7 +50,7 @@ export class ChangeProfile extends React.Component<Props, State> {
             <Text style={styles.title}>Information</Text>
           </View>
           <View style={styles.personalDetails}>
-            <Image source={require('../../assets/image/profile.png')} style={styles.image} />
+            <Image source={require('@assets/image/profile.png')} style={styles.image} />
             <View style={styles.personalData}>
               <Text style={styles.name}>Marvis Ighedosa</Text>
               <TextInput style={styles.textData} onChangeText={this.handleChangeName} value={this.state.valueName} />

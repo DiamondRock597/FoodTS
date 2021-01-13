@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 
-import {Dish} from '../../models/dish';
+import {DishCard} from '@models/dish_card';
 
 import {styles} from './styles/card_of_dish';
 
 interface Props {
-  dish: Dish;
-  onPress: (dish: Dish) => void;
+  dish: DishCard;
+  onPress: (dish: DishCard) => void;
 }
 
 export const CardOfDish: React.FC<Props> = ({dish, onPress}: Props) => (
