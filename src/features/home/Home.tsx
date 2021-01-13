@@ -11,6 +11,7 @@ import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Dish as DishModel, Type as TypeModel, TypesDish} from '@models/dish';
 import {Stores} from '@stores/stores';
 import {FoodsStore} from '@stores/foods';
+import {AllImages, ImageButton} from './ImageButton';
 
 import {styles} from './styles/home';
 
@@ -47,12 +48,8 @@ export class Home extends React.Component<Props, State> {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity onPress={this.hangleOpenDrawer}>
-            <Image source={require('../../assets/image/Vector.png')} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.navigateOrders}>
-            <Image source={require('../../assets/image/orders.png')} />
-          </TouchableOpacity>
+          <ImageButton title={AllImages.Vector} onPress={this.hangleOpenDrawer} />
+          <ImageButton title={AllImages.Orders} onPress={this.navigateOrders} />
         </View>
         <View style={styles.header}>
           <View>

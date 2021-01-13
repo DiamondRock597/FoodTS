@@ -30,7 +30,7 @@ export const Dish = inject(Stores.DishStore)(
     const {scrollHandler, x} = useScrollHandler();
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.header}>
           <IconButton name="arrow-left" size={24} color="#000000" onPress={() => navigation.goBack()} />
           <IconButton

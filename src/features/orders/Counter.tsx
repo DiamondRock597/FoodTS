@@ -23,7 +23,7 @@ interface Props {
 @observer
 export class Counter extends React.Component<Props> {
   private get quantity() {
-    return this.props.dish!.dishesList.find((elem) => elem.id === this.props.id)?.quantity;
+    return this.props.dish!.dishesListInBasket.find((elem) => elem.id === this.props.id)?.quantity;
   }
 
   public render() {

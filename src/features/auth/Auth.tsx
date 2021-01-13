@@ -49,7 +49,7 @@ export const Auth = inject(Stores.AccountStore)(
       <View style={styles.container}>
         <View style={styles.logoBlock}>
           <View style={styles.imageBlock}>
-            <Image style={styles.img} source={require('../../assets/image/iconX.png')} />
+            <Image style={styles.img} source={require('@assets/image/iconX.png')} />
           </View>
           <View style={styles.menuBlock}>
             <Text onPress={() => scroll.current?.getNode().scrollTo({x: startPositionHover})} style={styles.login}>
