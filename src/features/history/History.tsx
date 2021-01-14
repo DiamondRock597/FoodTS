@@ -18,6 +18,6 @@ export const History = () => (
       <Text style={styles.notificationTitle}>No history yet</Text>
       <Text style={styles.notificationInfo}>Hit the orange button down below to Create an order</Text>
     </View>
-    <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={() => MyToast.onCompletedOrders()} />
+    <CustomButton title="Complete order" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={MyToast.onCompletedOrders} />
   </View>
 );

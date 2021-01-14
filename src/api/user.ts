@@ -1,21 +1,30 @@
 import {HttpAPI} from './http_api';
-import {User} from '@models/user';
+import {User as UserModel} from '@models/user';
 
 export interface UserAPI {
   getUsers: () => void;
-  login: (email: string, password: string) => User | undefined;
+  login: (email: string, password: string) => UserModel;
 }
 
-export class UserHTTP implements UserAPI {
+export class User implements UserAPI {
   public http: HttpAPI;
-  public users: Array<User> = [];
+  public users: Array<UserModel> = [];
   public constructor(http: HttpAPI) {
     this.http = http;
   }
 
-  public getUsers = () => {
-    this.users = this.http.get<Array<User>>('users');
+  public getUsers = async () => {
+    const {data} = await this.http.get<Array<UserModel>>('users');
+    this.users = data;
   };
 
-  public login = (email: string, password: string) => this.users.find((elem) => elem.email === email && elem.password === password);
+  public login = (email: string, password: string) => {
+    const user = this.users.find((elem) => elem.email === email && elem.password === password);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    return user;
+  };
 }

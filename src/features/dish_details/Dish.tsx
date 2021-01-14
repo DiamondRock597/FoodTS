@@ -1,9 +1,7 @@
 import React, {useRef} from 'react';
-import {View, TouchableOpacity, Image, Dimensions, ScaledSize, Text, ScrollView} from 'react-native';
+import {View, Image, Dimensions, ScaledSize, Text, ScrollView} from 'react-native';
 import Animated, {divide} from 'react-native-reanimated';
-import BackIcon from 'react-native-vector-icons/MaterialIcons';
 import {RouteProp} from '@react-navigation/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useScrollHandler} from 'react-native-redash';
 import {inject, observer} from 'mobx-react';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -12,11 +10,13 @@ import {RootStackParamList, RootScreens} from '@navigation/screens';
 import {CustomButton} from '@components/custom_button';
 import {Stores} from '@stores/stores';
 import {Dot} from './Dot';
+import {FoodsStore} from 'stores/foods';
+import {IconButton} from 'features/dish_details/IconButton';
 
 import {styles} from './styles/dish';
-import {FoodsStore} from 'stores/foods';
 
 const {width}: ScaledSize = Dimensions.get('window');
+const indexImages = [0, 1, 2, 3];
 
 interface Props {
   route: RouteProp<RootStackParamList, RootScreens.Dish>;
@@ -30,14 +30,15 @@ export const Dish = inject(Stores.DishStore)(
     const {scrollHandler, x} = useScrollHandler();
 
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={navigation.goBack}>
-            <BackIcon name="arrow-back-ios" size={24} color="#000000" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => dish.addFavourite(route.params.dish.id)} style={styles.backButton}>
-            <MaterialCommunityIcons name={route.params.dish.favourite ? 'heart' : 'heart-outline'} size={22} color="red" />
-          </TouchableOpacity>
+          <IconButton name="arrow-left" size={24} color="#000000" onPress={() => navigation.goBack()} />
+          <IconButton
+            name={route.params.dish.favourite ? 'heart' : 'heart-outline'}
+            size={22}
+            color="red"
+            onPress={() => dish.addFavourite(route.params.dish.id)}
+          />
         </View>
         <View>
           <Animated.ScrollView
@@ -49,24 +50,16 @@ export const Dish = inject(Stores.DishStore)(
             style={{width}}
             showsHorizontalScrollIndicator={false}
             {...scrollHandler}>
-            <View style={styles.imageItem}>
-              <Image source={{uri: route.params.dish.image}} style={styles.image} />
-            </View>
-            <View style={styles.imageItem}>
-              <Image source={{uri: route.params.dish.image}} style={styles.image} />
-            </View>
-            <View style={styles.imageItem}>
-              <Image source={{uri: route.params.dish.image}} style={styles.image} />
-            </View>
-            <View style={styles.imageItem}>
-              <Image source={{uri: route.params.dish.image}} style={styles.image} />
-            </View>
+            {indexImages.map((_) => (
+              <View style={styles.imageItem}>
+                <Image source={{uri: route.params.dish.image}} style={styles.image} />
+              </View>
+            ))}
           </Animated.ScrollView>
           <Animated.View style={styles.dotItem}>
-            <Dot index={0} currentIndex={divide(x, width)} />
-            <Dot index={1} currentIndex={divide(x, width)} />
-            <Dot index={2} currentIndex={divide(x, width)} />
-            <Dot index={3} currentIndex={divide(x, width)} />
+            {indexImages.map((index) => (
+              <Dot index={index} currentIndex={divide(x, width)} />
+            ))}
           </Animated.View>
         </View>
         <View style={styles.titleBlock}>

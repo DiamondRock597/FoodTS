@@ -27,7 +27,7 @@ class MyToast extends ReactContextBaseJavaModule {
 
     @SuppressLint("ShowToast")
     @ReactMethod
-    public void onCompletedOrders(){
+    public void onCompletedOrders(Boolean pointerInside){
         Toast.makeText(reactContext,"Thank you, your complete order",Toast.LENGTH_LONG).show();
     }
 

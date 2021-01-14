@@ -1,10 +1,11 @@
+import {create} from 'mobx-persist';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import {UserAPI, User} from '@api/user';
+import {Account, AccountStore} from './account';
 import {FoodsStore, Foods} from './foods';
 import {FoodsAPI, FoodsHTTP} from '@api/dish';
 import {Http} from '@api/http_api';
-import {Account, AccountStore} from './account';
-import {UserAPI, UserHTTP} from 'api/user';
-import {create} from 'mobx-persist';
-import AsyncStorage from '@react-native-community/async-storage';
 
 export enum Stores {
   DishStore = 'dish',
@@ -30,9 +31,9 @@ class RootStore implements MainStore {
   public [Stores.DishStore]: FoodsStore;
   public [Stores.AccountStore]: AccountStore;
 
-  public constructor(FoodsHTTP: FoodsAPI, UserHTTP: UserAPI) {
+  public constructor(FoodsHTTP: FoodsAPI, User: UserAPI) {
     this[Stores.DishStore] = new Foods(FoodsHTTP);
-    this[Stores.AccountStore] = new Account(UserHTTP);
+    this[Stores.AccountStore] = new Account(User);
   }
 
   public [StoresMethods.LoadStores] = async () => {
@@ -47,8 +48,8 @@ class RootStore implements MainStore {
 
 export const createRootStore = () => {
   const http = new Http();
-  const Dish = new FoodsHTTP(http);
-  const User = new UserHTTP(http);
-  const rootStore = new RootStore(Dish, User);
+  const dish = new FoodsHTTP(http);
+  const user = new User(http);
+  const rootStore = new RootStore(dish, user);
   return rootStore;
 };

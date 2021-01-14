@@ -1,8 +1,9 @@
 import {HttpAPI} from './http_api';
 import {Dish} from '@models/dish';
+import {DishCard as DishModel} from '@models/dish_card';
 
 export interface FoodsAPI {
-  getDishes: () => Array<Dish>;
+  getDishes: () => Promise<{dishesInBasket: Array<Dish>; dishes: Array<DishModel>}>;
 }
 
 export class FoodsHTTP implements FoodsAPI {
@@ -12,5 +13,15 @@ export class FoodsHTTP implements FoodsAPI {
     this.http = http;
   }
 
-  public getDishes = () => this.http.get<Array<Dish>>('foods').map((item) => Dish.Parse(item));
+  public getDishes = async () => {
+    const {data, error} = await this.http.get<Array<DishModel>>('foods');
+    if (error) {
+      throw new Error(error);
+    }
+
+    return {
+      dishesInBasket: data.map((item) => Dish.Parse(item)),
+      dishes: data,
+    };
+  };
 }

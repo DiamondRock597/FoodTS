@@ -1,4 +1,4 @@
-import {action, computed, makeObservable, observable} from 'mobx';
+import {action, computed, makeObservable, observable, runInAction} from 'mobx';
 import {persist} from 'mobx-persist';
 
 import {User} from '@models/user';
@@ -12,6 +12,7 @@ export interface AccountStore {
   userPhoneNumber: string;
   profileImage: string;
   isLogin: boolean;
+  errorMessage: string;
 
   changeName: (name: string) => void;
   changeInfo: (info: string) => void;
@@ -26,7 +27,7 @@ export class Account implements AccountStore {
   @persist @observable public phoneNumber: string = '';
   @persist @observable public name: string = '';
   @persist @observable public isLogin: boolean = false;
-  @observable public isError: boolean = false;
+  @observable public error: string = '';
 
   private http: UserAPI;
 
@@ -53,6 +54,11 @@ export class Account implements AccountStore {
   @computed public get userPhoneNumber() {
     return this.phoneNumber;
   }
+
+  @computed public get errorMessage() {
+    return this.error;
+  }
+
   public constructor(http: UserAPI) {
     makeObservable<AccountStore>(this);
     this.http = http;
@@ -69,7 +75,7 @@ export class Account implements AccountStore {
       this.password = password;
       this.isLogin = true;
     } catch (error) {
-      this.isError = true;
+      this.error = error.message;
       this.isLogin = false;
     }
   };

@@ -25,13 +25,13 @@ export class OnBoarding extends React.Component<Props> {
       <SafeAreaView style={styles.bckg}>
         <View style={styles.container}>
           <View style={styles.icon}>
-            <Image source={require('../../assets/image/icon.png')} />
+            <Image source={require('@assets/image/icon.png')} />
           </View>
           <View style={styles.header}>
             <Text style={styles.title}>Food for Everyone</Text>
           </View>
           <View style={styles.imageBlock}>
-            <Image source={require('../../assets/image/logo.png')} style={styles.image} />
+            <Image source={require('@assets/image/logo.png')} style={styles.image} />
           </View>
         </View>
         <View style={styles.buttonBlock}>

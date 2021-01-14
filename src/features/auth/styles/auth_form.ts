@@ -11,35 +11,15 @@ export const styles = StyleSheet.create({
   contentContainer: {
     alignItems: 'center',
   },
-  title: {
-    fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 15,
-    lineHeight: 18,
-    opacity: 0.4,
-  },
-  inputBlock: {
+  forgotPassword: {
     paddingVertical: 20,
-    width: width - paddingInputBlock,
-  },
-  input: {
-    height: 41,
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
-    fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 15,
-    lineHeight: 12,
-    color: 'black',
-  },
-  forgotpassword: {
-    paddingBottom: 20,
     fontFamily: 'FontsFree-Net-SFProText-Light',
     fontSize: 17,
     lineHeight: 20,
     color: '#FA4A0C',
   },
-  errorMessage: {
-    fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 12,
-    color: 'red',
+  submitBlock: {
+    paddingVertical: 20,
+    width: width - paddingInputBlock,
   },
 });

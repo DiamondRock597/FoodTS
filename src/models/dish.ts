@@ -1,13 +1,15 @@
+import {DishCard} from './dish_card';
+
 export interface DishModel {
   id: number;
   name: string;
   image: string;
   cost: number;
   type: string;
-  quantity: number;
   favourite?: boolean;
   info?: string;
   policy?: string;
+  quantity: number;
 }
 
 export class Dish implements DishModel {
@@ -17,22 +19,22 @@ export class Dish implements DishModel {
   public cost: number;
   public type: string;
   public quantity: number;
-  public favourite: boolean = false;
+  public favourite?: boolean = false;
   public info?: string;
   public policy?: string;
 
-  public constructor(id: number, name: string, image: string, cost: number, type: string, quantity: number, info?: string, policy?: string) {
+  public constructor(id: number, name: string, image: string, cost: number, type: string, info?: string, policy?: string) {
     this.id = id;
     this.name = name;
     this.image = image;
     this.cost = cost;
     this.type = type;
-    this.quantity = quantity;
+    this.quantity = 0;
     this.info = info;
     this.policy = policy;
   }
 
-  public static Parse = (item: DishModel) => new Dish(item.id, item.name, item.image, item.cost, item.type, item.quantity, item.info, item.policy);
+  public static Parse = (item: DishCard) => new Dish(item.id, item.name, item.image, item.cost, item.type, item.info, item.policy);
 }
 
 export interface Type {

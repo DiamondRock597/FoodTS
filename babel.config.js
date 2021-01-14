@@ -1,6 +1,8 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
+    ['@babel/plugin-proposal-decorators', {legacy: true}],
+    // ['@babel/plugin-proposal-class-properties', {loose: false}],
     [
       'module-resolver',
       {
@@ -14,9 +16,9 @@ module.exports = {
           '@navigation': './src/navigation',
           '@api': './src/api',
           '@stores': './src/stores',
+          '@utils': './src/utils',
         },
       },
     ],
-    ['@babel/plugin-proposal-decorators', {legacy: true}],
   ],
 };

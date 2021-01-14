@@ -1,4 +1,4 @@
-import {Dish as DishModel} from '@models/dish';
+import {DishCard} from '@models/dish_card';
 
 export enum RootScreens {
   OnBoarding = 'OnBoarding',
@@ -22,7 +22,7 @@ export type RootStackParamList = {
   [RootScreens.OnBoarding]: undefined;
   [RootScreens.Register]: undefined;
   [RootScreens.Home]: undefined;
-  [RootScreens.Dish]: {dish: DishModel};
+  [RootScreens.Dish]: {dish: DishCard};
   [RootScreens.Search]: undefined;
   [RootScreens.Profile]: undefined;
   [RootScreens.Orders]: undefined;
