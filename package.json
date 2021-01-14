@@ -22,6 +22,7 @@
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.1",
     "formik": "2.2.6",
+    "lottie-react-native": "^3.5.0",
     "mobx": "6.0.4",
     "mobx-persist": "0.4.1",
     "mobx-react": "7.0.5",

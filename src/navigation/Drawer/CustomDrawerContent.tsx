@@ -36,7 +36,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerCon
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate(RootScreens.Register)} style={styles.signOutBlock}>
         <Text style={styles.signOutText}>Sign-out</Text>
-        <IconMaterial name="arrow-forward" size={22} color="#FFFFFF" />
+        <IconMaterial name="arrow-forward" size={20} color="#FFFFFF" />
       </TouchableOpacity>
     </View>
     <View style={styles.imageBlock}>

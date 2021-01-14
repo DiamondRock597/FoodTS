@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
     lineHeight: 20,
     color: '#FA4A0C',
   },
-
   submitBlock: {
     paddingVertical: 20,
     width: width - paddingInputBlock,

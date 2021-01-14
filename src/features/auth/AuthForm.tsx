@@ -31,6 +31,7 @@ const validationSchema = Yup.object().shape({
   [Fields.Password]: Yup.string().min(MIN_SYMBOLS_PASSWORD, 'Too short').max(MAX_SYMBOLS_PASSWORD, 'Too long').required('Password is required'),
 });
 
+
 const formikEnhance = withFormik<Props, FormValues>({
   validationSchema,
   mapPropsToValues: () => ({

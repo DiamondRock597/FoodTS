@@ -3,8 +3,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'mobx-react';
 import SplashScreen from 'react-native-splash-screen';
 
+import {Lottie} from '@components/lottie_animation';
 import {MainNavigation} from '@navigation/MainNavigation';
 import {createRootStore, MainStore, StoresMethods} from '@stores/stores';
+
+const LOADING_TIME = 5000;
 
 interface State {
   hydrated: boolean;
@@ -18,17 +21,25 @@ export class App extends React.Component {
 
   public async componentDidMount() {
     await this.mainStore[StoresMethods.LoadStores]();
-    this.setState({hydrated: true});
-    SplashScreen.hide();
+    await SplashScreen.hide();
+    await setTimeout(() => {
+      this.setState({hydrated: true});
+    }, LOADING_TIME);
   }
 
   public render() {
     return (
-      <Provider {...this.mainStore}>
-        <NavigationContainer>
-          <MainNavigation />
-        </NavigationContainer>
-      </Provider>
+      <>
+        {this.state.hydrated ? (
+          <Provider {...this.mainStore}>
+            <NavigationContainer>
+              <MainNavigation />
+            </NavigationContainer>
+          </Provider>
+        ) : (
+          <Lottie />
+        )}
+      </>
     );
   }
 }

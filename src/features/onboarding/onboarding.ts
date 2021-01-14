@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
   title: {
     fontStyle: 'normal',
     fontFamily: 'FontsFree-Net-SFProText-Heavy',
-    fontSize: 45,
+    fontSize: 40,
     letterSpacing: -0.01,
     color: '#fff',
   },
