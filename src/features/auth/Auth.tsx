@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {View, ScaledSize, Dimensions, KeyboardAvoidingView, Platform, Alert} from 'react-native';
+import {View, ScaledSize, Dimensions, Alert} from 'react-native';
 import {useScrollHandler} from 'react-native-redash';
 import Animated from 'react-native-reanimated';
 import {inject, observer} from 'mobx-react';
@@ -46,20 +46,19 @@ export const Auth = inject(Stores.AccountStore)(
     return (
       <View style={styles.container}>
         <LogoBlock onPressLogin={onPressLogin} onPressSignUp={onPressSignUp} x={x} />
-        <KeyboardAvoidingView enabled behavior={Platform.select({ios: 'padding', android: 'height'})}>
-          <Animated.ScrollView
-            ref={scroll}
-            horizontal
-            scrollEnabled={false}
-            contentContainerStyle={styles.scroll}
-            showsHorizontalScrollIndicator={false}
-            style={{width, height}}
-            keyboardShouldPersistTaps="handled"
-            {...scrollHandler}>
-            <AuthForm onSubmit={onNavigate} />
-            <SignUp />
-          </Animated.ScrollView>
-        </KeyboardAvoidingView>
+
+        <Animated.ScrollView
+          ref={scroll}
+          horizontal
+          scrollEnabled={false}
+          contentContainerStyle={styles.scroll}
+          showsHorizontalScrollIndicator={false}
+          style={{width, height}}
+          keyboardShouldPersistTaps="handled"
+          {...scrollHandler}>
+          <AuthForm onSubmit={onNavigate} />
+          <SignUp />
+        </Animated.ScrollView>
       </View>
     );
   }),

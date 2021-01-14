@@ -47,6 +47,7 @@ export class Foods implements FoodsStore {
     return toJS(newArr);
   }
 
+  //REFACTORING:isolate block try/catch
   @action.bound public fetchDishes = async () => {
     try {
       this.isLoading = true;

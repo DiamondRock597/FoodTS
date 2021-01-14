@@ -8,7 +8,7 @@ interface Props {
   title: string;
 }
 
-export const MunuButton: React.FC<Props> = ({onPress, title}) => (
+export const MenuButton: React.FC<Props> = ({onPress, title}) => (
   <Text onPress={onPress} style={styles.login}>
     {title}
   </Text>

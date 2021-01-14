@@ -1,6 +1,6 @@
-import {MenuButton} from 'features/profile/MenuButton';
 import React from 'react';
-import {View, Image, Text} from 'react-native';
+import {MenuButton} from './MenuButton';
+import {View, Image} from 'react-native';
 import Animated, {interpolate} from 'react-native-reanimated';
 
 import {styles, startPositionHover, finishPositionHover, cardRadius, endToScroll} from './styles/logo_block';
