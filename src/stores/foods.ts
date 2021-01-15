@@ -15,7 +15,7 @@ export interface FoodsStore {
   fetchDishes: () => void;
   addInBasket: (id: number) => void;
   deleteFromBasket: (id: number) => void;
-  addFavourite: (id: number) => void;
+  changeFavourite: (id: number) => void;
 }
 
 export class Foods implements FoodsStore {
@@ -43,18 +43,13 @@ export class Foods implements FoodsStore {
     return toJS(this.dishes.filter((item) => item.favourite));
   }
   @computed public get dishesListInBasket() {
-    const newArr = this.dishesInBasket.filter((item) => item.quantity > ZERO);
-    return toJS(newArr);
+    const dishesInBasket = this.dishesInBasket.filter((item) => item.quantity > ZERO);
+    return toJS(dishesInBasket);
   }
 
-  //REFACTORING:isolate block try/catch
   @action.bound public fetchDishes = async () => {
     try {
-      this.isLoading = true;
-      const {dishesInBasket, dishes} = await this.FoodsHTTP.getDishes();
-
-      this.dishes = [...this.dishes, ...dishes];
-      this.dishesInBasket = dishesInBasket;
+      await this.setDishes();
     } catch (error) {
       this.error = error.message;
     } finally {
@@ -82,12 +77,19 @@ export class Foods implements FoodsStore {
     });
   };
 
-  @action.bound public addFavourite = (id: number) => {
+  @action.bound public changeFavourite = (id: number) => {
     this.dishes = this.dishes.map((item) => {
       if (item.id === id) {
         item.favourite = !item.favourite;
       }
       return item;
     });
+  };
+
+  @action.bound private setDishes = async () => {
+    this.isLoading = true;
+    const {dishesInBasket, dishes} = await this.FoodsHTTP.getDishes();
+    this.dishes = [...this.dishes, ...dishes];
+    this.dishesInBasket = dishesInBasket;
   };
 }

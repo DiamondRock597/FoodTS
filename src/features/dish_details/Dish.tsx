@@ -37,7 +37,7 @@ export const Dish = inject(Stores.DishStore)(
             name={route.params.dish.favourite ? 'heart' : 'heart-outline'}
             size={22}
             color="red"
-            onPress={() => dish.addFavourite(route.params.dish.id)}
+            onPress={() => dish.changeFavourite(route.params.dish.id)}
           />
         </View>
         <View>
