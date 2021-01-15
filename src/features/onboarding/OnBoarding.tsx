@@ -8,7 +8,7 @@ import {inject, observer} from 'mobx-react';
 import {CustomButton} from '@components/custom_button';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Stores} from '@stores/stores';
-import {AccountStore} from 'stores/account';
+import {AccountStore} from '@stores/account';
 
 import {styles} from './onboarding';
 

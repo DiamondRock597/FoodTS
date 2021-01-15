@@ -3,7 +3,7 @@ import {View, Text, ScrollView, TextInput} from 'react-native';
 
 import {styles} from './styles/sign_up';
 
-export const SignUp = () => (
+export const SignUp: React.FC = () => (
   <ScrollView style={styles.form} contentContainerStyle={styles.contentContainer}>
     <View style={styles.inputBlock}>
       <Text style={styles.title}>Email address</Text>
