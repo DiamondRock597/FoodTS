@@ -1,7 +1,6 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {View, Text} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import {FoodsStore} from 'stores/foods';
 import {Stores} from 'stores/stores';

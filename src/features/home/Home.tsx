@@ -114,6 +114,5 @@ export class Home extends React.Component<Props, State> {
     this.props.navigation.navigate(RootScreens.Orders);
   };
 
-  private renderDish = ({item}: {item: DishCard}) =>
-    this.state.currentType === item.type ? <CardOfDish onPress={this.navigateDish} dish={item} /> : null;
+  private renderDish = ({item}: {item: DishCard}) => this.state.currentType === item.type && <CardOfDish onPress={this.navigateDish} dish={item} />;
 }

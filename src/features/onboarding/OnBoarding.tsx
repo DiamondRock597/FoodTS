@@ -10,7 +10,7 @@ import {RootScreens, RootStackParamList} from '@navigation/screens';
 import {Stores} from '@stores/stores';
 import {AccountStore} from '@stores/account';
 
-import {styles} from './onboarding';
+import {styles} from './styles/onboarding';
 
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.OnBoarding>;
@@ -35,14 +35,13 @@ export class OnBoarding extends React.Component<Props> {
           </View>
         </View>
         <View style={styles.buttonBlock}>
-          <CustomButton
-            onPress={() => this.props.navigation.dispatch(StackActions.replace(this.props.account.isLogin ? RootScreens.Home : RootScreens.Register))}
-            title="Get started"
-            color="#FF460A"
-            backgroundColor="white"
-          />
+          <CustomButton onPress={this.onNavigate} title="Get started" color="#FF460A" backgroundColor="white" />
         </View>
       </SafeAreaView>
     );
   }
+
+  private onNavigate = () => {
+    this.props.navigation.dispatch(StackActions.replace(this.props.account.isLogin ? RootScreens.Home : RootScreens.Register));
+  };
 }
