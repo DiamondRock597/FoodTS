@@ -11,7 +11,7 @@ import {CustomButton} from '@components/custom_button';
 import {Stores} from '@stores/stores';
 import {Dot} from './Dot';
 import {FoodsStore} from 'stores/foods';
-import {IconButton} from 'features/dish_details/IconButton';
+import {IconButton} from '@features/dish_details/IconButton';
 
 import {styles} from './styles/dish';
 

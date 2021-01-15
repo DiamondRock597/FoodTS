@@ -1,5 +1,4 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 import Animated, {Extrapolate, interpolate} from 'react-native-reanimated';
 
 import {styles} from './styles/dot';
