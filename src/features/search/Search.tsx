@@ -6,10 +6,10 @@ import {TextInput} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Extrapolate} from 'react-native-reanimated';
 import {inject, observer} from 'mobx-react';
-import {Stores} from '@stores/stores';
 
+import {Stores} from '@stores/stores';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
-import {Dish} from '@models/dish';
+import {DishCard} from '@models/dish_card';
 import {FoodsStore} from '@stores/foods';
 
 import {HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT, HEADER_SCROLL_DISTANCE, styles} from './styles/search';
@@ -25,6 +25,8 @@ interface State {
   scrollY: Animated.Value;
 }
 
+const marginForOddIndex = 60;
+const marginForEvenIndex = 160;
 const startPositionValue = 0;
 const startOpacity = 1;
 const half = 2;
@@ -93,10 +95,10 @@ export class Search extends Component<Props, State> {
     this.setState({valueInput});
   };
 
-  private keyExtractor: (item: Dish) => string = (item) => `Dish - ${item.id}`;
+  private keyExtractor: (item: DishCard) => string = (item) => `Dish - ${item.id}`;
 
-  private renderItem = ({item}: {item: Dish}) => (
-    <View style={[styles.dishesItem, {marginTop: item.id % 2 === 0 ? 160 : 60}]}>
+  private renderItem = ({item}: {item: DishCard}) => (
+    <View style={[styles.dishesItem, {marginTop: item.id % half === 0 ? marginForEvenIndex : marginForOddIndex}]}>
       <Text numberOfLines={2} style={styles.dishesTitle}>
         {item.name}
       </Text>

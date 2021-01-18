@@ -6,10 +6,9 @@ import IconMaterial from 'react-native-vector-icons/MaterialIcons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {RootScreens} from 'navigation/screens';
 import {DrawerContentComponentProps, DrawerContentOptions} from '@react-navigation/drawer';
+import DrawerImage from '@assets/image/drawer.png';
 
 import {styles} from './styles/custom_drawer_content';
-
-import DrawerImage from '@assets/image/drawer.png';
 
 export const CustomDrawerContent: React.FC<DrawerContentComponentProps<DrawerContentOptions>> = ({navigation}) => (
   <View style={styles.container}>

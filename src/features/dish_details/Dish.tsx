@@ -11,7 +11,7 @@ import {CustomButton} from '@components/custom_button';
 import {Stores} from '@stores/stores';
 import {Dot} from './Dot';
 import {FoodsStore} from 'stores/foods';
-import {IconButton} from 'features/dish_details/IconButton';
+import {IconButton} from '@features/dish_details/IconButton';
 
 import {styles} from './styles/dish';
 
@@ -37,7 +37,7 @@ export const Dish = inject(Stores.DishStore)(
             name={route.params.dish.favourite ? 'heart' : 'heart-outline'}
             size={22}
             color="red"
-            onPress={() => dish.addFavourite(route.params.dish.id)}
+            onPress={() => dish.changeFavourite(route.params.dish.id)}
           />
         </View>
         <View>

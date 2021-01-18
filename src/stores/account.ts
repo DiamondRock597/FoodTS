@@ -1,4 +1,4 @@
-import {action, computed, makeObservable, observable, runInAction} from 'mobx';
+import {action, computed, makeObservable, observable} from 'mobx';
 import {persist} from 'mobx-persist';
 
 import {User} from '@models/user';
@@ -66,17 +66,9 @@ export class Account implements AccountStore {
 
   @action.bound public signIn = async (emailAddres: string, password: string) => {
     try {
-      await this.http.getUsers();
-      const {email, phoneNumber, image, name}: User = await this.http.login(emailAddres, password);
-      this.name = name;
-      this.email = email;
-      this.image = image;
-      this.phoneNumber = phoneNumber;
-      this.password = password;
-      this.isLogin = true;
+      await this.loginAccount({emailAddres, password});
     } catch (error) {
-      this.error = error.message;
-      this.isLogin = false;
+      this.setErrorMessage(error.message);
     }
   };
 
@@ -86,5 +78,21 @@ export class Account implements AccountStore {
 
   @action.bound public changeInfo = (info: string) => {
     this.info = info;
+  };
+
+  @action.bound private setErrorMessage = (message: string) => {
+    this.error = message;
+    this.isLogin = false;
+  };
+
+  @action.bound private loginAccount = async ({emailAddres, password}: {emailAddres: string; password: string}) => {
+    await this.http.getUsers();
+    const {email, phoneNumber, image, name}: User = await this.http.login(emailAddres, password);
+    this.name = name;
+    this.email = email;
+    this.image = image;
+    this.phoneNumber = phoneNumber;
+    this.password = password;
+    this.isLogin = true;
   };
 }

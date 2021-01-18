@@ -12,7 +12,7 @@ interface Props {
 export const Profile: React.FC<Props> = ({navigation}) => {
   const [changeMode, setChangeMode] = useState<boolean>(false);
 
-  const changeModeHandler: () => void = () => {
+  const changeModeHandler = () => {
     setChangeMode(!changeMode);
   };
 

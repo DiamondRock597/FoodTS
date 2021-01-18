@@ -1,13 +1,13 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {View, Text, Image} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 
 import {Stores} from '@stores/stores';
 import {FoodsStore} from '@stores/foods';
+import {DishCard} from '@models/dish_card';
 
 import {styles} from './styles/favourites';
-import {FlatList} from 'react-native-gesture-handler';
-import {Dish} from '@models/dish';
 
 interface Props {
   dish: FoodsStore;
@@ -47,7 +47,7 @@ export class Favourites extends React.Component<Props> {
     );
   }
 
-  private renderItem = ({item}: {item: Dish}) => (
+  private renderItem = ({item}: {item: DishCard}) => (
     <View style={[styles.dishesItem]}>
       <Text numberOfLines={2} style={styles.dishesTitle}>
         {item.name}
@@ -59,5 +59,5 @@ export class Favourites extends React.Component<Props> {
     </View>
   );
 
-  private keyExtractor = (item: Dish) => `FavouriteDish - ${item.id} `;
+  private keyExtractor = (item: DishCard) => `FavouriteDish - ${item.id} `;
 }

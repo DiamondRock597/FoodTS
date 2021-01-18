@@ -128,7 +128,7 @@ export class Orders extends React.Component<Props> {
 
   private onAdd = async ({item, close}: {item: DishModel; close: () => Promise<void>}) => {
     await close();
-    this.props.dish.addFavourite(item.id);
+    this.props.dish.changeFavourite(item.id);
   };
 
   private onCompleteOrder = () => {

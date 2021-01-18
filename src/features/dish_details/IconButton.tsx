@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {styles} from './styles/styles';
+import {styles} from './styles/icon_button';
 
 interface Props {
   name: string;

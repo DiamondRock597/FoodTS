@@ -20,11 +20,7 @@ export class App extends React.Component {
   private mainStore: MainStore = createRootStore();
 
   public async componentDidMount() {
-    await this.mainStore[StoresMethods.LoadStores]();
-    await SplashScreen.hide();
-    await setTimeout(() => {
-      this.setState({hydrated: true});
-    }, LOADING_TIME);
+    await this.loadAppData();
   }
 
   public render() {
@@ -42,4 +38,12 @@ export class App extends React.Component {
       </>
     );
   }
+
+  private loadAppData = async () => {
+    await this.mainStore[StoresMethods.LoadStores]();
+    await SplashScreen.hide();
+    await setTimeout(() => {
+      this.setState({hydrated: true});
+    }, LOADING_TIME);
+  };
 }

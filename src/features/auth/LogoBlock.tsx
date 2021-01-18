@@ -1,7 +1,8 @@
 import React from 'react';
-import {MenuButton} from './MenuButton';
 import {View, Image} from 'react-native';
 import Animated, {interpolate} from 'react-native-reanimated';
+
+import {MenuButton} from './MenuButton';
 
 import {styles, startPositionHover, finishPositionHover, cardRadius, endToScroll} from './styles/logo_block';
 

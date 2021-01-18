@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image, NativeModules} from 'react-native';
 
-import {CustomButton} from 'components/custom_button';
+import {CustomButton} from '@components/custom_button';
 import Icon from '@assets/image/history.png';
 
 import {styles} from './styles/history';
