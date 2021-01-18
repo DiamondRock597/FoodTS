@@ -17,6 +17,7 @@ export interface AccountStore {
   changeName: (name: string) => void;
   changeInfo: (info: string) => void;
   signIn: (emailAddres: string, password: string) => void;
+  dispose: () => void;
 }
 
 export class Account implements AccountStore {
@@ -78,6 +79,15 @@ export class Account implements AccountStore {
 
   @action.bound public changeInfo = (info: string) => {
     this.info = info;
+  };
+  @action.bound public dispose = () => {
+    this.email = '';
+    this.password = '';
+    this.info = '';
+    this.name = '';
+    this.image = '';
+    this.isLogin = false;
+    this.phoneNumber = '';
   };
 
   @action.bound private setErrorMessage = (message: string) => {

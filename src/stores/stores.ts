@@ -24,10 +24,12 @@ export interface MainStore {
   [Stores.AccountStore]: AccountStore;
 
   [StoresMethods.LoadStores]: () => Promise<void>;
+  [StoresMethods.CleanStores]: () => Promise<void>;
 }
 
 class RootStore implements MainStore {
   public static readonly persistedStores: Array<PersistStores> = [Stores.AccountStore];
+
   public [Stores.DishStore]: FoodsStore;
   public [Stores.AccountStore]: AccountStore;
 
@@ -40,9 +42,17 @@ class RootStore implements MainStore {
     await Promise.all(RootStore.persistedStores.map(this.loadStore));
   };
 
+  public [StoresMethods.CleanStores] = async () => {
+    await Promise.all(RootStore.persistedStores.map(this.cleantStore));
+  };
+
   private loadStore = async (storeName: PersistStores) => {
     const hydrate = create({storage: AsyncStorage});
     await hydrate(storeName, this[storeName]);
+  };
+
+  private cleantStore = async (storeName: PersistStores) => {
+    await this[storeName].dispose();
   };
 }
 
