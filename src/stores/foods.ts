@@ -1,15 +1,15 @@
 import {observable, action, computed, makeObservable, toJS} from 'mobx';
 
 import {DishModel} from '@models/dish';
-import {DishCard as DishCardModel} from '@models/dish_card';
+import {DishCard} from '@models/dish_card';
 import {FoodsAPI} from '@api/dish';
 
 const ZERO = 0;
 
 export interface FoodsStore {
-  dishesList: Array<DishCardModel>;
+  dishesList: Array<DishCard>;
   dishesListInBasket: Array<DishModel>;
-  favouritesDishes: Array<DishCardModel>;
+  favouritesDishes: Array<DishCard>;
   errorMessage: string;
 
   fetchDishes: () => void;
@@ -20,7 +20,7 @@ export interface FoodsStore {
 }
 
 export class Foods implements FoodsStore {
-  @observable public dishes: Array<DishCardModel> = [];
+  @observable public dishes: Array<DishCard> = [];
   @observable public dishesInBasket: Array<DishModel> = [];
   @observable public error: string = '';
   @observable public isLoading: boolean = false;

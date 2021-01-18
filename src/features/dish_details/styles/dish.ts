@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   imageBlock: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 8,
+    paddingVertical: 5,
   },
   image: {
     height: height - paddingForImage,
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dotItem: {
-    paddingVertical: 15,
+    paddingVertical: 8,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -44,24 +44,25 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
-    fontSize: 24,
-    lineHeight: 33,
+    fontSize: 20,
+    lineHeight: 20,
     paddingVertical: 10,
     textAlign: 'center',
   },
   cost: {
     fontFamily: 'FontsFree-Net-SpaceGrotesk-SemiBold',
-    fontSize: 22,
-    lineHeight: 26,
+    fontSize: 20,
+    lineHeight: 22,
     textAlign: 'center',
     color: '#FA4A0C',
   },
   description: {
+    flex: 2,
     paddingVertical: 5,
-    paddingHorizontal: 50,
+    paddingHorizontal: 25,
   },
   nameInfo: {
-    fontSize: 17,
+    fontSize: 15,
     lineHeight: 20,
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     color: '#000000',
@@ -71,7 +72,7 @@ export const styles = StyleSheet.create({
   },
   info: {
     fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 15,
+    fontSize: 13,
     lineHeight: 21,
     letterSpacing: 0.02,
     color: '#000000',

@@ -6,6 +6,7 @@ export const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 const {width, height}: ScaledSize = Dimensions.get('window');
 
+const distanceForCircle = 10;
 const half = 2;
 const ratioForCircle = 0.3;
 const ratioWidthDishesItem = 0.4;
@@ -61,10 +62,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F9F9F9',
   },
   dishesTitle: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 15,
     opacity: 0.9,
     lineHeight: 22,
     width: widthCircle,
@@ -84,7 +85,7 @@ export const styles = StyleSheet.create({
     height: widthCircle,
     borderRadius: halfCircle,
     left: (width * ratioWidthDishesItem) / half - halfCircle,
-    top: -halfCircle,
+    top: -halfCircle - distanceForCircle,
   },
   image: {
     width: widthCircle,

@@ -10,11 +10,12 @@ export const CustomInput: React.FC<FieldProps<Fields, FormValues>> = ({field, fo
   <View style={styles.inputBlock}>
     <Text style={styles.title}>{field.name}</Text>
     <TextInput
+      numberOfLines={1}
+      scrollEnabled={true}
       secureTextEntry={field.name === Fields.Password}
       style={styles.input}
       value={field.value}
       onChangeText={form.handleChange(field.name)}
-      numberOfLines={1}
     />
     {form.errors[field.name] && form.touched[field.name] && <Text style={styles.errorMessage}>{form.errors[field.name]}</Text>}
   </View>

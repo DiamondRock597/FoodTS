@@ -2,8 +2,8 @@ import {StyleSheet, Dimensions, ScaledSize} from 'react-native';
 
 const {height, width}: ScaledSize = Dimensions.get('window');
 
-const PADDING_FOR_ITEM = 100;
-const RATIO_HEIGHT_FOR_SWIPE_ITEM = 0.12;
+const PADDING_FOR_ITEM = 70;
+const RATIO_HEIGHT_FOR_SWIPE_ITEM = 0.15;
 const RATIO_FOR_CART_INFO = 0.48;
 const WIDTH_FOR_BLOCK = width - PADDING_FOR_ITEM;
 
@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
   },
   cartName: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
-    fontSize: 17,
+    fontSize: 15,
     lineHeight: 20,
     textAlign: 'left',
     paddingBottom: 5,

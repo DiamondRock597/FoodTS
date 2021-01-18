@@ -7,7 +7,7 @@ const ratioForCircle = 0.34;
 const ratioPaddingBlock = 0.11;
 const ratioWidthTitle = 0.4;
 const ratioSizeItem = 0.3;
-const ratioWidthDishesItem = 0.53;
+const ratioWidthDishesItem = 0.52;
 const sizeCircle = width * ratioForCircle;
 const borderRadiusCircle = sizeCircle * half;
 const widthDishCard = width * ratioWidthDishesItem;
@@ -28,10 +28,10 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   dishesTitle: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     textAlign: 'center',
-    fontSize: 22,
+    fontSize: 18,
     opacity: 0.9,
     lineHeight: 22,
     width: width * ratioWidthTitle,

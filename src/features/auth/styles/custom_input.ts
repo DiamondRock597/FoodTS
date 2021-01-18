@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
     paddingTop: 5,
   },
   input: {
-    height: 41,
     borderBottomWidth: 1,
     borderBottomColor: 'black',
     fontFamily: 'FontsFree-Net-SFProText-Light',

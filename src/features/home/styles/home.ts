@@ -2,8 +2,8 @@ import {Dimensions, ScaledSize, StyleSheet} from 'react-native';
 
 const {width}: ScaledSize = Dimensions.get('window');
 
-const ratioForWithHeaderTitle = 2.5;
-const ratioForFontSizeHeaderTitle = 16;
+const ratioForWithHeaderTitle = 2.2;
+const ratioForFontSizeHeaderTitle = 18;
 const marginForInput = 100;
 const paddingFoodsContainer = 0.2;
 const paddingForDishes = width * paddingFoodsContainer;
