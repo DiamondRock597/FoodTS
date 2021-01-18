@@ -9,7 +9,7 @@ import {LogoBlock} from './LogoBlock';
 import {AuthForm} from './AuthForm';
 import {SignUp} from './SignUp';
 import {RootScreens, RootStackParamList} from '@navigation/screens';
-import {Stores} from '@stores/stores';
+import {Stores, StoresMethods} from '@stores/stores';
 import {AccountStore} from '@stores/account';
 import {startPositionHover, finishPositionHover} from './styles/logo_block';
 
@@ -20,10 +20,16 @@ const {width, height}: ScaledSize = Dimensions.get('window');
 interface Props {
   navigation: StackNavigationProp<RootStackParamList, RootScreens.Register>;
   account: AccountStore;
+  cleanStores: () => void;
 }
 
-export const Auth = inject(Stores.AccountStore)(
-  observer(({navigation, account}: Props) => {
+export const Auth = inject(
+  Stores.AccountStore,
+  StoresMethods.CleanStores,
+)(
+  observer(({account, navigation, cleanStores}: Props) => {
+    cleanStores();
+
     const scroll = useRef<Animated.ScrollView>(null);
     const {scrollHandler, x} = useScrollHandler();
 

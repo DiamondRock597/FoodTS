@@ -16,6 +16,7 @@ export interface FoodsStore {
   addInBasket: (id: number) => void;
   deleteFromBasket: (id: number) => void;
   changeFavourite: (id: number) => void;
+  dispose: () => void;
 }
 
 export class Foods implements FoodsStore {
@@ -46,6 +47,12 @@ export class Foods implements FoodsStore {
     const dishesInBasket = this.dishesInBasket.filter((item) => item.quantity > ZERO);
     return toJS(dishesInBasket);
   }
+
+  @action.bound public dispose = () => {
+    this.dishes = [];
+    this.dishesInBasket = [];
+    this.isLoading = false;
+  };
 
   @action.bound public fetchDishes = async () => {
     try {
