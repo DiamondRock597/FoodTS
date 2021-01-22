@@ -7,10 +7,11 @@ const ratioPadding = 0.02;
 const ratioPaddingBottomHeader = 0.01;
 const ratioHeightPersonalDetail = 0.25;
 const paddingTop = height * ratioPadding;
+const ratioForHeightMethodsBlock = 0.51;
 
 export const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 40,
+    paddingHorizontal: 25,
     paddingTop: 20,
     flex: 1,
   },
@@ -21,36 +22,35 @@ export const styles = StyleSheet.create({
     fontSize: height * ratioFontSize,
     lineHeight: height * ratioFontSize,
   },
-  content: {flex: 2},
+  content: {flex: 2, justifyContent: 'space-between'},
   contentTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 5,
+    paddingVertical: 10,
   },
   methodsTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 2,
-    paddingBottom: 15,
+    paddingBottom: 5,
   },
   methods: {
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    paddingBottom: 21,
     elevation: 1,
     justifyContent: 'center',
   },
   title: {
     fontFamily: 'FontsFree-Net-SFProText-Medium-1',
     fontSize: 18,
-    lineHeight: 21,
+    lineHeight: 17,
   },
   personalDetails: {
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     flexDirection: 'row',
     height: height * ratioHeightPersonalDetail,
-    paddingVertical: 10,
+    paddingVertical: 8,
     paddingHorizontal: 16,
     elevation: 2,
   },
@@ -59,14 +59,13 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 18,
+    fontSize: 16,
     color: '#000000',
     lineHeight: 21,
   },
   textData: {
-    maxWidth: 180,
     fontFamily: 'FontsFree-Net-SFProText-Light',
-    fontSize: 15,
+    fontSize: 14,
     color: '#000000',
     lineHeight: 18,
     opacity: 0.5,
@@ -81,6 +80,8 @@ export const styles = StyleSheet.create({
     backgroundColor: 'gray',
   },
   paymentMethods: {
-    paddingVertical: 15,
+    height: height * ratioForHeightMethodsBlock,
+    paddingVertical: 14,
+    justifyContent: 'space-between',
   },
 });

@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {View, Image, Dimensions, ScaledSize, Text, ScrollView} from 'react-native';
+import {View, Image, Dimensions, ScaledSize, Text, ScrollView, Easing} from 'react-native';
 import Animated, {divide} from 'react-native-reanimated';
 import {RouteProp} from '@react-navigation/native';
 import {useScrollHandler} from 'react-native-redash';

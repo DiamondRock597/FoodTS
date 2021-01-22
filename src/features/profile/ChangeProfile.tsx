@@ -71,8 +71,8 @@ export class ChangeProfile extends React.Component<Props, State> {
                 />
               ))}
             </View>
+            <CustomButton title="Upgrade" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={this.handlePress} />
           </View>
-          <CustomButton title="Upgrade" color="#F6F6F9" backgroundColor="#FA4A0C" onPress={this.handlePress} />
         </View>
       </ScrollView>
     );
